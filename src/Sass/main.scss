@@ -1,0 +1,24 @@
+// abstracts
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+// animations
+@import "animations/animations";
+
+// base
+@import "base/typography"; //typography contains font variable load this first
+@import "base/reset";
+
+// modules
+@import "modules/buttons";
+@import "modules/searchbar";
+@import "modules/form";
+
+//ui
+@import "ui/footer";
+@import "ui/header";
+
+// shame
+@import "shame";
+

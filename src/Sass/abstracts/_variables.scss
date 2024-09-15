@@ -1,0 +1,36 @@
+
+// ----------------------- MAIN COLORS ----------------------- //
+
+$black: #000;
+$white: #fff;
+
+$color1: #3129b9; 
+$color2: #000;
+$color3: #000;
+$color4: #333b6f;
+
+$btn-color1: blue;
+$btn-color2:blue;
+
+$btn-text-light: #fff;
+$btn-text-dark: #000;
+
+//fonts are in the _typography.scss
+
+$shadow1:rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+$header-height-mobile: 84px;
+
+// ----------------------- SIZES ----------------------- //
+
+$screen-xs-max: 576px;
+$screen-sm-max: 768px; 
+$screen-md-max: 992px;
+$screen-lg-max: 1199px;
+$screen-xl-max: 1340px;
+$screen-xxl-max: 1400px;
+
+// ----------------------- BOOTSTRAP  ----------------------- //
+
+$max-container-width: 1408px;
+$gutter: 13.5px;

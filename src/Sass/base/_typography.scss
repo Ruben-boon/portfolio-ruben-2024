@@ -1,0 +1,72 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title-color);
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  @media (max-width: $screen-lg-max) {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: $screen-md-max) {
+    margin-top: 22px;
+    margin-bottom: 122px;
+  }
+  @media (max-width: $screen-sm-max) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+h1 {
+  font-size: clamp(24px, 5vw + 1rem, 54px);
+}
+
+h2 {
+  font-size: clamp(28px, 4vw + 1rem, 40px);
+}
+
+h3 {
+  font-size: clamp(18px, 3vw + 1rem, 24px);
+}
+
+h4 {
+  font-size: clamp(16px, 2vw + 1rem, 1rem);
+}
+
+p {
+  color: var(--paragraph-color);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 400;
+}
+
+ul {
+  list-style: disc;
+  font-size: 16px;
+  color: var(--paragraph-color);
+  li {
+    margin-bottom: 0.5rem;
+    color: var(--paragraph-color);
+  }
+}
+a {
+  color: var(--link-color);
+}
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+p + .btn {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
