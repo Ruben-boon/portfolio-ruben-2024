@@ -1,27 +1,27 @@
 import Modules from '@/ui/modules'
 
-async function getPage() {
-	const page = await fetchSanity<Sanity.Page>(
-		groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
-			...,
-			modules[]{ ${modulesQuery} },
-			metadata {
-				...,
-				'ogimage': image.asset->url
-			}
-		}`,
-		{
-			tags: ['homepage'],
-		},
-	)
+// async function getPage() {
+// 	const page = await fetchSanity<Sanity.Page>(
+// 		groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
+// 			...,
+// 			modules[]{ ${modulesQuery} },
+// 			metadata {
+// 				...,
+// 				'ogimage': image.asset->url
+// 			}
+// 		}`,
+// 		{
+// 			tags: ['homepage'],
+// 		},
+// 	)
 
-	if (!page)
-		throw new Error(
-			"Missing 'page' document with metadata.slug 'index' in Sanity Studio",
-		)
+// 	if (!page)
+// 		throw new Error(
+// 			"Missing 'page' document with metadata.slug 'index' in Sanity Studio",
+// 		)
 
-	return page
-}
+// 	return page
+// }
 
 export default function Home() {
   return (
@@ -31,7 +31,7 @@ export default function Home() {
   );
 }
 
-export default async function Page() {
-	const page = await getPage()
-	return <Modules modules={page?.modules} />
-}
+// export default async function Page() {
+// 	const page = await getPage()
+// 	return <Modules modules={page?.modules} />
+// }
