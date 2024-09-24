@@ -20,6 +20,7 @@ export default function HeroModule({
   imageDark: Sanity.Image;
   contentBottom: any;
 }>) {
+  console.log(buttons)
   const { darkMode } = useDarkMode();
   return (
     <section className="hero-module relative">

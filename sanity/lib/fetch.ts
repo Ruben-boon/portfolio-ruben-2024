@@ -16,5 +16,10 @@ export function fetchSanity<T = any>(
     params?: QueryParams;
   } & QueryOptions["next"] = {}
 ) {
-  return client.fetch<T>(query, params);
+  const timestamp = Date.now();
+  return client.fetch<T>(
+    query,
+    { ...params, timestamp },
+    { cache: 'no-store', ...next }
+  );
 }

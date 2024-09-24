@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getSite } from "../../sanity/lib/queries";
 import Img from "./Img";
 import processUrl from "../../sanity/lib/processUrl";
-import dynamic from 'next/dynamic'
-const DarkModeSwitch = dynamic(() => import('./DarkModeSwitch'), { ssr: false })
+import dynamic from "next/dynamic";
+import DarkModeSwitch from "./DarkModeSwitch";
 
 
 export default async function Header() {
@@ -29,7 +29,7 @@ export default async function Header() {
             </Link>
           ))}
         </div>
-          <DarkModeSwitch/>
+          <DarkModeSwitch />
       </nav>
     </header>
   );

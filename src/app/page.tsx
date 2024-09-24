@@ -28,6 +28,7 @@ export default async function Home() {
   const page = await getPage();
   return <Modules modules={page?.modules} />
 }
+export const revalidate = 10
 
 // export default async function Page() {
 // 	const page = await getPage()
