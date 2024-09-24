@@ -3,7 +3,10 @@ import localFont from "next/font/local";
 import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 import "./tailwind.css";
-import '../Sass/main.scss'
+import "../Sass/main.scss";
+import { DarkModeProvider } from "@/ui/DarkModeContext";
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,9 +39,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${ptSerif.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <DarkModeProvider>
+          <Header />
+          {children}
+          <Footer />
+        </DarkModeProvider>
       </body>
     </html>
   );

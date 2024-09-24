@@ -1,4 +1,5 @@
-import Modules from '@/ui/modules'
+import Modules from "@/ui/modules";
+import { getPage } from "../../sanity/lib/queries";
 
 // async function getPage() {
 // 	const page = await fetchSanity<Sanity.Page>(
@@ -23,12 +24,9 @@ import Modules from '@/ui/modules'
 // 	return page
 // }
 
-export default function Home() {
-  return (
-    <div className="font-[family-name:var(--font-geist-sans)]">
-
-    </div>
-  );
+export default async function Home() {
+  const page = await getPage();
+  return <Modules modules={page?.modules} />
 }
 
 // export default async function Page() {

@@ -19,6 +19,13 @@ export default defineType({
       of: [{ type: "block" }],
     }),
     defineField({
+      name: 'buttons',
+      type: 'array',
+      group: "content",
+      of: [{ type: 'link' }],
+      validation: (Rule) => Rule.max(2).error('You can only add up to 2 buttons.'),
+    }),
+    defineField({
       name: "imageDark",
       type: "image",
       group: "content",
@@ -47,8 +54,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "contenBottom",
-      title: "Bottom content",
+      name: "contentBottom",
+      title: "Bottom content with t",
       group: "content",
 
       type: "array",

@@ -5,15 +5,17 @@ export default defineType({
   title: "Site",
   type: "document",
   groups: [
-    { name: "general", title: "General", default: true },
+    { name: "metadata", title: "Metadata", default: true },
     { name: "header", title: "Header" },
     { name: "footer", title: "Footer" },
+    { name: "socials", title: "Socials" },
+
   ],
   fields: [
     defineField({
       name: "title",
       type: "string",
-      group: "general",
+      group: "metadata",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -25,7 +27,7 @@ export default defineType({
           styles: [{ title: "Normal", value: "normal" }],
         },
       ],
-      group: "general",
+      group: "metadata",
     }),
 	defineField({
 		name: 'logo',
@@ -46,6 +48,28 @@ export default defineType({
 		title: 'Navigation',
 		type: 'object',
 		group: 'header',
+		fields: [
+			defineField({
+				name: 'links',
+				type: 'array',
+				of: [{ type: 'link' }],
+			}),
+		],
+		preview: {
+			select: {
+				link: 'link',
+				links: 'links',
+			},
+			prepare: ({ link, links }) => ({
+				title: link.label || link.internal?.title,
+			}),
+		},
+	}),
+	defineField({
+		name: 'socials',
+		title: 'Socials',
+		type: 'object',
+		group: 'socials',
 		fields: [
 			defineField({
 				name: 'links',

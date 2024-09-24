@@ -2,14 +2,16 @@ import HeroModule from "./HeroModule";
 
 export default function Modules({
   modules,
-  page,
+  // page,
 }: {
   modules?: Sanity.Module[];
   page?: Sanity.Page;
 }) {
+  console.log(modules);
   return (
     <>
       {modules?.map((module) => {
+        // console.log(module)
         switch (module._type) {
           case "hero":
             return <HeroModule {...module} key={module._key} />;

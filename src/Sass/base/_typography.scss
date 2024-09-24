@@ -4,20 +4,24 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-pt-serif);
   color: var(--title-color);
   font-weight: bold;
   margin-top: 30px;
   margin-bottom: 30px;
   font-weight: 600;
   line-height: 1.2;
+
   @media (max-width: $screen-lg-max) {
     margin-top: 24px;
     margin-bottom: 24px;
   }
+
   @media (max-width: $screen-md-max) {
     margin-top: 22px;
-    margin-bottom: 122px;
+    margin-bottom: 22px;
   }
+
   @media (max-width: $screen-sm-max) {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -29,7 +33,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(28px, 4vw + 1rem, 40px);
+  font-size: clamp(36px, 4vw + 1rem, 54px);
 }
 
 h3 {
@@ -40,24 +44,38 @@ h4 {
   font-size: clamp(16px, 2vw + 1rem, 1rem);
 }
 
+/* Paragraph styles */
 p {
+  font-family: var(--font-geist-mono);
   color: var(--paragraph-color);
   font-size: clamp(14px, 2vw, 16px);
   font-weight: 400;
 }
 
+/* List styles */
 ul {
+  font-family: var(--font-geist-mono);
+
   list-style: disc;
   font-size: 16px;
   color: var(--paragraph-color);
+
   li {
+  font-family: var(--font-geist-mono);
+
     margin-bottom: 0.5rem;
     color: var(--paragraph-color);
   }
 }
+
+/* Link styles */
 a {
+  font-family: var(--font-pt-serif);
+
   color: var(--link-color);
 }
+
+/* Strong and emphasis styles */
 strong {
   font-weight: bold;
 }
@@ -66,6 +84,7 @@ em {
   font-style: italic;
 }
 
+/* Button spacing */
 p + .btn {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;

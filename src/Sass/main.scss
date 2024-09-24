@@ -9,15 +9,21 @@
 // base
 @import "base/typography"; //typography contains font variable load this first
 @import "base/reset";
+@import "base/general";
+
 
 // modules
 @import "modules/buttons";
 @import "modules/searchbar";
 @import "modules/form";
+@import "modules/toggle-switch";
+@import "modules/hero-module";
+
 
 //ui
 @import "ui/footer";
 @import "ui/header";
+
 
 // shame
 @import "shame";

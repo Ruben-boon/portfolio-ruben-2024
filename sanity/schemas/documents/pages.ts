@@ -11,13 +11,20 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug (url)',
-      type: 'slug',
-      options: {
-        source: 'pageName',
-        maxLength: 96,
-      },
+      name: 'metadata',
+      title: 'Metadata',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'slug',
+          title: 'Slug',
+          type: 'slug',
+          options: {
+            source: 'pageName',
+            maxLength: 96,
+          },
+        }),
+      ],
     }),
     defineField({
         name: 'modules',

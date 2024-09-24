@@ -1,0 +1,41 @@
+section.hero-module {
+  max-width: $container;
+  margin: 0 auto;
+  display: block;
+  padding-top: 64px;
+  .content-top {
+    max-width: $container;
+    z-index: -1;
+    position: fixed;
+    padding: 2em;
+    border-left: 1px solid var(--bg-color3);
+  }
+  .image {
+    // transition: 10s ease;
+  }
+  .side-image {
+    position: absolute;
+    width: 300px;
+    right: -150px;
+    opacity: 50%;
+    top: 140px;
+    img {
+      width: 100%;
+    }
+  }
+  .main-image {
+    position: relative;
+    margin-top: 300px;
+    width: 170%;
+    min-height: 800px;
+    margin-left: -35%;
+    right:auto;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+  .content-bottom {
+    transform: translateY(-150%);
+  }
+}
