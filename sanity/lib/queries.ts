@@ -2,7 +2,10 @@ import { fetchSanity, groq } from "./fetch";
 
 export const linkQuery = groq`
 	...,
-	internal->{ _type, title, metadata }
+	internal->{ _type, title,  metadata {
+      slug,
+
+    } }
 `;
 
 const navigationQuery = groq`
@@ -100,4 +103,10 @@ export const modulesQuery = groq`
 	},
 	_type == 'testimonial.featured' => { testimonial-> },
 	_type == 'testimonial-list' => { testimonials[]-> },
+	_type == 'hero' => {
+    ...,
+    ctas[]{
+      ${linkQuery}
+    }
+  }
 `;

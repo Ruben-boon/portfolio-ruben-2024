@@ -9,6 +9,9 @@ section.hero-module {
     position: fixed;
     padding: 2em;
     border-left: 1px solid var(--bg-color3);
+    .button-container {
+      margin-top: 2em;
+    }
   }
   .image {
     // transition: 10s ease;

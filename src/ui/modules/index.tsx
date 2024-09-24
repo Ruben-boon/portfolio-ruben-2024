@@ -7,7 +7,7 @@ export default function Modules({
   modules?: Sanity.Module[];
   page?: Sanity.Page;
 }) {
-  console.log(modules);
+  // console.log(modules);
   return (
     <>
       {modules?.map((module) => {

@@ -16,9 +16,10 @@ export default function (
   const directory = page._type === "blog.post" ? "blog" : null;
 
   const slug = page.internal.metadata?.slug?.current;
+  console.log(slug);
   const path = slug === "index" ? null : slug;
   return (
     (base ? BASE_URL + "/" : "/") +
-    [directory, path, stegaClean(params)].filter(Boolean).join("/")
+    [path]
   );
 }

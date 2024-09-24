@@ -1,6 +1,7 @@
 // ----------------------- MAIN COLORS ----------------------- //
 
 :root {
+  //colors
   --title-color: black;
   --paragraph-color: rgb(34, 34, 34);
   --link-color: black;
@@ -8,6 +9,17 @@
   --bg-color2: #ffffff;
   --bg-color3: #e2e2e2;
 
+  // buttons
+  --button-border-radius: 32px;
+  --button-primary-hover-color: black;
+  --button-primary-text-color: white;
+
+  --button-secondary-color: red;
+  --button-secondary-text-color: white;
+  --button-secondary-hover-color: darkred;
+
+  --button-outline-color: white;
+  --button-outline-text-color: white;
 }
 
 html.dark {
@@ -18,6 +30,8 @@ html.dark {
   --bg-color2: #212121;
   --bg-color3: #313131;
 }
+
+
 
 //fonts are in the _typography.scss
 

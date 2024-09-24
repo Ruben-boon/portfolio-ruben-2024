@@ -19,7 +19,8 @@ export default defineType({
       of: [{ type: "block" }],
     }),
     defineField({
-      name: 'buttons',
+      name: 'ctas',
+      title: 'Buttons',
       type: 'array',
       group: "content",
       of: [{ type: 'link' }],

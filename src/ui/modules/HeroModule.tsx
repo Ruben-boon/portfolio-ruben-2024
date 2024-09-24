@@ -8,34 +8,35 @@ import { useDarkMode } from "../useDarkmode";
 export default function HeroModule({
   spacingSettings,
   contentTop,
-  buttons,
+  ctas,
   imageLight,
   imageDark,
   contentBottom,
 }: Partial<{
   spacingSettings: object;
   contentTop: any;
-  buttons: any;
+  ctas: any;
   imageLight: Sanity.Image;
   imageDark: Sanity.Image;
   contentBottom: any;
 }>) {
-  console.log(buttons)
+  // console.log(processUrl(ctas[0]));
   const { darkMode } = useDarkMode();
   return (
     <section className="hero-module relative">
       <div className="content-top">
         {contentTop && <PortableText value={contentTop} />}
-      </div>
-      <div className="button-container">
-        {/* <Link
-          href={processUrl(Buttons[0], {
-            base: false,
-            params: Buttons,
-          })}
-        >
-          {Buttons[0].label}
-        </Link> */}
+        <div className="button-container">
+          <Link
+            className="btn-outline"
+            href={processUrl(ctas[0], {
+              base: false,
+              params: ctas[0],
+            })}
+          >
+            {ctas[0].label}
+          </Link>
+        </div>
       </div>
       <div className={`image ${darkMode ? "side-image" : "main-image"}`}>
         {imageLight && (
