@@ -4,11 +4,24 @@ section.hero-module {
   display: block;
   padding-top: 64px;
   .content-top {
+    position: relative;
     max-width: $container;
     z-index: -1;
     position: fixed;
     padding: 2em;
     border-left: 1px solid var(--bg-color3);
+    // transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+
+    &:before {
+      content: "";
+      height: 7px;
+      width:7px;
+      position: absolute;
+      left:-3px;
+      top:calc(65px + 30px + 32px);
+      background-color:orangered;
+      border-radius: 50%;
+    }
     .button-container {
       margin-top: 2em;
     }
@@ -17,18 +30,18 @@ section.hero-module {
     // transition: 10s ease;
   }
   .side-image {
-    position: absolute;
+    position: fixed;
     width: 300px;
-    right: -150px;
+    right: calc(50% - 500px);
     opacity: 50%;
-    top: 140px;
+    top: 240px;
     img {
       width: 100%;
     }
   }
   .main-image {
     position: relative;
-    margin-top: 300px;
+    margin-top: 340px;
     width: 170%;
     min-height: 800px;
     margin-left: -35%;
@@ -39,6 +52,6 @@ section.hero-module {
     }
   }
   .content-bottom {
-    transform: translateY(-150%);
+    transform: translateY(-500px);
   }
 }

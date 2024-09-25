@@ -4,6 +4,8 @@ import Img from "../Img";
 import Link from "next/link";
 import processUrl from "../../../sanity/lib/processUrl";
 import { useDarkMode } from "../useDarkmode";
+import { Ref, useEffect, useRef } from "react";
+import ScrollEffects from "../scrollEffects";
 
 export default function HeroModule({
   spacingSettings,
@@ -22,9 +24,21 @@ export default function HeroModule({
 }>) {
   // console.log(processUrl(ctas[0]));
   const { darkMode } = useDarkMode();
+
+  const contentTopRef = useRef(null);
+  const sideImageRef = useRef(null);
+  const bigImageRef = useRef(null);
+
   return (
     <section className="hero-module relative">
-      <div className="content-top">
+      <ScrollEffects
+        refEl={contentTopRef}
+        options={{ blur: 2, scale: 4, opacity: 5 }}
+      />
+      {/* <ScrollEffects refEl={sideImageRef} options={{ scale: 1, opacity: 4}} /> */}
+      <ScrollEffects refEl={bigImageRef} options={{ blur:1, scale: 3, opacity: 3}} />
+
+      <div className="content-top" ref={contentTopRef}>
         {contentTop && <PortableText value={contentTop} />}
         <div className="button-container">
           <Link
@@ -38,20 +52,25 @@ export default function HeroModule({
           </Link>
         </div>
       </div>
-      <div className={`image ${darkMode ? "side-image" : "main-image"}`}>
-        {imageLight && (
+      <div className="side-image" ref={sideImageRef}>
+        {imageLight && darkMode && (
           <Img image={imageLight} alt="Image of a globe" imageWidth={400} />
         )}
-      </div>
-      <div className={`image ${darkMode ? "main-image" : "side-image"}`}>
-        {imageDark && (
+        {imageDark && !darkMode && (
           <Img image={imageDark} alt="Image of a globe" imageWidth={1200} />
         )}
       </div>
-      <div className="content-bottom">
-        {/* the name should revert back to contentBottom soon i think? */}
-        {contentBottom && <PortableText value={contentBottom} />}
+      <div className="main-image" ref={bigImageRef}>
+        {imageLight && !darkMode && (
+          <Img image={imageLight} alt="Image of a globe" imageWidth={400} />
+        )}
+        {imageDark && darkMode && (
+          <Img image={imageDark} alt="Image of a globe" imageWidth={1200} />
+        )}
       </div>
+        <div className="content-bottom">
+          {contentBottom && <PortableText value={contentBottom} />}
+        </div>
     </section>
   );
 }
