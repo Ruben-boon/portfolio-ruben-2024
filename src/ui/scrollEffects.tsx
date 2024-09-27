@@ -23,7 +23,7 @@ const applyScale = (element: HTMLElement, scrollPosition: number, intensity: num
 };
 
 const applyOpacity = (element: HTMLElement, scrollPosition: number, intensity: number) => {
-  const maxOpacityAdjustment = 1 - (scrollPosition / (2000 / intensity));
+  const maxOpacityAdjustment = 1 - (scrollPosition / (1500 / intensity));
   const opacity = Math.max(maxOpacityAdjustment, 0);
   element.style.opacity = opacity.toString();
 };
@@ -32,7 +32,7 @@ const applyHorizontalScroll = (element: HTMLElement, scrollPosition: number, int
   if (intensity === 10) return; // Neutral position, no movement
   
   const direction = intensity < 10 ? -1 : 1; // -1 for left, 1 for right
-  const speed = Math.abs(intensity - 10) / 10; // Speed factor based on distance from neutral
+  const speed = Math.abs(intensity - 10) / 20; // Speed factor based on distance from neutral
   const maxHorizontalMove = scrollPosition * speed * direction;
   
   // Apply the horizontal movement

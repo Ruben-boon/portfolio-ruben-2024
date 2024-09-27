@@ -35,19 +35,21 @@ export default function HeroModule({
   const bigImageRef = useRef(null);
   const dotRef = useRef(null);
 
-
   return (
-    <section className="hero-module relative"   style={{
-      paddingBottom: spacingSettings?.paddingBottom || 0,
-    }}>
+    <section
+      className="hero-module relative"
+      style={{
+        paddingBottom: spacingSettings?.paddingBottom || 0,
+      }}
+    >
       <ScrollEffects
         refEl={contentTopRef}
-        options={{ blur: 2, scale: 4, opacity: 5 }}
+        options={{ blur: 1, scale: 4, opacity: 3 }}
       />
       {/* <ScrollEffects refEl={sideImageRef} options={{ scale: 1, opacity: 4}} /> */}
       <ScrollEffects
         refEl={bigImageRef}
-        options={{ blur: 1, scale: 3, opacity: 2 }}
+        options={{ blur: 1, scale: 2, opacity: 1 }}
       />
       <ScrollEffects
         refEl={sideImageRef}
@@ -98,7 +100,11 @@ export default function HeroModule({
           <Img image={imageDark} alt="Image of a globe" imageWidth={1200} />
         )}
       </div>
-      <div className="content-bottom">
+      <div
+        className="content-bottom"
+        data-animate="fade-up"
+        data-animate-delay="200"
+      >
         {contentBottom && <PortableText value={contentBottom} />}
       </div>
     </section>

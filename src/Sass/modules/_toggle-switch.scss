@@ -3,6 +3,13 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+
+  @media (max-width: $screen-md-max) {
+    position: fixed; // Change from fixed to absolute
+    bottom: 90vh; // Position above the header
+    right: 0;
+    transform: translate(0, -50%);
+  }
   &__input {
     opacity: 0;
     width: 0;

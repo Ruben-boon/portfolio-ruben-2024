@@ -1,7 +1,18 @@
 .approach-module {
-  .approach-container {
-    position: relative;
+  .intro-text {
+    @media (max-width: $screen-md-max) {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
 
+  .approach-container {
+    @media (max-width: $screen-md-max) {
+      margin-left: 16px;
+    }
+    position: relative;
+    @media (max-width: $screen-md-max) {
+    }
     &:after {
       position: absolute;
       content: "";
@@ -11,6 +22,9 @@
       z-index: -1;
       height: 1px;
       background-color: var(--bg-color3);
+      @media (max-width: $screen-md-max) {
+        width: 100%;
+      }
     }
   }
 }

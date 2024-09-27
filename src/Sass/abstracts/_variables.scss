@@ -19,7 +19,7 @@
   --button-secondary-hover-color: darkred;
 
   --button-outline-color: black;
-  --button-outline-text-color: black;
+  --button-outline-text-color: rgb(255, 255, 255);
 }
 
 html.dark {
@@ -31,7 +31,7 @@ html.dark {
   --bg-color3: #303030;
 
   --button-outline-color: white;
-  --button-outline-text-color: white;
+  --button-outline-text-color: rgb(0, 0, 0);
 
 }
 

@@ -5,29 +5,44 @@ header {
   justify-content: center;
   padding: 2em 0;
   position: fixed;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, 0%);
+  @media (max-width: $screen-md-max) {
+    bottom: 0;
+    top: auto;
+  }
   .main-nav {
     width: $container;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 4em;
+    @media (max-width: $screen-md-max) {
+      width: 100%;
+    }
     &__logo {
-      width: 40px;
+      width: 54px;
       a,
       img {
         width: 100%;
       }
+
+      @media (max-width: $screen-md-max) {
+        position: fixed; // Change from fixed to absolute
+        bottom: 90vh; // Position above the header
+        left: 0;
+      }
     }
     &__links {
       border-radius: 50px;
-      background-color: var(--bg-color2);
+      // background-color: var(--bg-color2);
       padding: 0.5rem;
       display: flex;
       gap: 0.5rem;
+      backdrop-filter: blur(20px) saturate(1.7);
       a {
         padding: 0.5rem 1rem;
-        background-color: var(--bg-color1);
+        background-color: var(--bg-color3);
         border-radius: 50px;
       }
     }

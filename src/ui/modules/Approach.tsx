@@ -1,5 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import ApproachCard from "../ApproachCard";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface SpacingSettings {
   paddingTop?: number; // Optional paddingTop property
@@ -15,7 +16,6 @@ export default function Approach({
   introText: any;
   steps: any;
 }>) {
-
   return (
     <section
       className="approach-module container-xl-width"
@@ -31,24 +31,44 @@ export default function Approach({
       >
         {introText && <PortableText value={introText} />}
       </div>
-      <div className="approach-container grid grid-cols-4 gap-10 mt-10">
-        {steps &&
-          steps.map((step: any, index: number) => {
-            const delay = 50 * (index + 1); // Increment delay for each step
-            return (
-              <div
-                key={step._key}
-                className="animation-container"
-                data-animate="fade-in"
-                data-animate-delay={delay}
-              >
-                <ApproachCard
-                  title={step.title}
-                  description={step.description}
-                />
-              </div>
-            );
-          })}
+      <div className="approach-container mt-10">
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={3}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          breakpoints={{
+            960: {
+              slidesPerView: 4,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            0: {
+              slidesPerView: 1.4,
+            },
+          }}
+        >
+          {steps &&
+            steps.map((step: any, index: number) => {
+              const delay = 50 * (index + 1); // Increment delay for each step
+              return (
+                <SwiperSlide>
+                  <div
+                    key={step._key}
+                    className="animation-container"
+                    data-animate="fade-in"
+                    data-animate-delay={delay}
+                  >
+                    <ApproachCard
+                      title={step.title}
+                      description={step.description}
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
       </div>
     </section>
   );

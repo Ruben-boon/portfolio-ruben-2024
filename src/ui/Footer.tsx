@@ -9,7 +9,7 @@ export default async function Footer() {
 
   return (
     <footer>
-      <div className="pt-32 pb-16 top-footer grid grid-cols-2 gap-20 container-width">
+      <div className="pt-32 pb-16 top-footer grid grid-cols-1 lg:grid-cols-2 gap-20 container-width">
         <div className="contact-text flex justify-center flex-col">
           <h3 className="mt-0">Contact</h3>
           <p>
