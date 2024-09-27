@@ -4,10 +4,8 @@ export const linkQuery = groq`
 	...,
 	internal->{ _type, title,  metadata {
       slug,
-
     } }
 `;
-
 const navigationQuery = groq`
 	title,
 	items[]{
@@ -17,6 +15,14 @@ const navigationQuery = groq`
 	}
 `;
 
+const projectQuery = groq`
+	title,
+	thumbnail,
+	body,
+	mainImage,
+	secondaryImage,
+	secondaryText,
+`;
 export async function getSite() {
   const site = await fetchSanity<Sanity.Site>(
     groq`
@@ -78,6 +84,13 @@ export const modulesQuery = groq`
 		link{ ${linkQuery} }
 	},
 	_type == 'blog-list' => { predefinedFilters[]-> },
+	_type == 'projectsSlider' => {
+    projects[]{
+      ${linkQuery},
+      internal->{ ${projectQuery} }
+    }
+  },
+
 	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
 	_type == 'creative-module' => {
 		modules[]{

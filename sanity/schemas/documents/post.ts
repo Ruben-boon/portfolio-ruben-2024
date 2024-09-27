@@ -10,7 +10,21 @@ export default defineType({
       title: "Title",
       type: "string",
     }),
-
+    defineField({
+      name: "thumbnail",
+      title: "Thumbnail image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative Text",
+        },
+      ],
+    }),
     {
       name: "metadata",
       type: "object",
@@ -55,6 +69,26 @@ export default defineType({
       title: "Body",
       type: "blockContent",
     }),
+    defineField({
+      name: "secondaryImage",
+      title: "Secondary image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative Text",
+        },
+      ],
+    }),
+    defineField({
+      name: "secondaryText",
+      title: "Secondary Text",
+      type: "blockContent",
+    }),
   ],
 
   preview: {
@@ -62,6 +96,5 @@ export default defineType({
       title: "title",
       media: "mainImage",
     },
-
   },
 });

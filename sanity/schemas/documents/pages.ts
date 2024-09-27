@@ -30,10 +30,11 @@ export default defineType({
         name: 'modules',
         type: 'array',
         of: [
-            { type: 'hero.split' },
-            { type: 'pricing' },
             { type: 'hero' },
-
+            { type: 'projectsSlider' },
+            { type: 'approach' },
+            { type: 'textBasic' },
+            { type: 'imageBasic' },
         ],
     }),
   ],

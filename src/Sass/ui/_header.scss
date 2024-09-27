@@ -21,13 +21,13 @@ header {
     }
     &__links {
       border-radius: 50px;
-      background-color: var(--bg-color3);
+      background-color: var(--bg-color2);
       padding: 0.5rem;
       display: flex;
       gap: 0.5rem;
       a {
         padding: 0.5rem 1rem;
-        background-color: var(--bg-color2);
+        background-color: var(--bg-color1);
         border-radius: 50px;
       }
     }

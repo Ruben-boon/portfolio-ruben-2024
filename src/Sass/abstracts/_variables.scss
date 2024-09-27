@@ -6,8 +6,8 @@
   --paragraph-color: rgb(34, 34, 34);
   --link-color: black;
   --bg-color1: white;
-  --bg-color2: #ffffff;
-  --bg-color3: #e2e2e2;
+  --bg-color2: #f8f8f8;
+  --bg-color3: #e4e4e4;
 
   // buttons
   --button-border-radius: 32px;
@@ -18,8 +18,8 @@
   --button-secondary-text-color: white;
   --button-secondary-hover-color: darkred;
 
-  --button-outline-color: white;
-  --button-outline-text-color: white;
+  --button-outline-color: black;
+  --button-outline-text-color: black;
 }
 
 html.dark {
@@ -27,8 +27,12 @@ html.dark {
   --paragraph-color: rgb(207, 207, 207);
   --link-color: white;
   --bg-color1: black;
-  --bg-color2: #212121;
-  --bg-color3: #313131;
+  --bg-color2: #151515;
+  --bg-color3: #303030;
+
+  --button-outline-color: white;
+  --button-outline-text-color: white;
+
 }
 
 
@@ -45,3 +49,13 @@ $screen-xl-max: 1340px;
 $screen-xxl-max: 1400px;
 
 $container: 720px;
+.container-width {
+  max-width: $container;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-xl-width {
+  max-width: $screen-lg-max;
+  margin-left: auto;
+  margin-right: auto;
+}

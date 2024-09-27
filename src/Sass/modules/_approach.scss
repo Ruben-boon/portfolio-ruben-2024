@@ -1,0 +1,16 @@
+.approach-module {
+  .approach-container {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      width: 130%;
+      left: -15%;
+      top: 46px;
+      z-index: -1;
+      height: 1px;
+      background-color: var(--bg-color3);
+    }
+  }
+}

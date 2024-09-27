@@ -9,7 +9,7 @@
   opacity: 1;
   transform: translateZ(0);
 }
-[data-animate^="zoom"].animate {
+[data-animate^="zoom-in"].animate {
   opacity: 1;
   transform: translateZ(0) scale(1);
 }

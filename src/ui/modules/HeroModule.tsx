@@ -7,6 +7,11 @@ import { useDarkMode } from "../useDarkmode";
 import { Ref, useEffect, useRef } from "react";
 import ScrollEffects from "../scrollEffects";
 
+interface SpacingSettings {
+  paddingTop?: number; // Optional paddingTop property
+  paddingBottom?: number; // Optional paddingBottom property
+}
+
 export default function HeroModule({
   spacingSettings,
   contentTop,
@@ -15,7 +20,7 @@ export default function HeroModule({
   imageDark,
   contentBottom,
 }: Partial<{
-  spacingSettings: object;
+  spacingSettings: SpacingSettings;
   contentTop: any;
   ctas: any;
   imageLight: Sanity.Image;
@@ -28,19 +33,44 @@ export default function HeroModule({
   const contentTopRef = useRef(null);
   const sideImageRef = useRef(null);
   const bigImageRef = useRef(null);
+  const dotRef = useRef(null);
+
 
   return (
-    <section className="hero-module relative">
+    <section className="hero-module relative"   style={{
+      paddingBottom: spacingSettings?.paddingBottom || 0,
+    }}>
       <ScrollEffects
         refEl={contentTopRef}
         options={{ blur: 2, scale: 4, opacity: 5 }}
       />
       {/* <ScrollEffects refEl={sideImageRef} options={{ scale: 1, opacity: 4}} /> */}
-      <ScrollEffects refEl={bigImageRef} options={{ blur:1, scale: 3, opacity: 3}} />
-
+      <ScrollEffects
+        refEl={bigImageRef}
+        options={{ blur: 1, scale: 3, opacity: 2 }}
+      />
+      <ScrollEffects
+        refEl={sideImageRef}
+        options={{ blur: 0, scale: 2, opacity: 3 }}
+      />
+      <ScrollEffects
+        refEl={dotRef}
+        options={{ blur: 0, scale: 0, opacity: 9 }}
+      />
+      <div className="dot" ref={dotRef}></div>
       <div className="content-top" ref={contentTopRef}>
-        {contentTop && <PortableText value={contentTop} />}
-        <div className="button-container">
+        <div
+          className="text-container"
+          data-animate="fade-up"
+          data-animate-delay="50"
+        >
+          {contentTop && <PortableText value={contentTop} />}
+        </div>
+        <div
+          className="button-container"
+          data-animate="fade-up"
+          data-animate-delay="150"
+        >
           <Link
             className="btn-outline"
             href={processUrl(ctas[0], {
@@ -68,9 +98,9 @@ export default function HeroModule({
           <Img image={imageDark} alt="Image of a globe" imageWidth={1200} />
         )}
       </div>
-        <div className="content-bottom">
-          {contentBottom && <PortableText value={contentBottom} />}
-        </div>
+      <div className="content-bottom">
+        {contentBottom && <PortableText value={contentBottom} />}
+      </div>
     </section>
   );
 }

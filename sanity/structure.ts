@@ -3,21 +3,23 @@ import type { StructureResolver } from "sanity/structure";
 import { VscServerProcess } from "react-icons/vsc";
 import { VscLayout } from "react-icons/vsc";
 import { VscListFlat } from "react-icons/vsc";
+import { LuClipboardList } from "react-icons/lu";
 
 const structure: StructureResolver = (S, context) =>
   S.list()
     .title("Content")
     .items([
-      singleton(S, "site").title("Site settings").icon(VscServerProcess),
-      // S.documentTypeListItem('blog.category').title('Blog categories'),
-      S.divider(),
+    
 
       S.documentTypeListItem("pages").icon(VscLayout),
-      S.divider(),
 
       S.documentTypeListItem("post").icon(VscListFlat),
-    //   S.documentTypeListItem("category"),
+      S.divider(),
 
+      S.documentTypeListItem("form").icon(LuClipboardList),
+      //   S.documentTypeListItem("category"),
+      singleton(S, "site").title("Site settings").icon(VscServerProcess),
+      // S.documentTypeListItem('blog.category').title('Blog categories'),
       // group(S, 'Miscellaneous', [
       // 	S.documentTypeListItem('logo').title('Logos'),
       // 	S.documentTypeListItem('pricing').title('Pricing tiers'),

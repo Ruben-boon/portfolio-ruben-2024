@@ -5,6 +5,7 @@ import Footer from "@/ui/Footer";
 import "./tailwind.css";
 import "../Sass/main.scss";
 import { DarkModeProvider } from "@/ui/DarkModeContext";
+import { useEffect } from "react";
 
 
 
@@ -34,6 +35,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="nl">
       <body

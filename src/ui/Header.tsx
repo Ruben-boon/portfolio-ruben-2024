@@ -4,10 +4,9 @@ import Img from "./Img";
 import processUrl from "../../sanity/lib/processUrl";
 import DarkModeSwitch from "./DarkModeSwitch";
 
-
 export default async function Header() {
   const { logo, navigation } = await getSite();
-  // console.log(navigation.links[0].internal.metadata.slug.current)
+
   return (
     <header>
       <nav className="main-nav">
