@@ -1,15 +1,20 @@
 header {
-  top: 0;
   z-index: 100;
   display: flex;
-  justify-content: center;
-  padding: 2em 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
   position: fixed;
+  width: $container;
   left: 50%;
-  transform: translate(-50%, 0%);
+  top: 0;
+  transform: translateX(-50%);
+  transition: 0.3s ease;
   @media (max-width: $screen-md-max) {
     bottom: 0;
     top: auto;
+    transform: none;
+    width: 100%;
   }
   .main-nav {
     width: $container;
@@ -17,22 +22,17 @@ header {
     align-items: center;
     justify-content: space-between;
     gap: 4em;
+    z-index: 10;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: auto;
+    top: 16px;
     @media (max-width: $screen-md-max) {
-      width: 100%;
+      bottom: 16px;
+      top: auto;
     }
-    &__logo {
-      width: 54px;
-      a,
-      img {
-        width: 100%;
-      }
 
-      @media (max-width: $screen-md-max) {
-        position: fixed; // Change from fixed to absolute
-        bottom: 90vh; // Position above the header
-        left: 0;
-      }
-    }
     &__links {
       border-radius: 50px;
       // background-color: var(--bg-color2);
@@ -42,9 +42,47 @@ header {
       backdrop-filter: blur(20px) saturate(1.7);
       a {
         padding: 0.5rem 1rem;
-        background-color: var(--bg-color3);
         border-radius: 50px;
+        position: relative;
+        display: inline-block; // Ensure it behaves as an inline block element
+        // &:hover:before {
+        //   background-color: var(--bg-color3);
+        //   transform: scale(1);
+        // }
+        &:before {
+          content: "";
+          transition: all 0.3s ease;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: 50px;
+          z-index: -1;
+          transform: scale(0.5);
+        }
+
+        &.active {
+          &:before {
+            background-color: var(--bg-color3);
+            transform: scale(1); // Scale up the element when active
+          }
+        }
       }
+    }
+  }
+  .main-logo {
+    width: 50px;
+    z-index: 10;
+    a,
+    img {
+      width: 100%;
+    }
+
+    @media (max-width: $screen-md-max) {
+      position: fixed;
+      top: 16px;
+      left: 16px;
     }
   }
 }

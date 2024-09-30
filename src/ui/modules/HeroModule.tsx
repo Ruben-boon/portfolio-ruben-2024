@@ -42,6 +42,7 @@ export default function HeroModule({
         paddingBottom: spacingSettings?.paddingBottom || 0,
       }}
     >
+      
       <ScrollEffects
         refEl={contentTopRef}
         options={{ blur: 1, scale: 4, opacity: 3 }}
@@ -53,11 +54,11 @@ export default function HeroModule({
       />
       <ScrollEffects
         refEl={sideImageRef}
-        options={{ blur: 0, scale: 2, opacity: 3 }}
+        options={{ blur: 0, scale: 3, opacity: 2 }}
       />
       <ScrollEffects
         refEl={dotRef}
-        options={{ blur: 0, scale: 0, opacity: 9 }}
+        options={{ blur: 0, scale: 0, opacity: 2 }}
       />
       <div className="dot" ref={dotRef}></div>
       <div className="content-top" ref={contentTopRef}>
@@ -84,21 +85,45 @@ export default function HeroModule({
           </Link>
         </div>
       </div>
-      <div className="side-image" ref={sideImageRef}>
-        {imageLight && darkMode && (
-          <Img image={imageLight} alt="Image of a globe" imageWidth={400} />
-        )}
-        {imageDark && !darkMode && (
-          <Img image={imageDark} alt="Image of a globe" imageWidth={1200} />
-        )}
-      </div>
-      <div className="main-image" ref={bigImageRef}>
+     
+      <div className="main-image relative" ref={bigImageRef}>
         {imageLight && !darkMode && (
-          <Img image={imageLight} alt="Image of a globe" imageWidth={400} />
+          <Img
+            image={imageLight}
+            alt="Afbeelding van een ruimteschip"
+            imageWidth={2000}
+          />
         )}
         {imageDark && darkMode && (
-          <Img image={imageDark} alt="Image of a globe" imageWidth={1200} />
+          <Img
+            image={imageDark}
+            alt="Afbeelding van de aarde"
+            imageWidth={2000}
+          />
         )}
+         <div className="side-image" style={{
+              opacity: 1,
+            }} ref={sideImageRef}>
+        {imageLight && darkMode && (
+          <Img
+            image={imageLight}
+            alt="Afbeelding van de aarde"
+            imageWidth={400}
+          />
+        )}
+        {imageDark && !darkMode && (
+          <Img
+            image={imageDark}
+            style={{
+              filter:
+                "brightness(200%) contrast(100%) saturate(180%) hue-rotate(-30deg)",
+              opacity: 0.15,
+            }}
+            alt="Afbeelding van een ruimteschip"
+            imageWidth={400}
+          />
+        )}
+      </div>
       </div>
       <div
         className="content-bottom"

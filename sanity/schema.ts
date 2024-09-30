@@ -15,6 +15,8 @@ import approach from "./schemas/modules/approach";
 import textBasic from "./schemas/modules/text-basic";
 import imageBasic from "./schemas/modules/image-basic";
 import form from "./schemas/documents/form";
+import heroBasic from "./schemas/modules/hero-basic";
+import projectMasonry from "./schemas/modules/project-masonry";
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -27,6 +29,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pages,
     link,
     hero,
+    heroBasic,
+    projectMasonry,
     projectSlider,
     collections,
     approach,

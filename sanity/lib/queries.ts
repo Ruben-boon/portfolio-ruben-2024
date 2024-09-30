@@ -22,6 +22,7 @@ const projectQuery = groq`
 	mainImage,
 	secondaryImage,
 	secondaryText,
+	metadata
 `;
 export async function getSite() {
   const site = await fetchSanity<Sanity.Site>(
@@ -52,29 +53,6 @@ export async function getSite() {
   if (!site) throw new Error("Missing 'site' document in Sanity Studio");
 
   return site;
-}
-
-export async function getPage() {
-  const page = await fetchSanity<Sanity.Page>(
-    groq`*[_type == 'pages' && metadata.slug.current == 'index'][0]{
-			...,
-			modules[]{ ${modulesQuery} },
-			metadata {
-				...,
-				'ogimage': image.asset->url
-			}
-		}`,
-    {
-      tags: ["homepage"],
-    }
-  );
-
-  if (!page)
-    throw new Error(
-      "Missing 'page' document with metadata.slug 'index' in Sanity Studio"
-    );
-
-  return page;
 }
 
 export const modulesQuery = groq`

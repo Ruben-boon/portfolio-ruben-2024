@@ -2,13 +2,14 @@ section.hero-module {
   max-width: $container;
   margin: 0 auto;
   display: block;
-  padding-top: 120px;
-  margin-bottom: -400px;
+  padding-top: 180px;
+  margin-bottom: 80px;
   border-left: 1px solid var(--bg-color3);
   @media (max-width: $screen-md-max) {
     margin-left: 16px;
-    overflow-x: hidden;
     border: none;
+    padding-top: 80px;
+    overflow: hidden;
   }
   .dot {
     content: "";
@@ -16,22 +17,18 @@ section.hero-module {
     width: 7px;
     position: absolute;
     left: -3px;
-    top: 236px;
+    top: 324px;
     background-color: orangered;
     border-radius: 50%;
     @media (max-width: $screen-md-max) {
-      left: 0
+      left: 0;
     }
   }
   .content-top {
     max-width: $container;
     z-index: 1;
-    position: fixed;
+    position: relative;
     padding: 2em;
-    // transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-    // @media (max-width: $screen-md-max) {
-    //   max-width: 100dvw;
-    // }
     .button-container {
       margin-top: 2em;
     }
@@ -39,38 +36,57 @@ section.hero-module {
       max-width: 100%;
     }
   }
-
   .side-image {
-    position: fixed;
+    position: absolute;
     width: 200px;
-    right: calc(50% - 500px);
-    top: 300px;
+    right: calc(50% - 480px);
+    top: -200px;
+    transition: opacity 0.5s ease;
+    // animation: moveBackForth 10s ease-in-out infinite;
+    @media (max-width: $screen-md-max) {
+      display: none;
+    }
     img {
       width: 100%;
     }
   }
+  // @keyframes moveBackForth {
+  //   0% {
+  //     transform: translateX(0) translateY(0); /* Start position */
+  //   }
+  //   50% {
+  //     transform: translateX(32px) translateY(-32px); /* Midway (to the right and up) */
+  //   }
+  //   100% {
+  //     transform: translateX(0) translateY(0); /* Back to start position */
+  //   }
+  // }
   .main-image {
     position: relative;
-    margin-top: 340px;
     width: 170%;
-    min-height: 800px;
     margin-left: -35%;
+    margin-top: -100px;
+    min-height: 1375px;
     right: auto;
-    overflow: hidden;
     @media (max-width: $screen-md-max) {
+      min-height: 841.5px;
+      overflow: hidden;
       width: 200%;
-      margin-left: 0;
-      right: -40px;
-      z-index: -1;
+      margin-left: -10%;
     }
+   
   }
   img {
     width: 100%;
   }
   .content-bottom {
+    // display:none;
     position: relative;
-    top: -500px;
+    margin-top: -900px;
     padding: 2em;
+    @media (max-width: $screen-md-max) {
+      margin-top: -600px;
+    }
     &:before {
       content: "";
       height: 7px;

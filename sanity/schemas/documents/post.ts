@@ -50,44 +50,14 @@ export default defineType({
       },
     },
     defineField({
-      name: "mainImage",
-      title: "Main image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-        },
+      name: "modules",
+      title: "Content modules",
+      description: "Use the modules to construct your post",
+      type: "array",
+      of: [
+        { type: "textBasic" },
+        { type: "imageBasic" },
       ],
-    }),
-    defineField({
-      name: "body",
-      title: "Body",
-      type: "blockContent",
-    }),
-    defineField({
-      name: "secondaryImage",
-      title: "Secondary image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-        },
-      ],
-    }),
-    defineField({
-      name: "secondaryText",
-      title: "Secondary Text",
-      type: "blockContent",
     }),
   ],
 

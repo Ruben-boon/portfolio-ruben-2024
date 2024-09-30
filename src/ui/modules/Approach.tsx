@@ -35,8 +35,6 @@ export default function Approach({
         <Swiper
           spaceBetween={30}
           slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           breakpoints={{
             960: {
               slidesPerView: 4,
@@ -53,9 +51,9 @@ export default function Approach({
             steps.map((step: any, index: number) => {
               const delay = 50 * (index + 1); // Increment delay for each step
               return (
-                <SwiperSlide>
+                    
+                    <SwiperSlide key={step._key}>
                   <div
-                    key={step._key}
                     className="animation-container"
                     data-animate="fade-in"
                     data-animate-delay={delay}

@@ -5,10 +5,31 @@ import ProjectsSlider from "./ProjectsSlider";
 import Approach from "./Approach";
 import TextBasic from "./TextBasic";
 import ImageBasic from "./ImageBasic";
+import HeroBasic from "./HeroBasic";
+import dynamic from "next/dynamic";
+import { ProjectMasonryModule } from "./ProjectMasonry";
+const ProjectMasonry = dynamic(() => import("./ProjectMasonry"), {
+  loading: () => (
+    <div className="placeholder-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-[64px] gap-6">
+      <div
+        className="placeholder-card"
+        style={{ height: 400, width: "100%", backgroundColor: "black" }}
+      ></div>
+      <div
+        className="placeholder-card"
+        style={{ height: 400, width: "100%", backgroundColor: "black" }}
+      ></div>
+      <div
+        className="placeholder-card"
+        style={{ height: 400, width: "100%", backgroundColor: "black" }}
+      ></div>
+    </div>
+  ),
+  ssr: false,
+});
 
 export default function Modules({
   modules,
-  // page,
 }: {
   modules?: Sanity.Module[];
   page?: Sanity.Page;
@@ -47,7 +68,6 @@ export default function Modules({
   return (
     <>
       {modules?.map((module) => {
-        // console.log(module);
         switch (module._type) {
           case "hero":
             return <HeroModule {...module} key={module._key} />;
@@ -59,8 +79,15 @@ export default function Modules({
             return <TextBasic {...module} key={module._key} />;
           case "imageBasic":
             return <ImageBasic {...module} key={module._key} />;
-          //   case "testimonial.featured":
-          //     return <TestimonialFeatured {...module} key={module._key} />;
+          case "heroBasic":
+            return <HeroBasic {...module} key={module._key} />;
+          case "projectMasonry":
+            return (
+              <ProjectMasonry
+                {...(module as ProjectMasonryModule)}
+                key={module._key}
+              />
+            );
           //   case "breadcrumbs":
           //     return (
           //       <Breadcrumbs {...module} currentPage={page} key={module._key} />

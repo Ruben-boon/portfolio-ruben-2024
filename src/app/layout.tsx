@@ -5,9 +5,6 @@ import Footer from "@/ui/Footer";
 import "./tailwind.css";
 import "../Sass/main.scss";
 import { DarkModeProvider } from "@/ui/DarkModeContext";
-import { useEffect } from "react";
-
-
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

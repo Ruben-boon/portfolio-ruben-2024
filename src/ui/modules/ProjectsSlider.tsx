@@ -1,5 +1,4 @@
 "use client";
-import { useDarkMode } from "../useDarkmode";
 import ScrollEffects from "../scrollEffects";
 import { useRef } from "react";
 import ProjectCard from "../ProjectCard";
@@ -22,7 +21,6 @@ export default function ProjectsSlider({
   title: string;
   projects: any;
 }>) {
-  const { darkMode } = useDarkMode();
   const cardContainerRef = useRef(null);
   return (
     <section
@@ -34,12 +32,10 @@ export default function ProjectsSlider({
     >
       <ScrollEffects refEl={cardContainerRef} options={{ horizontal: 11 }} />
       <h2>{title}</h2>
-      <div className="card-container ml-[-60px] w-full" ref={cardContainerRef}>
+      <div className="card-container ml-[-60px] w-full max-w-screen-['1800px']" ref={cardContainerRef}>
         <Swiper
           spaceBetween={30}
           slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           breakpoints={{
             768: {
               slidesPerView: 3,
@@ -50,8 +46,8 @@ export default function ProjectsSlider({
           }}
         >
           {projects.map((project: any) => (
-            <SwiperSlide>
-              <ProjectCard {...project.internal} key={project.internal.title} />
+            <SwiperSlide key={project.internal.title} >
+              <ProjectCard {...project.internal}  />
             </SwiperSlide>
           ))}
         </Swiper>

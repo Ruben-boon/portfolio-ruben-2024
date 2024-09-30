@@ -1,0 +1,26 @@
+.hero-basic-module {
+  border-left: 1px solid var(--bg-color3);
+  padding: 2em;
+  padding-top: 180px;
+  position: relative;
+  @media (max-width: $screen-md-max) {
+    padding-top: 80px;
+  }
+  .project-header {
+    //fix for padding overlap
+    padding-top: 2em;
+  }
+  .dot {
+    content: "";
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    left: -3px;
+    top: 324px;
+    background-color: orangered;
+    border-radius: 50%;
+    @media (max-width: $screen-md-max) {
+      left: 0;
+    }
+  }
+}

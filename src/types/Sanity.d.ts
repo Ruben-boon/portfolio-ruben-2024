@@ -1,136 +1,139 @@
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
-import type { SanityDocument } from 'next-sanity'
+import type { SanityImageObject } from "@sanity/image-url/lib/types/types";
+import type { SanityDocument } from "next-sanity";
 
 declare global {
-	namespace Sanity {
-		// documents
+  namespace Sanity {
+    // documents
 
-		type Site = SanityDocument<{
-			title: string
-			logo?: Logo
-			announcements?: Announcement[]
-			ctas?: CTA[]
-			copyright?: any
-			headerMenu?: Navigation
-			footerMenu?: Navigation
-			social?: Navigation
-			ogimage?: string
-		}>
+    type Site = SanityDocument<{
+      title: string;
+      logo?: Sanity.Image;
+      announcements?: Announcement[];
+      ctas?: CTA[];
+      copyright?: any;
+      headerMenu?: Navigation;
+      footerMenu?: Navigation;
+      social?: Navigation;
+      ogimage?: string;
+      navigation: Navigation;
+    }>;
 
-		type Navigation = SanityDocument<{
-			title: string
-			items?: (Link | LinkList)[]
-		}>
+   
 
-		type Announcement = SanityDocument<{
-			content: any
-			cta?: Link
-			start?: string
-			end?: string
-		}>
+    type Navigation = SanityDocument<{
+      title: string;
+      items?: (Link | LinkList)[];
+    }>;
 
-		// pages
+    type Announcement = SanityDocument<{
+      content: any;
+      cta?: Link;
+      start?: string;
+      end?: string;
+    }>;
 
-		type PageBase = SanityDocument<{
-			title?: string
-			metadata: Metadata
-		}>
+    // pages
 
-		type Page = PageBase & {
-			readonly _type: 'page'
-			modules?: Module[]
-		}
+    type PageBase = SanityDocument<{
+      title?: string;
+      metadata: Metadata;
+    }>;
 
-		type BlogPost = PageBase & {
-			readonly _type: 'blog.post'
-			body: any
-			readTime: number
-			projectImage: Image
-			headings?: { style: string; text: string }[]
-			categories: BlogCategory[]
-			publishDate: string
-		}
+    type Page = PageBase & {
+      readonly _type: "page";
+      modules?: Module[];
+    };
 
-		type BlogCategory = SanityDocument<{
-			title: string
-		}>
+    type BlogPost = PageBase & {
+      readonly _type: "blog.post";
+      body: any;
+      readTime: number;
+      projectImage: Image;
+      headings?: { style: string; text: string }[];
+      categories: BlogCategory[];
+      publishDate: string;
+    };
 
-		// miscellaneous
+    type BlogCategory = SanityDocument<{
+      title: string;
+    }>;
 
-		type Logo = SanityDocument<{
-			name: string
-			image?: Partial<{
-				default: Image
-				light: Image
-				dark: Image
-			}>
-		}>
+    // miscellaneous
 
-		type Pricing = SanityDocument<{
-			title: string
-			highlight?: string
-			price: {
-				base: number
-				strikethrough?: number
-				suffix?: string
-			}
-			ctas?: CTA[]
-			content?: any
-		}>
+    type Logo = SanityDocument<{
+      name: string;
+      image?: Partial<{
+        default: Image;
+        light: Image;
+        dark: Image;
+      }>;
+    }>;
 
-		type Testimonial = SanityDocument<{
-			content: any
-			author?: {
-				name: string
-				title?: string
-				image?: Image
-			}
-		}>
+    type Pricing = SanityDocument<{
+      title: string;
+      highlight?: string;
+      price: {
+        base: number;
+        strikethrough?: number;
+        suffix?: string;
+      };
+      ctas?: CTA[];
+      content?: any;
+    }>;
 
-		// objects
+    type Testimonial = SanityDocument<{
+      content: any;
+      author?: {
+        name: string;
+        title?: string;
+        image?: Image;
+      };
+    }>;
 
-		type CTA = {
-			link?: Link
-			style?: string
-		}
+    // objects
 
-		type Image = SanityImageObject &
-			Partial<{
-				alt: string
-				loading: 'lazy' | 'eager'
-			}>
+    type CTA = {
+      link?: Link;
+      style?: string;
+    };
 
-		type Link = {
-			readonly _type: 'link'
-			label: string
-			type: 'internal' | 'external'
-			internal?: Page | BlogPost
-			external?: string
-			params?: string
-			content?: any
-		}
+    type Image = SanityImageObject &
+      Partial<{
+        alt: string;
+        loading: "lazy" | "eager";
+      }>;
 
-		type LinkList = {
-			readonly _type: 'link.list'
-			link: Link
-			links?: Link[]
-		}
+    type Link = {
+      readonly _type: "link";
+      label: string;
+      type: "internal" | "external";
+      internal?: Page | BlogPost;
+      external?: string;
+      params?: string;
+      content?: any;
+    };
 
-		type Metadata = {
-			title: string
-			description: string
-			slug: { current: string }
-			image?: Image
-			ogimage?: string
-			noIndex: boolean
-		}
+    type LinkList = {
+      readonly _type: "link.list";
+      link: Link;
+      links?: Link[];
+    };
 
-		type Module<T = string> = {
-			_type: T
-			_key: string
-			uid?: string
-		}
-	}
+    type Metadata = {
+      title: string;
+      description: string;
+      slug: { current: string };
+      image?: Image;
+      ogimage?: string;
+      noIndex: boolean;
+    };
+
+    type Module<T = string> = {
+      _type: T;
+      _key: string;
+      uid?: string;
+    };
+  }
 }
 
-export {}
+export {};
