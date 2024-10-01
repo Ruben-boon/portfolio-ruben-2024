@@ -25,7 +25,22 @@ export default defineType({
       options: {
         columns: 2,
       },
-      fields: [...settingsSpacing.fields],
+      fields: [
+        ...settingsSpacing.fields,
+        {
+          name: "textAlign",
+          title: "Text Alignment",
+          type: "string",
+          options: {
+            list: [
+              { title: "Left", value: "left" },
+              { title: "Center", value: "center" },
+              { title: "Right", value: "right" },
+            ],
+            layout: "radio", 
+          },
+        },
+      ],
     }),
   ],
   preview: {

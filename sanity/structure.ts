@@ -19,6 +19,7 @@ const structure: StructureResolver = (S, context) =>
       S.documentTypeListItem("form").icon(LuClipboardList),
       //   S.documentTypeListItem("category"),
       singleton(S, "site").title("Site settings").icon(VscServerProcess),
+      
       // S.documentTypeListItem('blog.category').title('Blog categories'),
       // group(S, 'Miscellaneous', [
       // 	S.documentTypeListItem('logo').title('Logos'),

@@ -1,11 +1,6 @@
-import { useRouter } from "next/router";
 import { fetchSanity, groq } from "../../../../sanity/lib/fetch";
 import { modulesQuery } from "../../../../sanity/lib/queries";
-
-interface SpacingSettings {
-  paddingTop?: number;
-  paddingBottom?: number;
-}
+import Modules from "@/ui/modules";
 
 async function getProjectPage(slug: string) {
   const projectPage = await fetchSanity(
@@ -40,13 +35,12 @@ export default async function ProjectSingle({
   return (
     <section
       className="project-single"
-      style={{
-        paddingTop: page.spacingSettings?.paddingTop || 0,
-        paddingBottom: page.spacingSettings?.paddingBottom || 0,
-      }}
     >
-      <h1>{page.title}</h1>
-      <p>The slug of this page is: {page.metadata.slug.current}</p>
+      <div className="project-single-header container-width">
+        <h2 data-animate="fade-up">{page.title}</h2>
+        <div className="dot"></div>
+      </div>
+      <Modules modules={page.modules} />
     </section>
   );
 }

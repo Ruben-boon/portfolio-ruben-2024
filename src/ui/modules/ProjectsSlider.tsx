@@ -32,26 +32,31 @@ export default function ProjectsSlider({
     >
       <ScrollEffects refEl={cardContainerRef} options={{ horizontal: 11 }} />
       <h2>{title}</h2>
-      <div className="card-container ml-[-60px] w-full max-w-screen-['1800px']" ref={cardContainerRef}>
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={3}
-          breakpoints={{
-            768: {
-              slidesPerView: 3,
-            },
-            0: {
-              slidesPerView: 1.3,
-            },
-          }}
+      {projects && (
+        <div
+          className="card-container ml-[-60px] w-full max-w-screen-['1800px']"
+          ref={cardContainerRef}
         >
-          {projects.map((project: any) => (
-            <SwiperSlide key={project.internal.title} >
-              <ProjectCard {...project.internal}  />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={3}
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+              },
+              0: {
+                slidesPerView: 1.3,
+              },
+            }}
+          >
+            {projects.map((project: any) => (
+              <SwiperSlide key={project.internal.title}>
+                <ProjectCard {...project.internal} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
     </section>
   );
 }

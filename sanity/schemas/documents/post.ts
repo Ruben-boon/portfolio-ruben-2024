@@ -57,6 +57,9 @@ export default defineType({
       of: [
         { type: "textBasic" },
         { type: "imageBasic" },
+        {
+          type: "link",
+        },
       ],
     }),
   ],

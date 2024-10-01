@@ -34,6 +34,7 @@ export default function Modules({
   modules?: Sanity.Module[];
   page?: Sanity.Page;
 }) {
+  //add animation class
   useEffect(() => {
     // Function to handle the intersection event (when elements enter the viewport)
     const handleIntersection: IntersectionObserverCallback = (
@@ -47,17 +48,21 @@ export default function Modules({
         }
       });
     };
+
     // Create an IntersectionObserver instance
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.3, // Trigger when 10% of the element is visible
+      rootMargin: "0px 0px -64px 0px", // Trigger when element is 100px from entering the viewport
     });
+
     // Get all elements with the `data-animate` attribute
     const animateElements =
       document.querySelectorAll<HTMLElement>("[data-animate]");
+
     // Observe each element
     animateElements.forEach((element) => {
       observer.observe(element);
     });
+
     // Cleanup observer on unmount
     return () => {
       if (observer) {
@@ -88,10 +93,6 @@ export default function Modules({
                 key={module._key}
               />
             );
-          //   case "breadcrumbs":
-          //     return (
-          //       <Breadcrumbs {...module} currentPage={page} key={module._key} />
-          //     );
           default:
             return <div data-type={module._type} key={module._key} />;
         }

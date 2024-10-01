@@ -1,0 +1,26 @@
+.project-single {
+  padding-top: 180px !important;
+  .project-single-header {
+    position: relative;
+    padding: 2em;
+    border-left: 1px solid var(--bg-color3);
+  }
+  .dot {
+    content: "";
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    left: -3px;
+    top: 94px;
+
+    background-color: orangered;
+    border-radius: 50%;
+    @media (max-width: $screen-md-max) {
+      left: 0;
+    }
+  }
+  @media (max-width: $screen-md-max) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
