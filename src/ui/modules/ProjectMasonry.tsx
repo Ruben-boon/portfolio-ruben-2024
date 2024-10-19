@@ -33,7 +33,6 @@ export default function ProjectMasonry({
     return <div>Loading projects...</div>;
   }
 
-
   return (
     <section
       className="project-masonry"
@@ -45,7 +44,7 @@ export default function ProjectMasonry({
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry gutter={"1.5rem"}>
           {projects.map((project: Project, index: number) => {
-            const delay = 50 * (index + 1);
+            // const delay = 100 * (index + 1);
 
             return <ProjectCard {...project} key={project.title} />;
           })}

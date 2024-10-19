@@ -19,6 +19,7 @@ export default function HeroModule({
   imageLight,
   imageDark,
   contentBottom,
+  columns,
 }: Partial<{
   spacingSettings: SpacingSettings;
   contentTop: any;
@@ -26,6 +27,10 @@ export default function HeroModule({
   imageLight: Sanity.Image;
   imageDark: Sanity.Image;
   contentBottom: any;
+  columns: Array<{
+    content: any;
+    image: Sanity.Image;
+  }>;
 }>) {
   // console.log(processUrl(ctas[0]));
   const { darkMode } = useDarkMode();
@@ -42,7 +47,6 @@ export default function HeroModule({
         paddingBottom: spacingSettings?.paddingBottom || 0,
       }}
     >
-      
       <ScrollEffects
         refEl={contentTopRef}
         options={{ blur: 1, scale: 4, opacity: 3 }}
@@ -85,7 +89,7 @@ export default function HeroModule({
           </Link>
         </div>
       </div>
-     
+
       <div className="main-image relative" ref={bigImageRef}>
         {imageLight && !darkMode && (
           <Img
@@ -101,29 +105,33 @@ export default function HeroModule({
             imageWidth={2000}
           />
         )}
-         <div className="side-image" style={{
-              opacity: 1,
-            }} ref={sideImageRef}>
-        {imageLight && darkMode && (
-          <Img
-            image={imageLight}
-            alt="Afbeelding van de aarde"
-            imageWidth={400}
-          />
-        )}
-        {imageDark && !darkMode && (
-          <Img
-            image={imageDark}
-            style={{
-              filter:
-                "brightness(200%) contrast(100%) saturate(180%) hue-rotate(-30deg)",
-              opacity: 0.15,
-            }}
-            alt="Afbeelding van een ruimteschip"
-            imageWidth={400}
-          />
-        )}
-      </div>
+        <div
+          className="side-image"
+          style={{
+            opacity: 1,
+          }}
+          ref={sideImageRef}
+        >
+          {imageLight && darkMode && (
+            <Img
+              image={imageLight}
+              alt="Afbeelding van de aarde"
+              imageWidth={400}
+            />
+          )}
+          {imageDark && !darkMode && (
+            <Img
+              image={imageDark}
+              style={{
+                filter:
+                  "brightness(200%) contrast(100%) saturate(180%) hue-rotate(-30deg)",
+                opacity: 0.15,
+              }}
+              alt="Afbeelding van een ruimteschip"
+              imageWidth={400}
+            />
+          )}
+        </div>
       </div>
       <div
         className="content-bottom"
@@ -131,6 +139,29 @@ export default function HeroModule({
         data-animate-delay="200"
       >
         {contentBottom && <PortableText value={contentBottom} />}
+        {columns && (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-7">
+            {columns.map((column, index) => {
+              const delay = index * 100;
+              return (
+                <div
+                  key={index}
+                  className="icon-card"
+                  data-animate-delay={delay}
+                  data-animate="fade-up"
+                >
+                  <Img
+                    image={column.image}
+                    alt={column.image.alt}
+                    imageWidth={44}
+                    className="icon-card__icon invert dark:invert-0"
+                  />
+                  <PortableText value={column.content} />
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

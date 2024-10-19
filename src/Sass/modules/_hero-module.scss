@@ -68,17 +68,18 @@ section.hero-module {
     margin-top: -100px;
     min-height: 1375px;
     right: auto;
+    img {
+      width: 100%;
+    }
     @media (max-width: $screen-md-max) {
       min-height: 841.5px;
       overflow: hidden;
       width: 200%;
       margin-left: -10%;
     }
-   
+
   }
-  img {
-    width: 100%;
-  }
+  
   .content-bottom {
     // display:none;
     position: relative;
@@ -96,6 +97,19 @@ section.hero-module {
       top: calc(92px);
       background-color: orangered;
       border-radius: 50%;
+    }
+  }
+  .icon-card {
+    border: 1px solid var(--link-color);
+    border-radius: 8px;
+    padding: 1em;
+    padding-top: 0;
+    * {
+      font-size: 16px;
+    }
+    &__icon {
+      height:72px;
+      object-fit: contain;
     }
   }
 }

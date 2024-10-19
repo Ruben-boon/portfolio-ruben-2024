@@ -29,26 +29,26 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(24px, 5vw + 1rem, 54px);
+  font-size: clamp(36px, 5vw + 1rem, 54px);
 }
 
 h2 {
-  font-size: clamp(36px, 4vw + 1rem, 54px);
+  font-size: clamp(32px, 4vw + 1rem, 48px);
 }
 
 h3 {
-  font-size: clamp(18px, 3vw + 1rem, 24px);
+  font-size: clamp(28px, 3vw + 1rem, 36px);
 }
 
 h4 {
-  font-size: clamp(16px, 2vw + 1rem, 1rem);
+  font-size: clamp(16px, 2vw + 1rem, 20px);
 }
 
 /* Paragraph styles */
 p, label, input, button, ::placeholder, textarea {
-  font-family: var(--font-geist-mono);
+  font-family: var(--epilogue-variable);
   color: var(--paragraph-color);
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: clamp(14px, 2vw, 18px);
   font-weight: 400;
 }
 p {
@@ -58,14 +58,15 @@ p {
 
 /* List styles */
 ul {
-  font-family: var(--font-geist-mono);
+  font-family: var(--epilogue-variable);
 
   list-style: disc;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 18px);
+
   color: var(--paragraph-color);
 
   li {
-    font-family: var(--font-geist-mono);
+    font-family: var(--epilogue-variable);
     list-style-position: inside;
     margin-bottom: 0.5rem;
     color: var(--paragraph-color);
@@ -74,8 +75,7 @@ ul {
 
 /* Link styles */
 a {
-  font-family: var(--font-pt-serif);
-
+  font-family: var(--epilogue-variable);
   color: var(--link-color);
 }
 

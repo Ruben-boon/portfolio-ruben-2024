@@ -16,6 +16,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const epilogueVar = localFont({
+  src: "./fonts/Epilogue-VariableFont_wght.ttf",
+  variable: "--epilogue-variable",
+  weight: "100 900",
+});
 const ptSerif = localFont({
   src: "./fonts/PTSerif-Regular.ttf",
   variable: "--font-pt-serif",
@@ -36,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ptSerif.variable} antialiased`}
+        className={`${geistSans.variable} ${epilogueVar.variable} ${geistMono.variable} ${ptSerif.variable} antialiased`}
       >
         <DarkModeProvider>
           <Header />

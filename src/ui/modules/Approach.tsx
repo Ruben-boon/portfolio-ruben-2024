@@ -33,7 +33,7 @@ export default function Approach({
       </div>
       <div className="approach-container mt-10">
         <Swiper
-          spaceBetween={30}
+          spaceBetween={16}
           slidesPerView={3}
           breakpoints={{
             960: {
@@ -49,7 +49,7 @@ export default function Approach({
         >
           {steps &&
             steps.map((step: any, index: number) => {
-              const delay = 50 * (index + 1); // Increment delay for each step
+              const delay = 100 * (index + 1); // Increment delay for each step
               return (
                     
                     <SwiperSlide key={step._key}>

@@ -22,7 +22,7 @@ export default async function Footer() {
           <DynamicShadcnForm formId="0" />
         </div>
       </div>
-      <div className="bottom-footer text-center p-6 container-xl-width">
+      <div className="bottom-footer text-center p-6 pb-2 container-xl-width">
         <PortableText value={copyright} />
       </div>
     </footer>

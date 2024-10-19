@@ -5,6 +5,9 @@ footer {
     margin-bottom: 80px;
    }
   .bottom-footer {
-    border-top: 1px solid var(--bg-color3)
+    border-top: 1px solid var(--bg-color3);
+    * {
+      font-size: 16px;
+    }
   }
 }

@@ -10,7 +10,7 @@ export default function ApproachCard({
 }>) {
   return (
     <div className="approach-card">
-      <h3 className="approach-card__title">{title}</h3>
+      <h4 className="approach-card__title">{title}</h4>
       <div className="approach-card__content">
         {description && <PortableText value={description} />}
       </div>
