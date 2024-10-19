@@ -49,7 +49,7 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  //fetch sanity form
+  // Fetch sanity form
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -70,12 +70,12 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
       });
   }, [formId]);
 
-  //create validiation schema
+  // Create validation schema
   const generateZodSchema = useMemo(
     () => (fields: FormField[]) => {
-      const schemaFields: { [key: string]: z.ZodType<any, any> } = {};
+      const schemaFields: { [key: string]: z.ZodTypeAny } = {};
       fields.forEach((field) => {
-        let fieldSchema: z.ZodType<any, any>;
+        let fieldSchema: z.ZodTypeAny;
         switch (field.fieldType) {
           case "email":
             fieldSchema = z.string().email();
@@ -87,7 +87,7 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
             fieldSchema = z.string();
         }
         if (field.required) {
-          fieldSchema = fieldSchema.min(1, {
+          fieldSchema = fieldSchema.refine((val) => val !== '', {
             message: "This field is required",
           });
         }
@@ -98,7 +98,7 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
     []
   );
 
-  //apply validiation schema
+  // Apply validation schema
   const formSchema = useMemo(() => {
     if (sanityForm) {
       return generateZodSchema(sanityForm.fields);
@@ -122,20 +122,21 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
     }, [sanityForm]),
   });
 
-  //submit handler
+  // Submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     // Handle form submission
   }
-  //error handling
+
+  // Error handling
   if (isLoading) return <div>Loading form...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!sanityForm) return <div>No form data available</div>;
 
   return (
-    <Form {...form} >
+    <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        {sanityForm.fields.map((field, index: number) => (
+        {sanityForm.fields.map((field) => (
           <FormField
             key={field.name}
             control={form.control}
@@ -190,7 +191,9 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
           />
         ))}
 
-        <Button className="mt-4" type="submit">Verzenden</Button>
+        <Button className="mt-4" type="submit">
+          Verzenden
+        </Button>
       </form>
     </Form>
   );

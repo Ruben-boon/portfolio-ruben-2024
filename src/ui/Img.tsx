@@ -25,13 +25,13 @@ export default function Img({
   imageSizes?: number[];
   options?: UseNextSanityImageOptions;
 } & React.ImgHTMLAttributes<HTMLImageElement>) {
-  if (!image?.asset) return null;
-
   const { src, width, height } = useNextSanityImage(
     client,
     image,
     imageWidth ? { imageBuilder: (b) => b.width(imageWidth) } : options
   );
+
+  if (!image?.asset) return null;
 
   return (
     <img
@@ -59,16 +59,15 @@ export function Source({
   image: Sanity.Image | undefined;
   imageWidth?: number;
   imageSizes?: number[];
-  options?: UseNextSanityImageOptions;
+options?: UseNextSanityImageOptions;
   media?: string;
 }) {
-  if (!image) return null;
-
   const { src, width, height } = useNextSanityImage(
     client,
     image,
     imageWidth ? { imageBuilder: (b) => b.width(imageWidth) } : options
   );
+  if (!image) return null;
 
   return (
     <source

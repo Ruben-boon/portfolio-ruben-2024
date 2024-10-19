@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import { usePathname } from 'next/navigation'
+import processUrl from './lib/processUrl'
 
 export default function CTA({
 	link,
