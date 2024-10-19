@@ -18,9 +18,9 @@ export default async function Footer() {
             we samen jouw project tot leven brengen:
           </p>
         </div>
-        <div className="shad-form">
+        {/* broken for now <div className="shad-form">
           <DynamicShadcnForm formId="0" />
-        </div>
+        </div> */}
       </div>
       <div className="bottom-footer text-center p-6 pb-2 container-xl-width">
         <PortableText value={copyright} />
