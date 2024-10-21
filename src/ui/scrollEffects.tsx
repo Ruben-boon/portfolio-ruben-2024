@@ -1,42 +1,56 @@
-import { useEffect, MutableRefObject } from "react";
+import { useEffect, useRef, MutableRefObject } from "react";
 
 interface ScrollOptions {
-  blur?: number;  // Value from 1 to 9, controlling the intensity of the blur
-  scale?: number; // Value from 1 to 9, controlling the intensity of the scale
-  opacity?: number; // Value from 1 to 9, controlling the intensity of the opacity
-  horizontal?: number; // Value from 0 to 19, controlling horizontal movement
+  blur?: number;
+  scale?: number;
+  opacity?: number;
+  horizontal?: number;
 }
 
 const isHTMLElement = (element: any): element is HTMLElement => {
   return element instanceof HTMLElement;
 };
 
-const applyBlur = (element: HTMLElement, scrollPosition: number, intensity: number) => {
-  const maxBlur = Math.min(scrollPosition / (40 / intensity), 8);
-  element.style.filter = `blur(${maxBlur}px)`;
-};
+const applyStyles = (
+  element: HTMLElement,
+  scrollPosition: number,
+  options: ScrollOptions
+) => {
+  const {
+    blur = 0,
+    scale = 0,
+    opacity = 0,
+    horizontal = 10
+  } = options;
 
-const applyScale = (element: HTMLElement, scrollPosition: number, intensity: number) => {
-  const maxScaleAdjustment = 1 - (scrollPosition / (4000 / intensity));
-  const scale = Math.max(maxScaleAdjustment, 0);
-  element.style.transform = `scale(${scale})`;
-};
+  let transform = '';
+  let filter = '';
+  let opacityValue = 1;
 
-const applyOpacity = (element: HTMLElement, scrollPosition: number, intensity: number) => {
-  const maxOpacityAdjustment = 1 - (scrollPosition / (1500 / intensity));
-  const opacity = Math.max(maxOpacityAdjustment, 0);
-  element.style.opacity = opacity.toString();
-};
+  if (blur >= 1 && blur <= 9) {
+    const maxBlur = Math.min(scrollPosition / (40 / blur), 8);
+    filter = `blur(${maxBlur}px)`;
+  }
 
-const applyHorizontalScroll = (element: HTMLElement, scrollPosition: number, intensity: number) => {
-  if (intensity === 10) return; // Neutral position, no movement
-  
-  const direction = intensity < 10 ? -1 : 1; // -1 for left, 1 for right
-  const speed = Math.abs(intensity - 10) / 20; // Speed factor based on distance from neutral
-  const maxHorizontalMove = scrollPosition * speed * direction;
-  
-  // Apply the horizontal movement
-  element.style.transform = `${element.style.transform || ''} translateX(${maxHorizontalMove}px)`;
+  if (scale >= 1 && scale <= 9) {
+    const maxScaleAdjustment = 1 - (scrollPosition / (4000 / scale));
+    const scaleValue = Math.max(maxScaleAdjustment, 0);
+    transform += `scale(${scaleValue})`;
+  }
+
+  if (opacity >= 1 && opacity <= 9) {
+    const maxOpacityAdjustment = 1 - (scrollPosition / (1500 / opacity));
+    opacityValue = Math.max(maxOpacityAdjustment, 0);
+  }
+
+  if (horizontal >= 0 && horizontal <= 19 && horizontal !== 10) {
+    const direction = horizontal < 10 ? -1 : 1;
+    const speed = Math.abs(horizontal - 10) / 20;
+    const maxHorizontalMove = scrollPosition * speed * direction;
+    transform += ` translateX(${maxHorizontalMove}px)`;
+  }
+
+  return { transform, filter, opacity: opacityValue };
 };
 
 const ScrollEffects = ({
@@ -46,33 +60,37 @@ const ScrollEffects = ({
   refEl: MutableRefObject<HTMLElement | null>;
   options: ScrollOptions;
 }) => {
+  const frameRef = useRef<number>();
+  const prevScrollY = useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const element = refEl.current;
-
-      if (element && isHTMLElement(element)) {
-        // Reset transform to handle scale and horizontal movement together
-        element.style.transform = '';
-
-        if (options.blur && options.blur >= 1 && options.blur <= 9) {
-          applyBlur(element, scrollPosition, options.blur);
-        }
-        if (options.scale && options.scale >= 1 && options.scale <= 9) {
-          applyScale(element, scrollPosition, options.scale);
-        }
-        if (options.opacity && options.opacity >= 1 && options.opacity <= 9) {
-          applyOpacity(element, scrollPosition, options.opacity);
-        }
-        if (options.horizontal !== undefined && options.horizontal >= 0 && options.horizontal <= 19) {
-          applyHorizontalScroll(element, scrollPosition, options.horizontal);
-        }
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
       }
+
+      frameRef.current = requestAnimationFrame(() => {
+        const scrollPosition = window.scrollY;
+        const element = refEl.current;
+
+        if (element && isHTMLElement(element) && scrollPosition !== prevScrollY.current) {
+          const styles = applyStyles(element, scrollPosition, options);
+          element.style.transform = styles.transform;
+          element.style.filter = styles.filter;
+          element.style.opacity = styles.opacity.toString();
+          prevScrollY.current = scrollPosition;
+        }
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [refEl, options]);
 
   return null;
