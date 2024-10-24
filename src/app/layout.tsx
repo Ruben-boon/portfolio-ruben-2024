@@ -32,16 +32,16 @@ export const metadata: Metadata = {
   description: "Websites from space",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="nl">
       <body
-        className={`${geistSans.variable} ${epilogueVar.variable} ${geistMono.variable} ${ptSerif.variable} antialiased`}
+        className={`${geistSans.variable} ${epilogueVar.variable} ${geistMono.variable} ${ptSerif.variable} antialiased invisible`}
       >
         <DarkModeProvider>
           <Header />

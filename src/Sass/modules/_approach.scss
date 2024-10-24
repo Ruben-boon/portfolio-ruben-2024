@@ -1,5 +1,10 @@
 .approach-module {
   .intro-text {
+    max-width:720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2em;
+    padding-right: 2em;
     @media (max-width: $screen-md-max) {
       margin-left: 16px;
       margin-right: 16px;

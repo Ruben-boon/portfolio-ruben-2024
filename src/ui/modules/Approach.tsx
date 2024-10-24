@@ -25,7 +25,7 @@ export default function Approach({
       }}
     >
       <div
-        className="intro-text max-w-xl"
+        className="intro-text max-w-xl max-width[720px]"
         data-animate="fade-up"
         data-animation-delay="150"
       >

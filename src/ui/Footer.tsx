@@ -9,7 +9,7 @@ export default async function Footer() {
 
   return (
     <footer>
-      <div className="pt-32 pb-16 top-footer grid grid-cols-1 lg:grid-cols-2 gap-20 container-width">
+      <div className="pt-16 mt-16 top-footer grid grid-cols-1 lg:grid-cols-2 gap-20 container-width">
       <div className="contact-text flex justify-center flex-col">
           <h3 className="mt-0">Contact</h3>
           <p>
@@ -22,7 +22,7 @@ export default async function Footer() {
           <DynamicShadcnForm formId="0" />
         </div> */}
       </div>
-      <div className="bottom-footer text-center p-6 pb-2 container-xl-width">
+      <div className="bottom-footer container-width text-center p-6 pb-2 ">
         <PortableText value={copyright} />
       </div>
     </footer>

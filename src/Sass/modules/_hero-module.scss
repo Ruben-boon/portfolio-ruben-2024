@@ -21,6 +21,7 @@ section.hero-module {
     background-color: orangered;
     border-radius: 50%;
     @media (max-width: $screen-md-max) {
+      top: 200px;
       left: 0;
     }
   }
@@ -77,9 +78,8 @@ section.hero-module {
       width: 200%;
       margin-left: -10%;
     }
-
   }
-  
+
   .content-bottom {
     // display:none;
     position: relative;
@@ -97,6 +97,10 @@ section.hero-module {
       top: calc(92px);
       background-color: orangered;
       border-radius: 50%;
+      @media (max-width: $screen-md-max) {
+        top: 70px;
+        left: 0;
+      }
     }
   }
   .icon-card {
@@ -108,8 +112,16 @@ section.hero-module {
       font-size: 16px;
     }
     &__icon {
-      height:72px;
+      height: 72px;
       object-fit: contain;
+    }
+    @media (max-width: $screen-md-max) {
+      display: flex;
+      padding-top: 1em;
+      gap: 1.5em;
+      p {
+        margin-bottom: 0;
+      }
     }
   }
 }

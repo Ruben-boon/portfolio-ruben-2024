@@ -3,7 +3,10 @@ footer {
     margin-left: 16px;
     margin-right: 16px;
     margin-bottom: 80px;
-   }
+  }
+  .top-footer {
+    // border-top: 1px solid var(--bg-color3);
+  }
   .bottom-footer {
     border-top: 1px solid var(--bg-color3);
     * {
