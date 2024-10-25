@@ -8,6 +8,7 @@ async function getProjectPage(slug: string) {
       ...,
       modules[]{ ${modulesQuery} },
       spacingSettings,
+      tags,
       metadata {
         ...,
         'ogimage': image.asset->url
@@ -30,14 +31,18 @@ export default async function ProjectSingle({
   params: { id: string; slug: string };
 }) {
   const page = await getProjectPage(params.slug);
-  console.log(page);
+  const tags = page.tags.selectedTags;
+  console.log(tags);
 
   return (
-    <section
-      className="project-single"
-    >
+    <section className="project-single">
       <div className="project-single-header container-width">
         <h2 data-animate="fade-up">{page.title}</h2>
+        {tags?.map((tag) => (
+          <div key={tag._id} className="tag">
+            {tag.label}
+          </div>
+        ))}
         <div className="dot"></div>
       </div>
       <Modules modules={page.modules} />

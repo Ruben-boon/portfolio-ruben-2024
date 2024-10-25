@@ -32,13 +32,15 @@ export default function HeroModule({
     image: Sanity.Image;
   }>;
 }>) {
-  // console.log(processUrl(ctas[0]));
-  const { darkMode } = useDarkMode();
-
+  const { darkMode, isInitialized } = useDarkMode();
+  
   const contentTopRef = useRef(null);
   const sideImageRef = useRef(null);
   const bigImageRef = useRef(null);
   const dotRef = useRef(null);
+
+  const shouldRenderLight = isInitialized && !darkMode;
+  const shouldRenderDark = isInitialized && darkMode;
 
   return (
     <section
@@ -51,10 +53,10 @@ export default function HeroModule({
         refEl={contentTopRef}
         options={{ blur: 1, scale: 4, opacity: 3 }}
       />
-      {/* <ScrollEffects refEl={sideImageRef} options={{ scale: 1, opacity: 4}} /> */}
+
       <ScrollEffects
         refEl={bigImageRef}
-        options={{ blur: 1, scale: 2, opacity: 1 }}
+        options={{ blur: 1, scale: 0, opacity: 3 }}
       />
       <ScrollEffects
         refEl={sideImageRef}
@@ -91,14 +93,14 @@ export default function HeroModule({
       </div>
 
       <div className="main-image relative" ref={bigImageRef}>
-        {imageLight && !darkMode && (
+        {imageLight && shouldRenderLight && (
           <Img
             image={imageLight}
             alt="Afbeelding van een ruimteschip"
             imageWidth={2000}
           />
         )}
-        {imageDark && darkMode && (
+        {imageDark && shouldRenderDark && (
           <Img
             image={imageDark}
             alt="Afbeelding van de aarde"
@@ -108,18 +110,18 @@ export default function HeroModule({
         <div
           className="side-image"
           style={{
-            opacity: 1,
+            opacity: isInitialized ? 1 : 0, // Hide side image until initialized
           }}
           ref={sideImageRef}
         >
-          {imageLight && darkMode && (
+          {imageLight && shouldRenderDark && (
             <Img
               image={imageLight}
               alt="Afbeelding van de aarde"
               imageWidth={400}
             />
           )}
-          {imageDark && !darkMode && (
+          {imageDark && shouldRenderLight && (
             <Img
               image={imageDark}
               style={{

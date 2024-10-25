@@ -4,7 +4,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1em 0;
-  position: fixed;
+  position: sticky;
   width: $container;
   left: 50%;
   top: 0;
@@ -31,20 +31,21 @@ header {
     @media (max-width: $screen-md-max) {
       bottom: 16px;
       top: auto;
+      
     }
 
     &__links {
       border-radius: 50px;
-      // background-color: var(--bg-color2);
-      padding: 0.5rem;
+      padding: 0.3rem;
       display: flex;
-      gap: 0.5rem;
-      backdrop-filter: blur(20px) saturate(1.7);
+
+      background-color: var(--bg-color3);
       a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.9rem;
         border-radius: 50px;
         position: relative;
         display: inline-block; // Ensure it behaves as an inline block element
+        z-index: 3;
         // &:hover:before {
         //   background-color: var(--bg-color3);
         //   transform: scale(1);
@@ -64,7 +65,7 @@ header {
 
         &.active {
           &:before {
-            background-color: var(--bg-color3);
+            background: var(--bg-color1);
             transform: scale(1); // Scale up the element when active
           }
         }

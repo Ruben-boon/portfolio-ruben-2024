@@ -25,6 +25,43 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: "tags",
+      title: "Tags",
+      type: "object",
+      fields: [
+        defineField({
+          name: "collection",
+          title: "Tag Collection",
+          type: "reference",
+          to: [{ type: "collections" }],
+          options: {
+            filter: 'collectionType == "tags"'
+          }
+        }),
+        defineField({
+          name: "selectedTags",
+          title: "Selected Tags",
+          type: "array",
+          of: [{ 
+            type: "reference", 
+            to: [{ type: "tag" }],
+          }],
+          options: {
+            // disableNew: true, // Prevents creation of new tags
+            filter: ({ parent }) => {
+              if (!parent?.collection?._ref) return '';
+              return {
+                filter: '_type == "tag" && references($collectionId)',
+                params: {
+                  collectionId: parent.collection._ref
+                }
+              }
+            }
+          }
+        })
+      ]
+    }),
     {
       name: "metadata",
       type: "object",

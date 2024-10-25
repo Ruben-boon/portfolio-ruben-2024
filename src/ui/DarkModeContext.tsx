@@ -4,6 +4,7 @@ import React, { createContext, ReactNode, useEffect, useState } from "react";
 interface DarkModeContextType {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  isInitialized: boolean;
 }
 
 interface DarkModeProviderProps {
@@ -17,23 +18,38 @@ export const DarkModeContext = createContext<DarkModeContextType | undefined>(
 export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({
   children,
 }) => {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    // Check if we're in a browser environment
-    if (typeof window !== 'undefined') {
-      // Check localStorage first
-      const savedMode = localStorage.getItem('darkMode');
-      if (savedMode !== null) {
-        return savedMode === 'true';
-      }
-      // If not in localStorage, check user preference
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    // Default to false if not in browser
-    return false;
-  });
+  // Add isInitialized state to track when the initial dark mode is properly determined
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
+  // Handle initial state setup
   useEffect(() => {
-    // Update darkMode if user preference changes
+    const savedMode = localStorage.getItem('darkMode');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Determine initial dark mode state
+    const initialDarkMode = savedMode !== null 
+      ? savedMode === 'true'
+      : systemPrefersDark;
+
+    setDarkMode(initialDarkMode);
+    
+    // Apply initial class
+    if (initialDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    // Mark as initialized
+    setIsInitialized(true);
+
+    // Remove initial invisible class
+    document.body.classList.remove('invisible');
+  }, []);
+
+  // Handle system preference changes
+  useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
     const handleChange = (e: MediaQueryListEvent) => {
@@ -43,32 +59,32 @@ export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({
     };
 
     mediaQuery.addEventListener('change', handleChange);
-
-    // Cleanup function
-    return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-    };
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  // Handle dark mode changes
   useEffect(() => {
-    // Update localStorage and apply class when darkMode changes
-    localStorage.setItem('darkMode', darkMode.toString());
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    if (isInitialized) {
+      localStorage.setItem('darkMode', darkMode.toString());
+      if (darkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     }
-  }, [darkMode]);
-
-  // Prevent FOUC
-  useEffect(() => {
-    // Remove the 'invisible' class from the body once the component has mounted
-    document.body.classList.remove('invisible');
-  }, []);
+  }, [darkMode, isInitialized]);
 
   return (
-    <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
+    <DarkModeContext.Provider value={{ darkMode, setDarkMode, isInitialized }}>
       {children}
     </DarkModeContext.Provider>
   );
+};
+
+export const useDarkMode = () => {
+  const context = React.useContext(DarkModeContext);
+  if (context === undefined) {
+    throw new Error('useDarkMode must be used within a DarkModeProvider');
+  }
+  return context;
 };

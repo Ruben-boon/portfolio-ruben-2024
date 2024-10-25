@@ -4,7 +4,7 @@ section.hero-module {
   display: block;
   padding-top: 180px;
   margin-bottom: 80px;
-  border-left: 1px solid var(--bg-color3);
+  border-left: 1px solid var(--bg-color4);
   @media (max-width: $screen-md-max) {
     margin-left: 16px;
     border: none;
@@ -40,8 +40,8 @@ section.hero-module {
   .side-image {
     position: absolute;
     width: 200px;
-    right: calc(50% - 480px);
-    top: -200px;
+    right: calc(50% - 600px);
+    top: -260px;
     transition: opacity 0.5s ease;
     // animation: moveBackForth 10s ease-in-out infinite;
     @media (max-width: $screen-md-max) {
@@ -104,7 +104,7 @@ section.hero-module {
     }
   }
   .icon-card {
-    border: 1px solid var(--link-color);
+    border: 1px solid var(--half-color);
     border-radius: 8px;
     padding: 1em;
     padding-top: 0;
@@ -114,6 +114,9 @@ section.hero-module {
     &__icon {
       height: 72px;
       object-fit: contain;
+      @media (max-width: $screen-md-max) {
+       height:32px;
+      }
     }
     @media (max-width: $screen-md-max) {
       display: flex;
@@ -121,6 +124,7 @@ section.hero-module {
       gap: 1.5em;
       p {
         margin-bottom: 0;
+        font-size: 14px;
       }
     }
   }

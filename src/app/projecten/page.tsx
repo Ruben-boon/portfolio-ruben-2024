@@ -46,6 +46,7 @@ async function getProjects() {
   return projects;
 }
 
+
 export default async function Projecten() {
   const page = await getPage();
   const projects = await getProjects();

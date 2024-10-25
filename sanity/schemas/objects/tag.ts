@@ -6,7 +6,7 @@ export default defineType({
   name: "tag",
   title: "Tag",
   icon: FaTag,
-  type: "object",
+  type: "document",
   fields: [
     defineField({
       name: "label",

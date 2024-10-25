@@ -21,20 +21,6 @@ export default defineType({
         ],
       },
     }),
-    defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{ type: 'tag' }], // Reference by type name here
-      hidden: ({ parent }) => parent?.collectionType !== 'tags',
-    }),
-    // defineField({
-    //   name: 'buttons',
-    //   title: 'Buttons',
-    //   type: 'array',
-    //   of: [{type: 'link]'}],
-    //   // hidden: ({ parent }) => parent?.collectionType !== 'link',
-    // }),
   ],
   preview: {
     select: {

@@ -13,7 +13,7 @@ export default function ApproachCard({
       <h4 className="approach-card__title">{title}</h4>
       <div className="approach-card__content">
         {description && <PortableText value={description} />}
-      </div>
+    </div>
     </div>
   );
 }
