@@ -32,7 +32,7 @@ export default defineType({
       fields: [
         defineField({
           name: "collection",
-          title: "Tag Collection",
+          title: "Tag Collection", 
           type: "reference",
           to: [{ type: "collections" }],
           options: {
@@ -46,19 +46,18 @@ export default defineType({
           of: [{ 
             type: "reference", 
             to: [{ type: "tag" }],
-          }],
-          options: {
-            // disableNew: true, // Prevents creation of new tags
-            filter: ({ parent }) => {
-              if (!parent?.collection?._ref) return '';
-              return {
-                filter: '_type == "tag" && references($collectionId)',
-                params: {
-                  collectionId: parent.collection._ref
+            options: {
+              filter: ({ parent }: { parent: { collection?: { _ref?: string } } }) => {
+                if (!parent?.collection?._ref) return '';
+                return {
+                  filter: '_type == "tag" && references($collectionId)',
+                  params: {
+                    collectionId: parent.collection._ref
+                  }
                 }
               }
             }
-          }
+          }],
         })
       ]
     }),
