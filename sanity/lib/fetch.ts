@@ -1,25 +1,25 @@
-// import client from '@/lib/sanity/client'
-// import dev from '@/lib/env'
-// import { draftMode } from 'next/headers'
-import { QueryParams } from "sanity";
-import { client } from "./client";
-import { QueryOptions } from "@sanity/client";
+import { createClient } from '@sanity/client'
 
-export { default as groq } from "groq";
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  apiVersion: '2024-09-24', // Use current API version
+  useCdn: process.env.NODE_ENV === 'production'
+})
 
-export function fetchSanity<T = any>(
+export const fetchSanity = async <T = any>(
   query: string,
-  {
-    params = {},
-    ...next
-  }: {
-    params?: QueryParams;
-  } & QueryOptions["next"] = {}
-) {
-  const timestamp = Date.now();
-  return client.fetch<T>(
-    query,
-    { ...params, timestamp },
-    { cache: 'no-store', ...next }
-  );
+  params: { tags?: string[]; params?: Record<string, any> } = {}
+): Promise<T> => {
+  try {
+    return await client.fetch<T>(query, params.params || {}, {
+      cache: 'force-cache',
+      ...(params.tags && { tags: params.tags })
+    });
+  } catch (err) {
+    console.error('Sanity fetch error:', err);
+    throw new Error(`Failed to fetch from Sanity: ${err instanceof Error ? err.message : 'Unknown error'}`);
+  }
 }
+
+export { groq } from 'next-sanity';

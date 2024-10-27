@@ -10,7 +10,7 @@ export default async function Footer() {
   return (
     <footer>
       <div className="pt-16 mt-16 top-footer grid grid-cols-1 lg:grid-cols-2 gap-20 container-width">
-      <div className="contact-text flex justify-center flex-col">
+        <div className="contact-text flex justify-center flex-col">
           <h3 className="mt-0">Contact</h3>
           <p>
             Bij elk project volg ik een gestructureerd proces om ervoor te
@@ -18,9 +18,9 @@ export default async function Footer() {
             we samen jouw project tot leven brengen:
           </p>
         </div>
-        {/* broken for now <div className="shad-form">
+        <div className="shad-form">
           <DynamicShadcnForm formId="0" />
-        </div> */}
+        </div>
       </div>
       <div className="bottom-footer container-width text-center p-6 pb-2 ">
         <PortableText value={copyright} />

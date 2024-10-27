@@ -101,3 +101,51 @@ export const modulesQuery = groq`
     }
   }
 `;
+
+// New form-related queries
+export const formFieldQuery = groq`
+  fieldType,
+  name,
+  label,
+  required,
+  options
+`;
+
+export const formQuery = groq`
+  _id,
+  name,
+  fields[]{
+    ${formFieldQuery}
+  }
+`;
+
+export async function getForm(formId: string) {
+  const form = await fetchSanity<Form>(
+    groq`*[_type == "form" && _id == $formId][0]{
+      ${formQuery}
+    }`,
+    {
+      tags: ["form"],
+      params: { formId },
+    }
+  );
+
+  if (!form) throw new Error(`No form found with ID: ${formId}`);
+
+  return form;
+}
+
+// Add type definitions
+export interface FormField {
+  fieldType: "text" | "email" | "number" | "textarea" | "select";
+  name: string;
+  label: string;
+  required: boolean;
+  options?: string[];
+}
+
+export interface Form {
+  _id: string;
+  name: string;
+  fields: FormField[];
+}
