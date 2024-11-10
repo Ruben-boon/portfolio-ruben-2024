@@ -30,11 +30,10 @@ export default function ProjectsSlider({
         paddingBottom: spacingSettings?.paddingBottom || 0,
       }}
     >
-      <ScrollEffects refEl={cardContainerRef} options={{ horizontal: 11 }} />
-      <h2>{title}</h2>
+      {title && <h2>{title}</h2>}
       {projects && (
         <div
-          className="card-container ml-[-60px] w-full max-w-screen-['1800px']"
+          className="card-container w-full max-w-screen-xl m-auto"
           ref={cardContainerRef}
         >
           <Swiper

@@ -3,11 +3,11 @@
 :root {
   //colors
   --title-color: black;
-  --paragraph-color: rgb(34, 34, 34);
+  --paragraph-color: rgb(53, 53, 53);
   --link-color: black;
   --bg-color1: #F6F6F8;
   --bg-color2: #f8f8f8;
-  --bg-color3: #e4e4e4;
+  --bg-color3: #ececec;
   --bg-color4: #ececec;
   --half-color: rgb(194, 194, 194);
 
@@ -27,12 +27,12 @@
 
 html.dark {
   --title-color: white;
-  --paragraph-color: rgb(207, 207, 207);
+  --paragraph-color: rgb(192, 192, 192);
   --link-color: white;
   --bg-color1: rgb(10, 9, 10);
   --bg-color2: #0f0f0f;
-  --bg-color3: #464646;
-  --bg-color4: #313131;
+  --bg-color3: #1a1a1a; //menu bg
+  --bg-color4: #1a1a1a; //bg line
   --half-color: rgb(58, 58, 58);
 
 

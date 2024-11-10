@@ -4,12 +4,12 @@ import Img from "../Img";
 import Link from "next/link";
 import processUrl from "../../../sanity/lib/processUrl";
 import { useDarkMode } from "../useDarkmode";
-import { Ref, useEffect, useRef } from "react";
-import ScrollEffects from "../scrollEffects";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 interface SpacingSettings {
-  paddingTop?: number; // Optional paddingTop property
-  paddingBottom?: number; // Optional paddingBottom property
+  paddingTop?: number;
+  paddingBottom?: number;
 }
 
 export default function HeroModule({
@@ -33,66 +33,109 @@ export default function HeroModule({
   }>;
 }>) {
   const { darkMode, isInitialized } = useDarkMode();
+
+  // Create refs for scroll animations
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Transform values for different elements
+  const dotScaleY = useTransform(scrollYProgress, [0, 0.3], [0, -320]);
+  const dotScale = useTransform(scrollYProgress, [0, 0.3], [1, 2.5]);
+  const dotOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 1]);
+
+  // const contentTopY = useTransform(scrollYProgress, [0, 0.3], [0, -120]);
+  const contentTopOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const contentTopScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.9]);
+
+  const mainImageScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const mainImageOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.03]);
+  const mainImageY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
+  const sideImageY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const sideImageX = useTransform(scrollYProgress, [0, 0.3], [0, 300]);
+  const sideImageScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.3]);
+  const sideImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   
-  const contentTopRef = useRef(null);
-  const sideImageRef = useRef(null);
-  const bigImageRef = useRef(null);
-  const dotRef = useRef(null);
+  // const contentBottomY = useTransform(scrollYProgress, [0, 0.3], [0, -120]);
 
   const shouldRenderLight = isInitialized && !darkMode;
   const shouldRenderDark = isInitialized && darkMode;
 
   return (
-    <section
+    <motion.section
+      ref={sectionRef}
       className="hero-module relative"
       style={{
         paddingBottom: spacingSettings?.paddingBottom || 0,
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      <ScrollEffects
-        refEl={contentTopRef}
-        options={{ blur: 1, scale: 4, opacity: 3 }}
+      {/* Dot Element */}
+      <motion.div
+        className="dot"
+        style={{
+          y: dotScaleY,
+          scale: dotScale,
+          opacity: dotOpacity,
+        }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.5,
+          delay: 0.2,
+          ease: "easeOut",
+        }}
       />
 
-      <ScrollEffects
-        refEl={bigImageRef}
-        options={{ blur: 1, scale: 0, opacity: 3 }}
-      />
-      <ScrollEffects
-        refEl={sideImageRef}
-        options={{ blur: 0, scale: 3, opacity: 2 }}
-      />
-      <ScrollEffects
-        refEl={dotRef}
-        options={{ blur: 0, scale: 0, opacity: 2 }}
-      />
-      <div className="dot" ref={dotRef}></div>
-      <div className="content-top" ref={contentTopRef}>
-        <div
+      <motion.div
+        className="content-top"
+        style={{
+          opacity: contentTopOpacity,
+          scale: contentTopScale,
+        }}
+      >
+        <motion.div
           className="text-container"
-          data-animate="fade-up"
-          data-animate-delay="50"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
         >
           {contentTop && <PortableText value={contentTop} />}
-        </div>
-        <div
-          className="button-container"
-          data-animate="fade-up"
-          data-animate-delay="150"
-        >
-          <Link
-            className="btn-outline"
-            href={processUrl(ctas[0], {
-              base: false,
-              params: ctas[0],
-            })}
-          >
-            {ctas[0].label}
-          </Link>
-        </div>
-      </div>
+        </motion.div>
 
-      <div className="main-image relative" ref={bigImageRef}>
+        <motion.div
+          className="button-container"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          {ctas?.[0] && (
+            <Link
+              className="btn-outline"
+              href={processUrl(ctas[0], {
+                base: false,
+                params: ctas[0],
+              })}
+            >
+              {ctas[0].label}
+            </Link>
+          )}
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="main-image relative"
+        style={{
+          scale: mainImageScale,
+          opacity: mainImageOpacity,
+          y: mainImageY
+        }}
+      >
         {imageLight && shouldRenderLight && (
           <Img
             image={imageLight}
@@ -107,64 +150,65 @@ export default function HeroModule({
             imageWidth={2000}
           />
         )}
-        <div
-          className="side-image"
-          style={{
-            opacity: isInitialized ? 1 : 0, // Hide side image until initialized
-          }}
-          ref={sideImageRef}
-        >
-          {imageLight && shouldRenderDark && (
-            <Img
-              image={imageLight}
-              alt="Afbeelding van de aarde"
-              imageWidth={400}
-            />
-          )}
-          {imageDark && shouldRenderLight && (
-            <Img
-              image={imageDark}
-              style={{
-                filter:
-                  "brightness(200%) contrast(100%) saturate(180%) hue-rotate(-30deg)",
-                opacity: 0.15,
-              }}
-              alt="Afbeelding van een ruimteschip"
-              imageWidth={400}
-            />
-          )}
-        </div>
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        className="side-image"
+        style={{
+          opacity: sideImageOpacity,
+          y:sideImageY,
+          x: sideImageX,
+          scale: sideImageScale,
+        }}
+      >
+        {imageLight && shouldRenderDark && (
+          <Img
+            image={imageLight}
+            alt="Afbeelding van de aarde"
+            imageWidth={400}
+          />
+        )}
+        {imageDark && shouldRenderLight && (
+          <Img
+            image={imageDark}
+            style={{
+              filter:
+                "brightness(200%) contrast(100%) saturate(180%) hue-rotate(-30deg)",
+              opacity: 0.15,
+            }}
+            alt="Afbeelding van een ruimteschip"
+            imageWidth={400}
+          />
+        )}
+      </motion.div>
+      <motion.div
         className="content-bottom"
-        data-animate="fade-up"
-        data-animate-delay="200"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
       >
         {contentBottom && <PortableText value={contentBottom} />}
         {columns && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-7">
-            {columns.map((column, index) => {
-              const delay = index * 100;
-              return (
-                <div
-                  key={index}
-                  className="icon-card"
-                  data-animate-delay={delay}
-                  data-animate="fade-up"
-                >
-                  <Img
-                    image={column.image}
-                    alt={column.image.alt}
-                    imageWidth={44}
-                    className="icon-card__icon invert dark:invert-0"
-                  />
-                  <PortableText value={column.content} />
-                </div>
-              );
-            })}
+            {columns.map((column, index) => (
+              <motion.div
+                key={index}
+                className="icon-card"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+              >
+                <Img
+                  image={column.image}
+                  alt={column.image.alt}
+                  imageWidth={44}
+                  className="icon-card__icon invert dark:invert-0"
+                />
+                <PortableText value={column.content} />
+              </motion.div>
+            ))}
           </div>
         )}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

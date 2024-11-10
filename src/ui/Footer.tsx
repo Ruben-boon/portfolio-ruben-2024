@@ -19,7 +19,7 @@ export default async function Footer() {
           </p>
         </div>
         <div className="shad-form">
-          <DynamicShadcnForm formId="0" />
+          {/* <DynamicShadcnForm formId="0" /> */}
         </div>
       </div>
       <div className="bottom-footer container-width text-center p-6 pb-2 ">

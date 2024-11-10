@@ -31,20 +31,19 @@ const applyStyles = (
   transform = 'translate3d(0,0,0)';
 
   if (blur >= 1 && blur <= 9) {
-    // Reduced precision for better performance
     const maxBlur = Math.min(Math.round(scrollPosition / (40 / blur)), 8);
     filter = `blur(${maxBlur}px)`;
   }
 
   if (scale >= 1 && scale <= 9) {
-    // Reduced precision and smoother scale calculation
-    const maxScaleAdjustment = 1 - (scrollPosition / (4000 / scale));
-    const scaleValue = Math.max(maxScaleAdjustment, 0).toFixed(2);
-    transform += ` scale(${scaleValue})`;
+    // Reduced sensitivity - multiply by 3 to make it 3 times slower
+    const scrollFactor = Math.max(0, Math.min(1, scrollPosition / (6000 / scale))); // Changed from 2000 to 6000
+    const easeOutCubic = 1 - Math.pow(1 - scrollFactor, 3);
+    const scaleValue = 1 - (easeOutCubic * 0.5); // Limit scale reduction to 50%
+    transform += ` scale(${scaleValue.toFixed(3)})`;
   }
 
   if (opacity >= 1 && opacity <= 9) {
-    // Reduced precision for opacity
     const maxOpacityAdjustment = 1 - (scrollPosition / (3000 / opacity));
     opacityValue = Math.max(Math.round(maxOpacityAdjustment * 100) / 100, 0);
   }
@@ -52,7 +51,6 @@ const applyStyles = (
   if (horizontal >= 0 && horizontal <= 19 && horizontal !== 10) {
     const direction = horizontal < 10 ? -1 : 1;
     const speed = Math.abs(horizontal - 10) / 20;
-    // Round horizontal movement to reduce jitter
     const maxHorizontalMove = Math.round(scrollPosition * speed * direction);
     transform += ` translateX(${maxHorizontalMove}px)`;
   }
@@ -71,9 +69,9 @@ const ScrollEffects = ({
   const prevScrollY = useRef(0);
   const lastUpdate = useRef(Date.now());
   const isMobile = useRef(false);
+  const smoothScrollY = useRef(0);
 
   useEffect(() => {
-    // Check if device is mobile
     isMobile.current = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
     const handleScroll = () => {
@@ -82,8 +80,7 @@ const ScrollEffects = ({
       }
 
       const now = Date.now();
-      // Throttle updates more aggressively on mobile
-      const minUpdateInterval = isMobile.current ? 32 : 16; // ~30fps on mobile, ~60fps on desktop
+      const minUpdateInterval = isMobile.current ? 32 : 16;
 
       if (now - lastUpdate.current < minUpdateInterval) {
         frameRef.current = requestAnimationFrame(handleScroll);
@@ -91,34 +88,46 @@ const ScrollEffects = ({
       }
 
       frameRef.current = requestAnimationFrame(() => {
-        const scrollPosition = Math.round(window.scrollY);
+        const currentScrollY = window.scrollY;
+        
+        // Smooth out the scroll position using lerp
+        const lerp = (start: number, end: number, factor: number) => {
+          return start + (end - start) * factor;
+        };
+        
+        smoothScrollY.current = lerp(
+          smoothScrollY.current,
+          currentScrollY,
+          isMobile.current ? 0.2 : 0.3
+        );
+
         const element = refEl.current;
 
-        // Only update if scroll position changed significantly (especially important on mobile)
         if (element && isHTMLElement(element) && 
-            Math.abs(scrollPosition - prevScrollY.current) > (isMobile.current ? 2 : 1)) {
-          const styles = applyStyles(element, scrollPosition, options);
+            Math.abs(currentScrollY - prevScrollY.current) > (isMobile.current ? 1 : 0.5)) {
+          const styles = applyStyles(element, smoothScrollY.current, options);
           
-          // Apply will-change only during animation
           element.style.willChange = 'transform, opacity, filter';
           element.style.transform = styles.transform;
           element.style.filter = styles.filter;
           element.style.opacity = styles.opacity.toString();
           
-          prevScrollY.current = scrollPosition;
+          prevScrollY.current = currentScrollY;
           lastUpdate.current = now;
 
-          // Remove will-change after animation
+          // Add transition for smoother updates
+          element.style.transition = 'transform 0.1s ease-out';
+
           setTimeout(() => {
             if (element) {
               element.style.willChange = 'auto';
+              element.style.transition = '';
             }
           }, 100);
         }
       });
     };
 
-    // Use passive scroll listener for better performance
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {

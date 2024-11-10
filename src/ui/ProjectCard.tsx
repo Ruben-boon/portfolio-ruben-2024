@@ -14,7 +14,7 @@ export default function ProjectCard({
   return (
     <Link href={`projecten/${metadata.slug.current}`} className="project-card">
       <Img image={thumbnail} imageWidth={800} />
-      <h4 className="text-center">{title}</h4>
+      <p className="text-center mt-4">{title}</p>
     </Link>
   );
 }
