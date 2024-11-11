@@ -1,8 +1,8 @@
 import { PortableText } from "@portabletext/react";
 import { getSite } from "../../sanity/lib/queries";
-import DynamicForm from "./DynamicForm";
-import { ProfileForm } from "./ProfileForm";
-import { DynamicShadcnForm } from "./DynamicShadForm";
+// import DynamicForm from "./DynamicForm";
+// import { ProfileForm } from "./ProfileForm";
+// import { DynamicShadcnForm } from "./DynamicShadForm";
 
 export default async function Footer() {
   const { copyright, navigation } = await getSite();
