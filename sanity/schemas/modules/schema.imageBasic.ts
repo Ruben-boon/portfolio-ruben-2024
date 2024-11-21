@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { FaRegImage } from "react-icons/fa";
 
 
-import { settingsSpacing } from "../objects/settingsSpacing";
+import { settingsSpacing } from "../objects/schema.settingsSpacing";
 
 export default defineType({
   name: "imageBasic",

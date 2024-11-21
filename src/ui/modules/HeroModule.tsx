@@ -1,9 +1,9 @@
 "use client";
 import { PortableText } from "@portabletext/react";
-import Img from "../Img";
+import Img from "@/ui/components/Img";
 import Link from "next/link";
-import processUrl from "../../../sanity/lib/processUrl";
-import { useDarkMode } from "../useDarkmode";
+import processUrl from "sanity/lib/processUrl";
+import { useDarkMode } from "@/ui/trash/useDarkmode";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -32,7 +32,7 @@ export default function HeroModule({
     image: Sanity.Image;
   }>;
 }>) {
-  const { darkMode, isInitialized } = useDarkMode();
+  // const { darkMode, isInitialized } = useDarkMode();
 
   // Create refs for scroll animations
   const sectionRef = useRef(null);
@@ -58,11 +58,11 @@ export default function HeroModule({
   const sideImageX = useTransform(scrollYProgress, [0, 0.3], [0, 300]);
   const sideImageScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.3]);
   const sideImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  
+
   // const contentBottomY = useTransform(scrollYProgress, [0, 0.3], [0, -120]);
 
-  const shouldRenderLight = isInitialized && !darkMode;
-  const shouldRenderDark = isInitialized && darkMode;
+  // const shouldRenderLight = isInitialized && !darkMode;
+  // const shouldRenderDark = isInitialized && darkMode;
 
   return (
     <motion.section
@@ -133,17 +133,10 @@ export default function HeroModule({
         style={{
           scale: mainImageScale,
           opacity: mainImageOpacity,
-          y: mainImageY
+          y: mainImageY,
         }}
       >
-        {imageLight && shouldRenderLight && (
-          <Img
-            image={imageLight}
-            alt="Afbeelding van een ruimteschip"
-            imageWidth={2000}
-          />
-        )}
-        {imageDark && shouldRenderDark && (
+        {imageDark && (
           <Img
             image={imageDark}
             alt="Afbeelding van de aarde"
@@ -155,19 +148,12 @@ export default function HeroModule({
         className="side-image"
         style={{
           opacity: sideImageOpacity,
-          y:sideImageY,
+          y: sideImageY,
           x: sideImageX,
           scale: sideImageScale,
         }}
       >
-        {imageLight && shouldRenderDark && (
-          <Img
-            image={imageLight}
-            alt="Afbeelding van de aarde"
-            imageWidth={400}
-          />
-        )}
-        {imageDark && shouldRenderLight && (
+        {imageDark && (
           <Img
             image={imageDark}
             style={{
@@ -201,7 +187,7 @@ export default function HeroModule({
                   image={column.image}
                   alt={column.image.alt}
                   imageWidth={44}
-                  className="icon-card__icon invert dark:invert-0"
+                  className="icon-card__icon invert dark:invert-0 pb-4"
                 />
                 <PortableText value={column.content} />
               </motion.div>

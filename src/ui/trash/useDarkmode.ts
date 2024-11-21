@@ -1,6 +1,6 @@
 "use cleint"
 import { useContext } from "react";
-import { DarkModeContext } from "./DarkModeContext";
+import { DarkModeContext } from "DarkModeContext";
 
 export const useDarkMode = () => {
   const context = useContext(DarkModeContext);

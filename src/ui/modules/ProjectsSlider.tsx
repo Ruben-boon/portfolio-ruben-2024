@@ -1,7 +1,7 @@
 "use client";
-import ScrollEffects from "../scrollEffects";
+import ScrollEffects from "../trash/scrollEffects";
 import { useRef } from "react";
-import ProjectCard from "../ProjectCard";
+import ProjectCard from "@/ui/components/ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -24,11 +24,7 @@ export default function ProjectsSlider({
   const cardContainerRef = useRef(null);
   return (
     <section
-      className="projects-slider-module overflow-x-hidden"
-      style={{
-        paddingTop: spacingSettings?.paddingTop || 0,
-        paddingBottom: spacingSettings?.paddingBottom || 0,
-      }}
+      className="projects-slider-module overflow-x-hidden pt-20 pb-20"
     >
       {title && <h2>{title}</h2>}
       {projects && (

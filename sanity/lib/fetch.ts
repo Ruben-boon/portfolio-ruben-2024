@@ -1,24 +1,41 @@
-import { createClient } from '@sanity/client'
+// sanity/lib/fetch.ts
+import { createClient } from '@sanity/client';
 
-export const client = createClient({
+const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
-  apiVersion: '2024-09-24', // Use current API version
-  useCdn: process.env.NODE_ENV === 'production'
-})
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: '2024-02-17', // Use current date
+  useCdn: false, // Disable the CDN
+});
 
-export const fetchSanity = async <T = any>(
+export async function fetchSanity<T>(
   query: string,
-  params: { tags?: string[]; params?: Record<string, any> } = {}
-): Promise<T> => {
+  options: {
+    tags?: string[];
+    params?: Record<string, unknown>;
+  } = {}
+): Promise<T> {
   try {
-    return await client.fetch<T>(query, params.params || {}, {
-      cache: 'force-cache',
-      ...(params.tags && { tags: params.tags })
-    });
-  } catch (err) {
-    console.error('Sanity fetch error:', err);
-    throw new Error(`Failed to fetch from Sanity: ${err instanceof Error ? err.message : 'Unknown error'}`);
+    const { tags, params } = options;
+    
+    const cacheParams = {
+      ...params,
+      _: new Date().getTime()
+    };
+
+    const result = await client.fetch<T>(
+      query,
+      cacheParams,
+      {
+        // cache: 'no-store',
+        next: { revalidate: 60}
+      }
+    );
+
+    return result;
+  } catch (error) {
+    console.error('Sanity fetch error:', error);
+    throw error;
   }
 }
 

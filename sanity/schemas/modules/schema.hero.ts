@@ -1,7 +1,7 @@
 import { defineField, defineType } from "sanity";
 import { FaImage } from "react-icons/fa6";
-import { settingsSpacing } from "../objects/settingsSpacing";
-import { settingsImage } from "../objects/settingsImage";
+import { settingsSpacing } from "../objects/schema.settingsSpacing";
+import { settingsImage } from "../objects/schema.settingsImage";
 
 export default defineType({
   name: "hero",

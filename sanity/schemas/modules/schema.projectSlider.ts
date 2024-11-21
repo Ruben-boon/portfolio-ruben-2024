@@ -1,7 +1,7 @@
 import { defineField, defineType } from "sanity";
 import { TfiLayoutSliderAlt } from "react-icons/tfi";
 
-import { settingsSpacing } from "../objects/settingsSpacing";
+import { settingsSpacing } from "../objects/schema.settingsSpacing";
 
 export default defineType({
   name: "projectsSlider",

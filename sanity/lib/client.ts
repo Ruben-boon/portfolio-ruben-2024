@@ -1,7 +1,7 @@
 
 
 import { createClient } from '@sanity/client'
-import { QueryParams } from 'sanity';
+// import { QueryParams } from 'sanity';
 
 
 export const client = createClient({

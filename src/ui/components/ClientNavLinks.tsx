@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import processUrl from "../../sanity/lib/processUrl";
+import processUrl from "sanity/lib/processUrl";
 import { motion } from "framer-motion";
 
 export default function ClientNavLinks({ navigation }: { navigation: any }) {

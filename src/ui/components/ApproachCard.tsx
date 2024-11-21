@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import Img from "./Img";
+// import Img from "./Img";
 
 export default function ApproachCard({
   title,

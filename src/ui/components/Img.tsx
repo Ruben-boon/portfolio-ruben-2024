@@ -4,8 +4,8 @@ import {
 } from "next-sanity-image";
 
 import { stegaClean } from "@sanity/client/stega";
-import { client } from "../../sanity/lib/client";
-import { urlFor } from "../../sanity/lib/urlFor";
+import { client } from "sanity/lib/client";
+import { urlFor } from "sanity/lib/urlFor";
 
 const SIZES = [
   120, 160, 200, 240, 320, 400, 480, 520, 560, 600, 640, 800, 960, 1280, 1440,

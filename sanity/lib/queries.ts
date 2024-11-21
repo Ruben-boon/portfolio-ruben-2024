@@ -25,34 +25,75 @@ const projectQuery = groq`
 	metadata
 `;
 export async function getSite() {
-  const site = await fetchSanity<Sanity.Site>(
-    groq`
-		  *[_type == 'site'][0]{
+  // Add console logging to debug the fetch request
+  console.log("Fetching site data from Sanity...");
+
+  try {
+    const site = await fetchSanity<Sanity.Site>(
+      groq`
+		*[_type == 'site'][0]{
+		  ...,
+		  ctas[]{
 			...,
-			ctas[]{
-			  ...,
-			  link { ${linkQuery} }
-			},
-			title,
-			copyright,
-			logo,
-			navigation{
-          links[]{
-            ${linkQuery}
-          }
-        },
-			socials[]{
-			  ${navigationQuery}
-			},
-			'ogimage': ogimage.asset->url
-		  }
+			link { ${linkQuery} }
+		  },
+		  title,
+		  copyright,
+		  logo,
+		  navigation{
+			links[]{
+			  ${linkQuery}
+			}
+		  },
+		  socials[]{
+			${navigationQuery}
+		  },
+		  'ogimage': ogimage.asset->url
+		}
 		`,
-    { tags: ["site"] }
-  );
+      {
+        tags: ["site"],
+        // Add cache busting parameter
+        cache: "no-store",
+        next: {
+          revalidate: 0, // Disable cache in development
+        },
+      }
+    );
 
-  if (!site) throw new Error("Missing 'site' document in Sanity Studio");
+    if (!site) {
+      console.error("No site document found in Sanity");
+      throw new Error("Missing 'site' document in Sanity Studio");
+    }
 
-  return site;
+    // Log the received data
+    console.log("Received site data:", {
+      hasLogo: !!site.logo,
+      hasNavigation: !!site.navigation,
+      navigationLinks: site.navigation?.links?.length,
+    });
+
+    return site;
+  } catch (error) {
+    console.error("Error fetching site data:", error);
+    throw error;
+  }
+}
+
+// Helper function to manually clear cache and refetch
+export async function refreshSiteData() {
+  try {
+    // Clear local storage cache if you're using it
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("site-cache");
+    }
+
+    const fresh = await getSite();
+    return fresh;
+  } catch (error) {
+    console.error("Error refreshing site data:", error);
+    throw error;
+  }
 }
 
 export const modulesQuery = groq`

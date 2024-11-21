@@ -1,6 +1,6 @@
 "use client";
 import { PortableText } from "@portabletext/react";
-import Img from "../Img";
+import Img from "@/ui/components/Img";
 
 interface SpacingSettings {
   paddingTop?: number; // Optional paddingTop property

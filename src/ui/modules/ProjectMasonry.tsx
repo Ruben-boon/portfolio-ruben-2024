@@ -1,6 +1,6 @@
 "use client";
 import { SanityDocument } from "next-sanity";
-import ProjectCard from "../ProjectCard";
+import ProjectCard from "@/ui/components/ProjectCard";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 interface SpacingSettings {

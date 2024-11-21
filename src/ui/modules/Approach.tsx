@@ -1,10 +1,10 @@
 import { PortableText } from "@portabletext/react";
-import ApproachCard from "../ApproachCard";
+import ApproachCard from "@/ui/components/ApproachCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface SpacingSettings {
-  paddingTop?: number; // Optional paddingTop property
-  paddingBottom?: number; // Optional paddingBottom property
+  paddingTop?: number; 
+  paddingBottom?: number; 
 }
 
 export default function Approach({

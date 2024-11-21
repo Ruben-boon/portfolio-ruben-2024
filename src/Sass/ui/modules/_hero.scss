@@ -2,8 +2,7 @@ section.hero-module {
   max-width: $container;
   margin: 0 auto;
   display: block;
-  padding-top: 104px;
-  margin-bottom: 80px;
+  padding-top: 64px;
   border-left: 1px solid var(--bg-color3);
   @media (max-width: $screen-md-max) {
     margin-left: 16px;
@@ -94,9 +93,9 @@ section.hero-module {
     }
   }
   .icon-card {
-    border: 1px solid var(--bg-color3);
+    // border: 1px solid var(--bg-color3);
     border-radius: 8px;
-    padding: 1em;
+    // padding: 1em;
     padding-top: 0;
     * {
       font-size: 16px;

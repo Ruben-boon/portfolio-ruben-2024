@@ -14,8 +14,8 @@ import { structureTool } from 'sanity/structure'
 export default defineConfig({
   title: 'Ruben',
   basePath: '/admin',
-  projectId: '636ezsdx', // Fallback to avoid undefined
-  dataset: 'production', // Fallback to avoid undefined
+  projectId: '636ezsdx', 
+  dataset: 'production', 
   schema,
   plugins: [
     // Vision is a tool that lets you query your content with GROQ in the studio

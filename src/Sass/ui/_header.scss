@@ -9,12 +9,24 @@ header {
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  transition: 0.3s ease;
+  transition: 0.8s ease;
   @media (max-width: $screen-md-max) {
-    bottom: 0;
-    top: auto;
-    transform: none;
     width: 100%;
+    height: 100dvh;
+    width: 100vw;
+    position: fixed;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    transform: translateX(-150%);
+
+    background-color: var(--bg-color1);
+    gap: 1em;
+    animation: all 0.3 ease;
+    &.open {
+      transform: translateX(-50%);
+    }
   }
   .main-nav {
     width: $container;
@@ -23,23 +35,36 @@ header {
     justify-content: space-between;
     gap: 4em;
     z-index: 10;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    // position: fixed;
+    // left: 50%;
+    // transform: translate(-50%, 0%);
     width: auto;
     top: 16px;
     @media (max-width: $screen-md-max) {
-      bottom: 16px;
-      top: auto;
-      
+      width: auto;
+      height: auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+      &__links {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 0 !important;
+        background-color: transparent !important;
+        a {
+          font-size: 22px;
+        }
+      }
     }
 
     &__links {
       border-radius: 50px;
       padding: 0.3rem;
       display: flex;
-
-      background-color: var(--bg-color3);
+      background-color: var(--bg-color1);
       a {
         padding: 0.5rem 0.9rem;
         border-radius: 50px;
@@ -65,8 +90,8 @@ header {
 
         &.active {
           &:before {
-            background: var(--bg-color1);
-            transform: scale(1); // Scale up the element when active
+            // background: var(--bg-color1);
+            // transform: scale(1); // Scale up the element when active
           }
         }
       }
@@ -85,5 +110,51 @@ header {
       top: 16px;
       left: 16px;
     }
+  }
+  .main-cross {
+    display: none;
+
+    @media (max-width: $screen-md-max) {
+      display: inline-block;
+    }
+    position: fixed;
+    top: 32px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+
+    &__line1,
+    &__line2 {
+      position: absolute;
+      background-color: var(--link-color);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    &__line1 {
+      width: 3px;
+      height: 100%;
+    }
+    &__line2 {
+      width: 100%;
+      height: 3px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+}
+
+.hamburger-button {
+  display: none;
+  @media (max-width: $screen-md-max) {
+    position: fixed;
+    top:16px;
+    right:16px;
+    display: block;
+    height: 32px;
+    background-color: black;
+    width: 32px;
   }
 }

@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { PiSquaresFour } from "react-icons/pi";
-import { settingsSpacing } from "../objects/settingsSpacing";
+import { settingsSpacing } from "../objects/schema.settingsSpacing";
 
 
 export default defineType({

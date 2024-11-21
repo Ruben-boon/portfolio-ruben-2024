@@ -4,7 +4,6 @@ import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 import "./tailwind.css";
 import "../Sass/main.scss";
-import { DarkModeProvider } from "@/ui/DarkModeContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +31,6 @@ export const metadata: Metadata = {
   description: "Websites from space",
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,11 +41,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${epilogueVar.variable} ${geistMono.variable} ${ptSerif.variable} antialiased invisible`}
       >
-        <DarkModeProvider>
-          <Header />
-          {children}
-          <Footer />
-        </DarkModeProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

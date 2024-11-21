@@ -10,21 +10,21 @@
 @import "base/typography"; //typography contains font variable load this first
 @import "base/reset";
 @import "base/general";
+@import "base/buttons";
 
 
 // modules
-@import "modules/buttons";
-@import "modules/searchbar";
-@import "modules/form";
-@import "modules/toggle-switch";
-@import "modules/hero-module";
-@import "modules/approach-card";
-@import "modules/approach";
-@import "modules/text-basic";
-@import "modules/image-basic";
-@import "modules/project-slider";
-@import "modules/hero-basic";
-@import "modules/project-card";
+@import "ui/modules/searchbar";
+@import "ui/modules/form";
+@import "ui/modules/toggle-switch";
+@import "ui/modules/hero";
+@import "ui/modules/approach-card";
+@import "ui/modules/approach";
+@import "ui/modules/text-basic";
+@import "ui/modules/image-basic";
+@import "ui/modules/project-slider";
+@import "ui/modules/hero-basic";
+@import "ui/modules/project-card";
 
 //ui
 @import "ui/footer";

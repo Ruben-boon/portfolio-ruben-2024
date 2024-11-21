@@ -4,9 +4,9 @@ import React, { useState, useEffect, useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { fetchSanity, groq } from "../../sanity/lib/fetch";
+import { fetchSanity, groq } from "sanity/lib/fetch";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/utils/button";
 import {
   Form,
   FormControl,
@@ -15,16 +15,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/ui/utils/form";
+import { Input } from "@/ui/utils/input";
+import { Textarea } from "@/ui/utils/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/ui/utils/select";
 
 // Define types for our form structure
 type FieldType = "text" | "email" | "number" | "textarea" | "select";
