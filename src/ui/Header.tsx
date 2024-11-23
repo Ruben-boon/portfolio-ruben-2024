@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getSite } from "../../sanity/lib/queries";
-import Img from "src/ui/components/Img";
-import ClientNavLinks from "src/ui/components/ClientNavLinks";
+import Img from "@/ui/components/Img";
+import ClientNavLinks from "@/ui/components/ClientNavLinks";
 
 export default async function Header() {
   const { logo, navigation } = await getSite();
