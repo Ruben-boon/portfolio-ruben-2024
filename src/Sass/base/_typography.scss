@@ -7,8 +7,7 @@ h6 {
   font-family: var(--font-pt-serif);
   color: var(--title-color);
   font-weight: bold;
-  margin-top: 30px;
-  margin-bottom: 18px;
+  margin-bottom:22px;
   font-weight: 600;
   line-height: 1.2;
 
@@ -44,7 +43,6 @@ h4 {
   font-size: clamp(16px, 2vw + 1rem, 20px);
 }
 
-/* Paragraph styles */
 p, label, input, button, ::placeholder, textarea {
   font-family: var(--epilogue-variable);
   color: var(--paragraph-color);
@@ -52,7 +50,7 @@ p, label, input, button, ::placeholder, textarea {
   font-weight: 400;
 }
 p {
-  margin-bottom: 1em;
+  margin-bottom:22px;
 }
 
 

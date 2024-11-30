@@ -1,6 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import HeroModule from "./HeroModule";
 import ProjectsSlider from "./ProjectsSlider";
 import Approach from "./Approach";
 import TextBasic from "./TextBasic";
@@ -8,6 +7,10 @@ import ImageBasic from "./ImageBasic";
 import HeroBasic from "./HeroBasic";
 import dynamic from "next/dynamic";
 import { ProjectMasonryModule } from "./ProjectMasonry";
+import Services from "./Services";
+//MODULE_IMPORT_MARKER
+import TextImage from "./TextImage";
+
 const ProjectMasonry = dynamic(() => import("./ProjectMasonry"), {
   loading: () => (
     <div className="placeholder-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-[64px] gap-6">
@@ -74,8 +77,10 @@ export default function Modules({
     <>
       {modules?.map((module) => {
         switch (module._type) {
-          case "hero":
-            return <HeroModule {...module} key={module._key} />;
+          // MODULE_CASE_MARKER
+case "textImage": return <TextImage {...module} key={module._key} />;
+          case "services":
+            return <Services {...module} key={module._key} />;
           case "projectsSlider":
             return <ProjectsSlider {...module} key={module._key} />;
           case "approach":

@@ -2,18 +2,18 @@
 
 :root {
   //colors
-  --title-color: black;
-  --paragraph-color: rgb(53, 53, 53);
-  --link-color: black;
-  --bg-color1: #F6F6F8;
-  --bg-color2: #f8f8f8;
-  --bg-color3: #ececec;
-  --bg-color4: #ececec;
-  --half-color: rgb(194, 194, 194);
+  --title-dark: black;
+  --title-light: white;
+  --paragraph-dark: rgb(34, 34, 34);
+  --paragraph-light: rgb(174, 174, 174);
 
+  --link-dark: black;
+  --link-light: white;
 
-  // buttons
-  --button-border-radius: 32px;
+  --bg-dark: #010101;
+  --bg-dark-gray: #161616;
+  --bg-light: white
+
   --button-primary-hover-color: black;
   --button-primary-text-color: white;
 
@@ -22,28 +22,12 @@
   --button-secondary-hover-color: darkred;
 
   --button-outline-color: black;
-  --button-outline-text-color: rgb(255, 255, 255);
-}
+  --button-outline-text-color: black;
 
-html.dark {
-  --title-color: white;
-  --paragraph-color: rgb(192, 192, 192);
-  --link-color: white;
-  --bg-color1: rgb(10, 9, 10);
-  --bg-color2: #0f0f0f;
-  --bg-color3: #1a1a1a; //menu bg
-  --bg-color4: #1a1a1a; //bg line
-  --half-color: rgb(58, 58, 58);
-
-
-  --button-outline-color: white;
-  --button-outline-text-color: rgb(0, 0, 0);
+  --button-outline-color-light: rgb(255, 255, 255);
+  --button-outline-text-color-light: rgb(255, 255, 255);
 
 }
-
-
-
-//fonts are in the _typography.scss
 
 // ----------------------- SIZES ----------------------- //
 
@@ -53,8 +37,10 @@ $screen-md-max: 992px;
 $screen-lg-max: 1199px;
 $screen-xl-max: 1340px;
 $screen-xxl-max: 1400px;
+$screen-xxxl-max: 1536px;
 
 $container: 720px;
+$container-full: 1400px;
 .container-width {
   max-width: $container;
   margin-left: auto;

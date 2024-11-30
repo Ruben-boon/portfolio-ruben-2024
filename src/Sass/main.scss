@@ -14,10 +14,12 @@
 
 
 // modules
+// SCSS_IMPORT_MARKER
+@import "ui/modules/text-image";
 @import "ui/modules/searchbar";
 @import "ui/modules/form";
 @import "ui/modules/toggle-switch";
-@import "ui/modules/hero";
+@import "ui/modules/services";
 @import "ui/modules/approach-card";
 @import "ui/modules/approach";
 @import "ui/modules/text-basic";
@@ -30,7 +32,6 @@
 @import "ui/footer";
 @import "ui/header";
 @import "ui/product-single";
-
 
 
 // shame

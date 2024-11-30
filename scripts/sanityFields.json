@@ -1,0 +1,19 @@
+{
+    "string": "A text-based field (titles, names, etc.).",
+    "text": "A multiline text field for longer content.",
+    "number": "Numeric values (integers or decimals).",
+    "boolean": "A true/false value.",
+    "date": "A calendar date.",
+    "datetime": "A date with time.",
+    "slug": "A URL-safe string, often used for slugs.",
+    "url": "A web link field.",
+    "email": "An email address.",
+    "image": "Represents an image with options like cropping and hotspots.",
+    "file": "Represents a downloadable file (PDFs, documents, etc.).",
+    "array": "A list of items (can include primitives or objects). Example: Tags, carousel slides, or gallery images.",
+    "block": "Rich text editor for Portable Text content. Supports annotations, inline styles, and custom blocks.",
+    "reference": "Links to another document or object in the dataset.",
+    "geopoint": "Stores geographic coordinates (latitude and longitude).",
+    "color": "A color picker for choosing colors (requires the color input plugin).",
+    "crossDatasetReference": "Links to a document in a different Sanity dataset."
+  }

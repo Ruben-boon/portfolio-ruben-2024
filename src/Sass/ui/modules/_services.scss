@@ -1,49 +1,25 @@
-section.hero-module {
+section.services {
   max-width: $container;
   margin: 0 auto;
   display: block;
   padding-top: 64px;
-  border-left: 1px solid var(--bg-color3);
+  padding-bottom: 200px;
+
   @media (max-width: $screen-md-max) {
     margin-left: 16px;
     border: none;
     padding-top: 80px;
     overflow: hidden;
   }
-  .dot {
-    content: "";
-    height: 7px;
-    width: 7px;
-    position: absolute;
-    left: -3px;
-    top: 224px;
-    background-color: orangered;
-    border-radius: 50%;
-    @media (max-width: $screen-md-max) {
-      top: 200px;
-      left: 0;
-    }
-  }
-  .content-top {
-    max-width: $container;
-    z-index: 1;
-    position: relative;
-    padding: 2em;
-    .button-container {
-      margin-top: 2em;
-    }
-    @media (max-width: $screen-md-max) {
-      max-width: 100%;
-    }
-  }
   .side-image {
     position: absolute;
     width: 200px;
-    right: -18%;
-    top: 32%;
+    right: 0px;
+    top: 64px;
     transition: all 0.6s ease-out;
     will-change: transform;
     z-index: 1;
+    animation: upDown 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
     @media (max-width: $screen-md-max) {
       display: none;
     }
@@ -53,8 +29,8 @@ section.hero-module {
   }
   .main-image {
     position: relative;
-    width: 170%;
-    margin-left: -35%;
+    width: 180%;
+    margin-left: -40%;
     margin-top: -100px;
     min-height: 1375px;
     right: auto;
@@ -70,33 +46,20 @@ section.hero-module {
   }
 
   .content-bottom {
-    // display:none;
     position: relative;
-    margin-top: -1024px;
-    padding: 2em;
+    opacity: 0;
+    margin-top: -1224px;
+    padding: 2em 2em 2em 0em;
     @media (max-width: $screen-md-max) {
       margin-top: -600px;
-    }
-    &:before {
-      content: "";
-      height: 7px;
-      width: 7px;
-      position: absolute;
-      left: -3px;
-      top: calc(92px);
-      background-color: orangered;
-      border-radius: 50%;
-      @media (max-width: $screen-md-max) {
-        top: 70px;
-        left: 0;
-      }
+      padding: 2em;
     }
   }
   .icon-card {
-    // border: 1px solid var(--bg-color3);
     border-radius: 8px;
-    // padding: 1em;
     padding-top: 0;
+    border: 1px solid rgb(76, 76, 76);
+    padding:1em;
     * {
       font-size: 16px;
     }
@@ -118,3 +81,16 @@ section.hero-module {
     }
   }
 }
+
+@keyframes upDown {
+  0%,
+  100% {
+    top: 30px;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  50% {
+    top: 45px;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+}
+

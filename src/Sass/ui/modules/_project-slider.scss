@@ -1,3 +1,21 @@
 section.projects-slider-module {
   background-color: rgb(255, 255, 255);
+  border-radius: 16px 16px 0 0;
+  .title {
+    margin-left: 16.8%;
+    font-family: var(--epilogue);
+    margin-bottom: 1.5em;
+    font-weight: 500;
+    @media (max-width: $screen-xxxl-max) {
+      margin-left: 7.2%;
+    }
+  }
+  .card-container {
+    width:calc(100%);
+  }
+  .navigation-buttons {
+    max-width: $container-full;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }

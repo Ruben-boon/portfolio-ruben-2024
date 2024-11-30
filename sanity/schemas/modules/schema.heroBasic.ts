@@ -1,38 +1,35 @@
 import { defineField, defineType } from "sanity";
 import { CiTextAlignLeft } from "react-icons/ci";
 
-import { settingsSpacing } from "../objects/schema.settingsSpacing";
-
 export default defineType({
   name: "heroBasic",
   title: "Hero basic",
   icon: CiTextAlignLeft,
   type: "object",
-  groups: [{ name: "content", default: true }, { name: "settings" }],
   fields: [
     defineField({
       name: "text",
       title: "Text",
-      group: "content",
       type: "array",
       of: [{ type: "block" }],
     }),
     defineField({
-      name: "spacingSettings",
-      title: "Spacing Settings",
-      type: "object",
-      group: "settings",
-      options: {
-        columns: 2,
-      },
-      fields: [...settingsSpacing.fields],
+      name: 'ctas',
+      title: 'Buttons',
+      type: 'array',
+      of: [{ type: 'link' }],
+      validation: (Rule) => Rule.max(2).error('You can only add up to 2 buttons.'),
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      text: "text",
+      buttonLabel: "button.label"
+    },
+    prepare({ text, buttonLabel }) {
       return {
         title: "Hero basic",
       };
-    },
-  },
+    }
+  }
 });

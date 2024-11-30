@@ -19,6 +19,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@sanity/block-content-to-html": "^2.0.0",
     "@sanity/client": "^6.22.2",
+    "@sanity/color-input": "^4.0.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/ui": "^2.8.9",
     "@sanity/vision": "^3.61.0",

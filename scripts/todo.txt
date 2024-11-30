@@ -1,0 +1,16 @@
+create_module creates on comments like //bashcreateobj however it needs to have 0 spacing.
+Make it so that the space infront doesnt matter since when formatting it gets removed
+
+Next step:
+
+Add the module to modules/index.tsx 
+
+Add the option to add sanity field when creating the module.
+
+Expand the module with the correct module imports and types
+
+Currently i think the modules query imports all the top level queries automaticly, 
+only if we need special "deep" types should we change this, i think creating these manual
+is a fine way of handeling this
+
+

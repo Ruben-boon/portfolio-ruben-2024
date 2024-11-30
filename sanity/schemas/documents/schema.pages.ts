@@ -30,12 +30,12 @@ export default defineType({
       name: "modules",
       type: "array",
       of: [
-        { type: "hero" },
+        // SCHEMA_OBJ_MARKER
+{ type: "textImage" },
         { type: "heroBasic" },
+        { type: "services" },
         { type: "projectsSlider" },
         { type: "approach" },
-        { type: "textBasic" },
-        { type: "imageBasic" },
         { type: "projectMasonry" },
       ],
     }),

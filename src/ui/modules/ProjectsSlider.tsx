@@ -1,19 +1,18 @@
 "use client";
-import ScrollEffects from "../trash/scrollEffects";
-import { useRef } from "react";
-import ProjectCard from "@/ui/components/ProjectCard";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/effect-coverflow";
+import ProjectCard from "@/ui/components/ProjectCard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface SpacingSettings {
-  paddingTop?: number; // Optional paddingTop property
-  paddingBottom?: number; // Optional paddingBottom property
+  paddingTop?: number;
+  paddingBottom?: number;
 }
 
 export default function ProjectsSlider({
-  spacingSettings,
   title,
   projects,
 }: Partial<{
@@ -21,23 +20,34 @@ export default function ProjectsSlider({
   title: string;
   projects: any;
 }>) {
-  const cardContainerRef = useRef(null);
+  const swiperRef = useRef<any>(null); // Reference for Swiper instance
+
   return (
-    <section
-      className="projects-slider-module overflow-x-hidden pt-20 pb-20"
-    >
-      {title && <h2>{title}</h2>}
+    <section className="projects-slider-module overflow-x-hidden pt-20 pb-20">
+      {title && <h3 className="title">{title}</h3>}
       {projects && (
-        <div
-          className="card-container w-full max-w-screen-xl m-auto"
-          ref={cardContainerRef}
-        >
+        <div className="card-container">
           <Swiper
+            onSwiper={(swiper) => (swiperRef.current = swiper)} // Save instance to ref
+            grabCursor={true}
+            centeredSlides={true}
+            initialSlide={1}
             spaceBetween={30}
             slidesPerView={3}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: -100,
+              depth: 300,
+              modifier: 1,
+              slideShadows: false,
+            }}
             breakpoints={{
+              1536: {
+                slidesPerView: 4.5,
+                spaceBetween: 20
+              },
               768: {
-                slidesPerView: 3,
+                slidesPerView: 3.5,
               },
               0: {
                 slidesPerView: 1.3,
@@ -50,6 +60,20 @@ export default function ProjectsSlider({
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="navigation-buttons flex justify-end mb-4 p-10 gap-2">
+            <button
+              className="prev-button bg-gray-200 p-2 rounded-full"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <ChevronLeft/>
+            </button>
+            <button
+              className="next-button bg-gray-200 p-2 rounded-full"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <ChevronRight />
+            </button>
+          </div>
         </div>
       )}
     </section>
