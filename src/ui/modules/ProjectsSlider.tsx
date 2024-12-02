@@ -23,7 +23,7 @@ export default function ProjectsSlider({
   const swiperRef = useRef<any>(null); // Reference for Swiper instance
 
   return (
-    <section className="projects-slider-module overflow-x-hidden pt-20 pb-20">
+    <section className="projects-slider-module overflow-x-hidden pt-20">
       {title && <h3 className="title">{title}</h3>}
       {projects && (
         <div className="card-container">
@@ -44,7 +44,7 @@ export default function ProjectsSlider({
             breakpoints={{
               1536: {
                 slidesPerView: 4.5,
-                spaceBetween: 20
+                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 3.5,
@@ -54,9 +54,11 @@ export default function ProjectsSlider({
               },
             }}
           >
-            {projects.map((project: any) => (
+            {projects.map((project: any, index: number) => (
               <SwiperSlide key={project.internal.title}>
-                <ProjectCard {...project.internal} />
+                <div data-animate="fade-up" data-animate-delay={`${100 * (index + 1)}`}>
+                  <ProjectCard {...project.internal} />
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -65,7 +67,7 @@ export default function ProjectsSlider({
               className="prev-button bg-gray-200 p-2 rounded-full"
               onClick={() => swiperRef.current?.slidePrev()}
             >
-              <ChevronLeft/>
+              <ChevronLeft />
             </button>
             <button
               className="next-button bg-gray-200 p-2 rounded-full"

@@ -14,7 +14,7 @@
   transform: translateZ(0) scale(1);
 }
 [data-animate="fade-up"] {
-  transform: translate3d(0, 6px, 0);
+  transform: translate3d(0, 12px, 0);
   opacity: 0;
 }
 [data-animate="zoom-in"] {

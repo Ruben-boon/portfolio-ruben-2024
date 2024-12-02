@@ -6,25 +6,26 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { fetchSanity, groq } from "sanity/lib/fetch";
 
-import { Button } from "@/ui/utils/button";
+import { Button } from "@/ui/components/form/fields/button";
 import {
   Form,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
+
   FormLabel,
   FormMessage,
-} from "@/ui/utils/form";
-import { Input } from "@/ui/utils/input";
-import { Textarea } from "@/ui/utils/textarea";
+} from "@/ui/components/form/fields/form";
+import { Input } from "@/ui/components/form/fields/input";
+import { Textarea } from "@/ui/components/form/fields/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/ui/utils/select";
+} from "@/ui/components/form/fields/select";
 
 // Define types for our form structure
 type FieldType = "text" | "email" | "number" | "textarea" | "select";
@@ -87,7 +88,7 @@ export function DynamicShadcnForm({ formId }: { formId: string }) {
             fieldSchema = z.string();
         }
         if (field.required) {
-          fieldSchema = fieldSchema.refine((val) => val !== '', {
+          fieldSchema = fieldSchema.refine((val) => val !== "", {
             message: "This field is required",
           });
         }

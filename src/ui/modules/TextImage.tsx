@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image"; // Assuming Next.js Image component
 import { PortableText } from "@portabletext/react"; // For rendering block content
+import Img from "../components/Img";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function TextImage({
   image,
@@ -8,33 +11,72 @@ export default function TextImage({
   background,
   isMirrored,
 }: Partial<{
-  image: { url: string; alt?: string };
+  image: Sanity.Image;
   text: any; // Block content
   background: { hex: string };
   isMirrored: boolean;
 }>) {
-  console.log(background);
+  const dotGroupRef = useRef(null);
+  const isInView = useInView(dotGroupRef, { once: true });
 
   return (
-    <section className={`text-image ${isMirrored ? "mirrored" : ""}`}>
+    <section className="text-image">
       <div
-        className="content-wrapper"
+        className="content-wrapper grid grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-10"
         style={{ backgroundColor: background.hex || "transparent" }}
       >
         {text && (
-          <div className="text-wrapper">
+          <div
+            data-animate="fade-up"
+            data-animate-delay="300"
+            className={`w-full text-wrapper ${isMirrored ? "md:order-last" : "md:order-first"}`}
+          >
             <PortableText value={text} />
           </div>
         )}
         {image && (
-          <div className="image-wrapper">
-            <Image
-              src={image.url}
-              alt={image.alt || "Image"}
-              layout="responsive"
-              width={500}
-              height={300}
+          <div
+            className={`w-full image-wrapper ${isMirrored ? "md:order-first" : "md:order-last"}`}
+          >
+            <Img
+              image={image}
+              width={800}
+              height={600}
+              data-animate="zoom-in"
+              data-aniamte-delay="100"
             />
+            <motion.div ref={dotGroupRef} className="dot-group">
+              <motion.div
+                className="dot dot-large"
+                initial={{ x: 100, y: 100, opacity: 0 }}
+                animate={
+                  isInView
+                    ? { x: 0, y: 0, opacity: 1 }
+                    : { x: 100, y: 100, opacity: 0 }
+                }
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
+              <motion.div
+                className="dot dot-medium"
+                initial={{ x: -100, y: 150, opacity: 0 }}
+                animate={
+                  isInView
+                    ? { x: 0, y: 0, opacity: 0.5 }
+                    : { x: -100, y: 150, opacity: 0 }
+                }
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+              />
+              <motion.div
+                className="dot dot-small"
+                initial={{ x: 50, y: -100, opacity: 0 }}
+                animate={
+                  isInView
+                    ? { x: 0, y: 0, opacity: 0.2 }
+                    : { x: 50, y: -100, opacity: 0 }
+                }
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              />
+            </motion.div>
           </div>
         )}
       </div>
