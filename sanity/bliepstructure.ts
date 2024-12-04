@@ -4,6 +4,7 @@ import { VscLayout } from "react-icons/vsc";
 import { VscListFlat } from "react-icons/vsc";
 import { LuClipboardList } from "react-icons/lu";
 import { BsCollection } from "react-icons/bs";
+
 const structure = (S, _context) =>
   S.list()
     .title("Content")

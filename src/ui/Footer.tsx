@@ -1,6 +1,5 @@
 import { PortableText } from "@portabletext/react";
 import { getSite } from "../../sanity/lib/queries";
-import { DynamicShadcnForm } from "./components/form/DynamicShadForm";
 import { DynamicForm } from "./components/form/DynamicForm";
 
 // import DynamicForm from "./DynamicForm";
@@ -12,7 +11,7 @@ export default async function Footer() {
 
   return (
     <footer>
-      <div className="pt-16 mt-16 top-footer grid grid-cols-1 lg:grid-cols-2 gap-20 container-width">
+      <div className="pt-16 mt-16 top-footer grid grid-cols-1 lg:grid-cols-2 gap-4 container-xl-width">
         <div className="contact-text light-text flex justify-center flex-col">
           <h3 className="mt-0">Contact</h3>
           <p>

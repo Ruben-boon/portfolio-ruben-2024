@@ -57,7 +57,7 @@ const form = defineType({
               options: {
                 list: [
                   { title: '100%', value: 'w-full' },
-                  { title: '50%', value: 'w-1/2' },
+                  { title: '50%', value: 'w-half' },
                   { title: '33%', value: 'w-1/3' },
                 ],
                 layout: 'radio',

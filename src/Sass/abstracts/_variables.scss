@@ -12,9 +12,7 @@
 
   --bg-dark: #010101;
   --bg-dark-gray: #161616;
-  --bg-light: white
-
-  --button-primary-hover-color: black;
+  --bg-light: white --button-primary-hover-color: black;
   --button-primary-text-color: white;
 
   --button-secondary-color: red;
@@ -26,7 +24,6 @@
 
   --button-outline-color-light: rgb(255, 255, 255);
   --button-outline-text-color-light: rgb(255, 255, 255);
-
 }
 
 // ----------------------- SIZES ----------------------- //
@@ -50,4 +47,8 @@ $container-full: 1400px;
   max-width: $screen-md-max;
   margin-left: auto;
   margin-right: auto;
+}
+
+.w-half {
+  width: 50%;
 }

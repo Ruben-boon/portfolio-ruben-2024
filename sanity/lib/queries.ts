@@ -54,10 +54,9 @@ export async function getSite() {
       {
         tags: ["site"],
         // Add cache busting parameter
-        cache: "no-store",
-        next: {
-          revalidate: 0, // Disable cache in development
-        },
+        // next: {
+        //   revalidate: 0, // Disable cache in development
+        // },
       }
     );
 
@@ -67,11 +66,11 @@ export async function getSite() {
     }
 
     // Log the received data
-    console.log("Received site data:", {
-      hasLogo: !!site.logo,
-      hasNavigation: !!site.navigation,
-      navigationLinks: site.navigation?.links?.length,
-    });
+    // console.log("Received site data:", {
+    //   hasLogo: !!site.logo,
+    //   hasNavigation: !!site.navigation,
+    //   navigationLinks: site.navigation?.links?.length,
+    // });
 
     return site;
   } catch (error) {

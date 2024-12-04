@@ -39,7 +39,7 @@ async function getProjects() {
     }
   );
 
-  if (!projects || projects.length === 0) {
+  if (!projects) {
     throw new Error("No projects found in Sanity Studio.");
   }
 
