@@ -60,6 +60,7 @@ export default function Services({
               image={imageDark}
               alt="Afbeelding van de aarde"
               imageWidth={2000}
+              loading="eager"
             />
           )}
         </motion.div>
@@ -77,6 +78,8 @@ export default function Services({
               image={imageLight}
               alt="Afbeelding van een ruimteschip"
               imageWidth={400}
+              loading="eager"
+
             />
           )}
         </motion.div>
