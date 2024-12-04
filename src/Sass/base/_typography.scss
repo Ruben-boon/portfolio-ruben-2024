@@ -57,12 +57,9 @@ p {
 /* List styles */
 ul {
   font-family: var(--epilogue-variable);
-
   list-style: disc;
   font-size: clamp(14px, 2vw, 18px);
-
   color: var(--paragraph-color);
-
   li {
     font-family: var(--epilogue-variable);
     list-style-position: inside;
@@ -75,6 +72,13 @@ ul {
 a {
   font-family: var(--epilogue-variable);
   color: var(--link-color);
+}
+
+label {
+  color:white;
+  font-size: 14px!important ;
+  margin-bottom: 0.5em!important;
+  display: block;
 }
 
 /* Strong and emphasis styles */

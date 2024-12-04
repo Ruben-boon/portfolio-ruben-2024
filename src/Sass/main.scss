@@ -12,12 +12,16 @@
 @import "base/general";
 @import "base/buttons";
 
+//form
+@import "ui/form/input";
+@import "ui/form/textarea";
+@import "ui/form/form";
+
 
 // modules
 // SCSS_IMPORT_MARKER
 @import "ui/modules/text-image";
 @import "ui/modules/searchbar";
-@import "ui/modules/form";
 @import "ui/modules/toggle-switch";
 @import "ui/modules/services";
 @import "ui/modules/approach-card";
