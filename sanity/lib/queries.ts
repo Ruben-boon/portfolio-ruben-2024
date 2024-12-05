@@ -40,6 +40,7 @@ export async function getSite() {
 		  title,
 		  copyright,
 		  logo,
+      footerContent,
 		  navigation{
 			links[]{
 			  ${linkQuery}

@@ -111,7 +111,7 @@ export default function Services({
                     image={column.image}
                     alt={column.image.alt}
                     imageWidth={44}
-                    className="icon-card__icon pb-4"
+                    className="icon-card__icon"
                   />
                   <PortableText value={column.content} />
                 </motion.div>

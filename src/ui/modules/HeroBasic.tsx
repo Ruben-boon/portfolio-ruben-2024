@@ -27,7 +27,7 @@ export default function HeroBasic({
   };
 
   return (
-    <div className="sky" id="starSky">
+
       <motion.section
         className="hero-basic relative"
         ref={sectionRef}
@@ -98,6 +98,5 @@ export default function HeroBasic({
           )}
         </motion.div>
       </motion.section>
-    </div>
   );
 }

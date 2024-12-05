@@ -5,6 +5,7 @@ section.services {
   padding-top: 64px;
   padding-bottom: 200px;
   @media (max-width: $screen-md-max) {
+    padding-bottom: 80px;
     margin-left: 16px;
     border: none;
     padding-top: 80px;
@@ -52,7 +53,7 @@ section.services {
     margin-top: -1224px;
     padding: 2em 2em 2em 0em;
     @media (max-width: $screen-md-max) {
-      margin-top: -600px;
+      margin-top: -720px;
       padding: 2em;
     }
   }
@@ -70,7 +71,7 @@ section.services {
       height: 72px;
       object-fit: contain;
       @media (max-width: $screen-md-max) {
-        height: 32px;
+        height: 40px;
       }
     }
     @media (max-width: $screen-md-max) {

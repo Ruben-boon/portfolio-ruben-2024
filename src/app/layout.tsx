@@ -4,6 +4,7 @@ import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 import "./tailwind.css";
 import "../Sass/main.scss";
+import { getSite } from "sanity/lib/queries";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,17 +32,19 @@ export const metadata: Metadata = {
   description: "Websites from space",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { logo, navigation } = await getSite();
+
   return (
     <html lang="nl">
       <body
         className={`${geistSans.variable} ${epilogueVar.variable} ${geistMono.variable} ${ptSerif.variable} antialiased`}
       >
-        <Header />
+        <Header logo={logo} navigation={navigation} />
         {children}
         <Footer />
       </body>

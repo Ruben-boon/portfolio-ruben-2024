@@ -66,6 +66,13 @@ export default defineType({
 		},
 	}),
 	defineField({
+		name: "footerContent",
+		title: "Footer content",
+		type: "array",
+		group: 'footer',
+		of: [{ type: "block" }],
+	  }),
+	defineField({
 		name: 'socials',
 		title: 'Socials',
 		type: 'object',

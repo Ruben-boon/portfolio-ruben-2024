@@ -1,34 +1,38 @@
 header {
-  background: var(--bg-dark);
+  background: blue;
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.5s;
+  .main-logo {
+    width: 50px;
+    z-index: 10;
+    a,
+    img {
+      width: 100%;
+    }
+
+    @media (max-width: $screen-md-max) {
+      position: fixed;
+      top: 24px;
+      left: 20px;
+      width:44px;
+    }
+  }
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1em 0;
-    width: $container;
+    max-width: $container;
     margin-left: auto;
     margin-right: auto;
     top: 0;
     transition: 0.8s ease;
     @media (max-width: $screen-md-max) {
-      width: 100%;
-      height: 100dvh;
-      width: 100vw;
-      position: fixed;
       padding: 0;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      transform: translateX(-150%);
-      gap: 1em;
-      animation: all 0.3 ease;
-      &.open {
-        transform: translateX(-50%);
-      }
+      height: 0;
     }
     .main-nav {
       width: $container;
@@ -40,12 +44,25 @@ header {
       width: auto;
       top: 16px;
       @media (max-width: $screen-md-max) {
-        width: auto;
-        height: auto;
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: translate(0, 0);
+        height: calc(100dvh - 32px);
+        width: calc(100vw - 32px);
+        border-radius: 16px ;
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        padding: 0;
+        flex-direction: column;
+        background: var(--bg-dark);
+        background-color: rgb(238, 238, 238);
+        z-index: 1000;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1em;
+        transition: all 0.5s ease;
+        transform: translateX(-150%);
+        &.open {
+          transform: translateX(0);
+        }
         &__links {
           width: 100%;
           height: 100%;
@@ -72,22 +89,14 @@ header {
           color: var(--link-light);
           &.active {
             background: var(--bg-dark-gray);
+            @media (max-width: $screen-md-max) {
+              background: transparent;
+            }
+          }
+          @media (max-width: $screen-md-max) {
+            color: black;
           }
         }
-      }
-    }
-    .main-logo {
-      width: 50px;
-      z-index: 10;
-      a,
-      img {
-        width: 100%;
-      }
-
-      @media (max-width: $screen-md-max) {
-        position: fixed;
-        top: 16px;
-        left: 16px;
       }
     }
     .main-cross {
@@ -96,16 +105,16 @@ header {
       @media (max-width: $screen-md-max) {
         display: inline-block;
       }
-      position: fixed;
-      top: 32px;
+      position: absolute;
+      top: 16px;
       right: 20px;
-      width: 38px;
-      height: 38px;
+      width: 32px;
+      height: 32px;
 
       &__line1,
       &__line2 {
         position: absolute;
-        background-color: var(--link-color);
+        background-color: black;
         top: 0;
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
@@ -127,14 +136,28 @@ header {
 }
 
 .hamburger-button {
+  position: fixed;
   display: none;
+  top: 24px;
+  right: 24px;
+  padding: 1em;
+  border-radius: 40px;
+  background-color: black;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 9px;
+  z-index: 99;
+  &__line1,
+  &__line2 {
+    background-color: rgb(167, 167, 167);
+    height: 2px;
+    width: 18px;
+  }
+  &__line2 {
+    width: 12px;
+  }
   @media (max-width: $screen-md-max) {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    display: block;
-    height: 32px;
-    background-color: black;
-    width: 32px;
+    display: flex;
   }
 }

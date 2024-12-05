@@ -10,6 +10,7 @@ declare global {
       logo?: Sanity.Image;
       announcements?: Announcement[];
       ctas?: CTA[];
+      footerContent?: any;
       copyright?: any;
       headerMenu?: Navigation;
       footerMenu?: Navigation;

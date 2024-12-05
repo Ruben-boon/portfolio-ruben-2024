@@ -6,7 +6,13 @@ import { usePathname } from "next/navigation";
 import processUrl from "sanity/lib/processUrl";
 import { motion } from "framer-motion";
 
-export default function ClientNavLinks({ navigation }: { navigation: any }) {
+export default function ClientNavLinks({
+  navigation,
+  onClick,
+}: {
+  navigation: any;
+  onClick?: (e) => void; 
+}) {
   const pathname = usePathname();
   return (
     <>
@@ -22,6 +28,7 @@ export default function ClientNavLinks({ navigation }: { navigation: any }) {
             key={link._key}
             href={href}
             className={isActive ? "active" : ""}
+            onClick={onClick}
           >
             {link.label}
           </Link>

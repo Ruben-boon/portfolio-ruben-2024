@@ -4,6 +4,9 @@
   display: block;
   border-radius: 20px;
   position: relative;
+  @media (max-width: $screen-xxxl-max) {
+      height:520px;
+  }
   &__text {
     position: absolute;
     text-align: left;

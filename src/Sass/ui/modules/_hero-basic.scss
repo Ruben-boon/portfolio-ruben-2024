@@ -16,6 +16,10 @@
   background-repeat: repeat-y;
   @media (max-width: $screen-md-max) {
     padding-top: 80px;
+    transform: translate(0, 0);
+    left:0;
+    padding:32px 0 0 32px;
+    margin: 140px 24px 0 40px;
   }
   .project-header {
     padding-top: 2em;
@@ -28,7 +32,8 @@
     top: 104px;
     display: flex;
     @media (max-width: $screen-md-max) {
-      left: 0;
+      left: -20px;
+      top:80px;
     }
     .dot {
       background-color: orangered;

@@ -1,13 +1,21 @@
 .text-image {
   background-color: white;
-  padding:120px 0 ;
+  padding: 120px 0;
+  @media (max-width: $screen-xxxl-max) {
+    padding-top: 40px;
+  }
   .content-wrapper {
     display: flex;
     max-width: $container-full;
     margin-left: auto;
     margin-right: auto;
     border-radius: 32px;
-    padding:120px;
+    padding: 120px;
+    @media (max-width: $screen-xxxl-max) {
+      padding: 54px 32px 60px 32px;
+      flex-direction: column;
+      gap: 64px;
+    }
     &.mirrored {
       flex-direction: row-reverse;
     }
@@ -24,7 +32,8 @@
         top: -20px;
         display: flex;
         @media (max-width: $screen-md-max) {
-          left: 0;
+          right: 8px;
+          top:-8px;
         }
         .dot {
           background-color: orangered;
@@ -33,20 +42,32 @@
         .dot-large {
           height: 32px;
           width: 32px;
+          @media (max-width: $screen-md-max) {
+            height: 16px;
+            width: 16px;
+          }
         }
         .dot-medium {
           height: 24px;
           width: 24px;
           opacity: 50%;
-          margin-top: 50px;
+          margin-top: 25px;
           margin-left: -3px;
+          @media (max-width: $screen-md-max) {
+            height: 12px;
+            width: 12px;
+          }
         }
         .dot-small {
           height: 20px;
           width: 20px;
           opacity: 20%;
-          margin-top: 20px;
+          margin-top: 10px;
           margin-left: 6px;
+          @media (max-width: $screen-md-max) {
+            height: 10px;
+            width: 10px;
+          }
         }
       }
       img {

@@ -1,17 +1,27 @@
 footer {
+  background: var(--bg-dark);
   @media (max-width: $screen-md-max) {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 80px;
   }
   .top-footer {
-    // border-top: 1px solid var(--bg-color3);
+    * {
+      text-align: center;
+      color: white;
+    }
+    .dynamic-form {
+      * {
+        text-align: left;
+      }
+    }
+    .w-half {
+      width: 100%;
+    }
   }
 
   .bottom-footer {
     border-top: 1px solid var(--bg-color3);
     * {
       font-size: 16px;
+      color: var(--paragraph-light);
     }
   }
 }

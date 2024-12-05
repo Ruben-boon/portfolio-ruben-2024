@@ -24,11 +24,11 @@ interface SanityForm {
 }
 
 export function DynamicForm({ formId }: { formId: number }) {
-  const { 
-    register, 
-    handleSubmit, 
-    control, 
-    formState: { errors } 
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm();
 
   const [data, setData] = useState("");
@@ -39,7 +39,7 @@ export function DynamicForm({ formId }: { formId: number }) {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    
+
     fetchSanity<SanityForm | null>(groq`*[_type == "form"][0]`)
       .then((fetchedForm) => {
         if (fetchedForm) {
@@ -62,21 +62,23 @@ export function DynamicForm({ formId }: { formId: number }) {
     if (!field.name) return null;
     const commonProps = {
       ...register(field.name, {
-        required: field.required ? `${field.label || field.name} is verplicht` : false,
+        required: field.required
+          ? `${field.label || field.name} is verplicht`
+          : false,
       }),
-      placeholder: field.placeholder || field.label
+      placeholder: field.placeholder || field.label,
     };
-    const widthClass = field.width || 'w-full';
+    const widthClass = field.width || "w-full";
 
     switch (field.fieldType) {
-      case 'text':
+      case "text":
         return (
           <div key={field._key} className={`${widthClass}`}>
             {field.label && <Label htmlFor={field.name}>{field.label}</Label>}
-            <Input 
-              {...commonProps} 
-              type="text" 
-              className={`${errors[field.name] ? 'border-red-500' : ''}`}
+            <Input
+              {...commonProps}
+              type="text"
+              className={`${errors[field.name] ? "border-red-500" : ""}`}
             />
             {errors[field.name] && (
               <p className="text-red-500 text-sm mt-1">
@@ -86,14 +88,14 @@ export function DynamicForm({ formId }: { formId: number }) {
           </div>
         );
 
-      case 'email':
+      case "email":
         return (
           <div key={field._key} className={`mb-4 ${widthClass}`}>
             {field.label && <Label htmlFor={field.name}>{field.label}</Label>}
-            <Input 
-              {...commonProps} 
-              type="email" 
-              className={`${errors[field.name] ? 'border-red-500' : ''}`}
+            <Input
+              {...commonProps}
+              type="email"
+              className={`${errors[field.name] ? "border-red-500" : ""}`}
             />
             {errors[field.name] && (
               <p className="text-red-500 text-sm mt-1">
@@ -103,13 +105,13 @@ export function DynamicForm({ formId }: { formId: number }) {
           </div>
         );
 
-      case 'textarea':
+      case "textarea":
         return (
           <div key={field._key} className={`mb-4 ${widthClass}`}>
             {field.label && <Label htmlFor={field.name}>{field.label}</Label>}
-            <Textarea 
-              {...commonProps} 
-              className={`${errors[field.name] ? 'border-red-500' : ''}`}
+            <Textarea
+              {...commonProps}
+              className={`${errors[field.name] ? "border-red-500" : ""}`}
             />
             {errors[field.name] && (
               <p className="text-red-500 text-sm mt-1">
@@ -136,22 +138,16 @@ export function DynamicForm({ formId }: { formId: number }) {
   return (
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-2xl mb-4">{sanityForm.name}</h2>
-      <form 
-        onSubmit={handleSubmit(onSubmit)} 
-        className="flex flex-wrap gap-4"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-4">
         {sanityForm.fields
-          .filter(field => field.name) // Only render fields with a name
+          .filter((field) => field.name) 
           .map(renderField)}
-        
-        <Button 
-          type="submit" 
-          className="w-full mt-4"
-        >
+
+        <Button type="submit" className="w-full mt-4">
           Submit Form
         </Button>
       </form>
-      
+
       {data && (
         <div className="mt-4 p-2 bg-gray-100 rounded">
           <h3 className="font-bold">Submitted Data:</h3>
@@ -161,7 +157,3 @@ export function DynamicForm({ formId }: { formId: number }) {
     </div>
   );
 }
-
-
-
-

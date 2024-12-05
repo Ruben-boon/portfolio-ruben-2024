@@ -1,0 +1,37 @@
+/* Base styles for the button */
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 0.375rem; /* rounded-md */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    transition: background-color 0.2s, color 0.2s; /* transition-colors */
+    outline: none; /* focus-visible:outline-none */
+    background: rgba(255, 68, 0, 0.2);
+    color:white;
+  }
+  button:focus-visible {
+    outline: none;
+    ring: 1px solid transparent; /* focus-visible:ring-1 */
+  }
+  button:focus-visible {
+    box-shadow: 0 0 0 1px yellow;
+  }
+  button:disabled {
+    pointer-events: none;
+    opacity: 0.5; /* disabled:opacity-50 */
+  }
+  .dark button:focus-visible {
+    box-shadow: 0 0 0 1px red; /* dark:focus-visible:ring-neutral-300 */
+  }
+  
+  /* Variants */
+  button--default {
+    background-color: blue;
+    color: var(--neutral-50);
+  }
+  button,.sh{
+  }
+  

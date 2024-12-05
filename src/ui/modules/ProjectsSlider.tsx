@@ -30,9 +30,7 @@ export default function ProjectsSlider({
           <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)} // Save instance to ref
             grabCursor={true}
-            centeredSlides={true}
-            initialSlide={1}
-            spaceBetween={30}
+            spaceBetween={24}
             slidesPerView={3}
             coverflowEffect={{
               rotate: 0,
@@ -45,18 +43,24 @@ export default function ProjectsSlider({
               1536: {
                 slidesPerView: 4.5,
                 spaceBetween: 20,
+                initialSlide: 1,
+                centeredSlides: true,
               },
               768: {
                 slidesPerView: 3.5,
+                initialSlide: 0,
+                centeredSlides: false,
               },
               0: {
-                slidesPerView: 1.3,
+                slidesPerView: 1.2,
+                initialSlide: 0,
+                centeredSlides: false,
               },
             }}
           >
             {projects.map((project: any, index: number) => (
               <SwiperSlide key={project.internal.title}>
-                <div data-animate="fade-up" data-animate-delay={`${100 * (index + 1)}`}>
+                <div>
                   <ProjectCard {...project.internal} />
                 </div>
               </SwiperSlide>
