@@ -34,70 +34,62 @@ export default function HeroBasic({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="grouper">
+      <motion.div
+        className="dot-group"
+        style={{
+          y: dotGroupY,
+        }}
+      >
         <motion.div
-          className="dot-group"
-          style={{
-            y: dotGroupY,
-          }}
-        >
-          <motion.div
-            className="dot dot-large"
-            initial={{ x: 100, y: 100, opacity: 0 }}
-            animate={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
-          <motion.div
-            className="dot dot-medium"
-            initial={{ x: -100, y: 150, opacity: 0 }}
-            animate={{ x: 0, y: 0, opacity: 0.5 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          />
-          <motion.div
-            className="dot dot-small"
-            initial={{ x: 50, y: -100, opacity: 0 }}
-            animate={{ x: 0, y: 0, opacity: 0.2 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          />
-        </motion.div>
+          className="dot dot-large"
+          initial={{ x: 100, y: 100, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        />
+        <motion.div
+          className="dot dot-medium"
+          initial={{ x: -100, y: 150, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+        />
+        <motion.div
+          className="dot dot-small"
+          initial={{ x: 50, y: -100, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        />
+      </motion.div>
 
-        <motion.div
-          className="text-container light-text"
-          initial="hidden"
-          animate="visible"
-          variants={parentVariants}
-          transition={{ staggerChildren: 0.2 }}
-          style={{
-            opacity: textOpacity,
-            scale: textScale,
-          }}
-        >
-          {text && (
-            <motion.div
-              variants={parentVariants}
-              transition={{ duration: 0.4 }}
+      <motion.div
+        className="text-container light-text"
+        initial="hidden"
+        animate="visible"
+        variants={parentVariants}
+        transition={{ staggerChildren: 0.2 }}
+        style={{
+          opacity: textOpacity,
+          scale: textScale,
+        }}
+      >
+        {text && (
+          <motion.div variants={parentVariants} transition={{ duration: 0.4 }}>
+            <PortableText value={text} />
+          </motion.div>
+        )}
+        {ctas?.[0] && (
+          <motion.div variants={parentVariants} transition={{ duration: 0.4 }}>
+            <Link
+              className="btn-outline-light"
+              href={processUrl(ctas[0], {
+                base: false,
+                params: ctas[0],
+              })}
             >
-              <PortableText value={text} />
-            </motion.div>
-          )}
-          {ctas?.[0] && (
-            <motion.div
-              variants={parentVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <Link
-                className="btn-outline-light"
-                href={processUrl(ctas[0], {
-                  base: false,
-                  params: ctas[0],
-                })}
-              >
-                {ctas[0].label}
-              </Link>
-            </motion.div>
-          )}
-        </motion.div>
-      </div>
+              {ctas[0].label}
+            </Link>
+          </motion.div>
+        )}
+      </motion.div>
     </motion.section>
   );
 }

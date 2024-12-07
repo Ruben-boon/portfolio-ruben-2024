@@ -1,5 +1,6 @@
 .text-image {
   background-color: white;
+  overflow: hidden;
   padding: 120px 0;
   @media (max-width: $screen-xxxl-max) {
     padding-top: 40px;
