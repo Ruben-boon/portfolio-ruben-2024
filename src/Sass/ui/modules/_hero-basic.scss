@@ -1,6 +1,6 @@
 .hero-basic {
   @media (max-width: $screen-md-max) {
-    padding-top: 140px;
+    padding-top: 104px;
   }
   .grouper {
     // border-left: 8px dotted var(--bg-dark-gray);
@@ -23,7 +23,7 @@
       transform: translate(0, 0);
       left: 0;
       padding: 32px 0 0 32px;
-      margin: 0px 24px 0px 40px;
+      margin: 0px 24px 0px 32px;
     }
     .project-header {
       padding-top: 2em;

@@ -23,7 +23,7 @@ export default function ProjectsSlider({
   const swiperRef = useRef<any>(null); // Reference for Swiper instance
 
   return (
-    <section className="projects-slider-module overflow-x-hidden pt-20">
+    <section className="projects-slider-module overflow-x-hidden">
       {title && <h3 className="title">{title}</h3>}
       {projects && (
         <div className="card-container">

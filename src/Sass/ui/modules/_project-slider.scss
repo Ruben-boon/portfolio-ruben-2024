@@ -1,6 +1,7 @@
 section.projects-slider-module {
   border-radius: 16px 16px 0 0;
   background-color: white;
+  padding-top: 32px;
   @media (max-width: $screen-xxxl-max) {
     border-radius: 0;
   }
@@ -26,7 +27,7 @@ section.projects-slider-module {
   }
   .card-container {
     width: calc(100%);
-    > .swiper {
+    .swiper-slide:first-of-type {
       margin-left: 16px !important;
     }
   }
@@ -34,5 +35,12 @@ section.projects-slider-module {
     max-width: $container-full;
     margin-right: auto;
     margin-left: auto;
+    @media (max-width: $screen-xxxl-max) {
+      max-width: 100%;
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-top: 32px;
+      padding:0;
+    }
   }
 }
