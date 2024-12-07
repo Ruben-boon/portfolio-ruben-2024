@@ -18,8 +18,8 @@ export default function HeroBasic({
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: isMobile
-      ? ["start 0px", "end start"] // Mobile adjustment
-      : ["start 120px", "end end"], // Desktop default
+      ? ["start 240px", "end start"] // Mobile adjustment
+      : ["start 120px", "end start"], // Desktop default
   });
 
   const dotGroupY = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
