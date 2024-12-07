@@ -13,7 +13,7 @@ export default function HeroBasic({
   ctas: any;
 }>) {
   const sectionRef = useRef(null);
-  const isMobile = useMediaQuery({ query: "(min-width: 768x)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -22,9 +22,23 @@ export default function HeroBasic({
       : ["start 120px", "end start"], // Desktop default
   });
 
-  const dotGroupY = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const textScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
+  const dotGroupY = useTransform(
+    scrollYProgress,
+    isMobile ? [0, 0.3] : [0, 0.5],
+    isMobile ? [0, -100] : [0, -200]
+  );
+
+  const textOpacity = useTransform(
+    scrollYProgress,
+    isMobile ? [0, 0.5] : [0, 0.3],
+    [1, 0]
+  );
+
+  const textScale = useTransform(
+    scrollYProgress,
+    isMobile ? [0, 0.3] : [0, 0.3],
+    [1, 0.95]
+  );
 
   const parentVariants = {
     hidden: { opacity: 0, y: 20 },
