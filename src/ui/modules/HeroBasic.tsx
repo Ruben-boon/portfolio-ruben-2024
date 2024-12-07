@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
 import processUrl from "sanity/lib/processUrl";
+import { useMediaQuery } from "react-responsive";
 
 export default function HeroBasic({
   text,
@@ -12,9 +13,13 @@ export default function HeroBasic({
   ctas: any;
 }>) {
   const sectionRef = useRef(null);
+  const isMobile = useMediaQuery({ query: "(min-width: 768x)" });
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 120px", "end start"],
+    offset: isMobile
+      ? ["start 0px", "end start"] // Mobile adjustment
+      : ["start 120px", "end end"], // Desktop default
   });
 
   const dotGroupY = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
