@@ -44,9 +44,11 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${epilogueVar.variable} ${geistMono.variable} ${ptSerif.variable} antialiased`}
       >
-        <Header logo={logo} navigation={navigation} />
-        {children}
-        <Footer />
+        <main>
+          <Header logo={logo} navigation={navigation} />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );

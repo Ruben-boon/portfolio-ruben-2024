@@ -27,14 +27,14 @@ export default function HeroBasic({
   };
 
   return (
-
-      <motion.section
-        className="hero-basic relative"
-        ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
+    <motion.section
+      className="hero-basic relative"
+      ref={sectionRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="grouper">
         <motion.div
           className="dot-group"
           style={{
@@ -97,6 +97,7 @@ export default function HeroBasic({
             </motion.div>
           )}
         </motion.div>
-      </motion.section>
+      </div>
+    </motion.section>
   );
 }

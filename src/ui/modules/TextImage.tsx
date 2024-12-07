@@ -22,7 +22,7 @@ export default function TextImage({
   return (
     <section className="text-image">
       <div
-        className="content-wrapper grid grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-10"
+        className="content-wrapper grid grid-cols-1 lg:grid-cols-2 lg:grid-flow gap-10"
         style={{ backgroundColor: background.hex || "transparent" }}
       >
         {text && (
