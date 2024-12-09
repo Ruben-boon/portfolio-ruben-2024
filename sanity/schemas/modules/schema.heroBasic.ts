@@ -20,6 +20,18 @@ export default defineType({
       of: [{ type: 'link' }],
       validation: (Rule) => Rule.max(2).error('You can only add up to 2 buttons.'),
     }),
+    defineField({
+      name: 'lightMode',
+      title: 'Light Mode',
+      type: 'boolean',
+      description: 'Enable light mode for this hero section'
+    }),
+    defineField({
+      name: 'dots',
+      title: 'Show Dots',
+      type: 'boolean',
+      description: 'Display decorative dots in the background'
+    })
   ],
   preview: {
     select: {

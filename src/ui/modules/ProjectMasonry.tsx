@@ -21,11 +21,9 @@ export interface ProjectMasonryModule extends Module<"projectMasonry"> {
 }
 
 export default function ProjectMasonry({
-  spacingSettings,
   columns,
   projects = [],
 }: {
-  spacingSettings?: SpacingSettings;
   columns?: string;
   projects: Project[];
 }) {
@@ -36,10 +34,6 @@ export default function ProjectMasonry({
   return (
     <section
       className="project-masonry"
-      style={{
-        paddingTop: spacingSettings?.paddingTop || 0,
-        paddingBottom: spacingSettings?.paddingBottom || 0,
-      }}
     >
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry gutter={"1.5rem"}>

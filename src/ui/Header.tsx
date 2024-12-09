@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Img from "@/ui/components/Img";
 import ClientNavLinks from "@/ui/components/ClientNavLinks";
@@ -67,7 +66,7 @@ export default function Header({ logo, navigation }) {
     <>
       <header
         className={`
-          ${!isMobile && scrolled ? "bg-dark" : "bg-transparent"} 
+
           ${!isMobile && !visible ? "-translate-y-full" : "translate-y-0"}
         `}
       >

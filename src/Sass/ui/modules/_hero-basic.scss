@@ -1,11 +1,17 @@
 .hero-basic {
+  &.light-background{
+    background-color: white;
+    .grouper {
+      background-size:0px;
+    }
+  }
   @media (max-width: $screen-md-max) {
     padding-top: 104px;
   }
   .grouper {
     // border-left: 8px dotted var(--bg-dark-gray);
-    padding: 40px 40px;
-    margin: 64px 23px 0 23px;
+    padding: 80px 40px;
+    margin: 0px 23px 0 23px;
     position: relative;
     max-width: $container;
     left: 50%;
@@ -33,7 +39,7 @@
       width: auto;
       position: absolute;
       left: -18px;
-      top: 104px;
+      top: 184px;
       display: flex;
       @media (max-width: $screen-md-max) {
         left: -20px;

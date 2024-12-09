@@ -1,12 +1,12 @@
 header {
-  background-color: black;
+  background-color: var(--bg-dark-gray);
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 100;
   transition: all 0.5s;
   .main-logo {
-    width: 50px;
+    width: 44px;
     z-index: 10;
     a,
     img {
@@ -24,7 +24,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 0;
+    padding: 0.5em 0;
     max-width: $container;
     margin-left: auto;
     margin-right: auto;
@@ -42,7 +42,6 @@ header {
       gap: 4em;
       z-index: 10;
       width: auto;
-      top: 16px;
       @media (max-width: $screen-md-max) {
         height: calc(100dvh - 32px);
         width: calc(100vw - 32px);
