@@ -1,15 +1,15 @@
 footer {
-  background: var(--bg-dark);
-  background: rgb(239, 239, 239);
+  background-color: #f77769;
+
   .top-footer {
     * {
       @media (max-width: $screen-md-max) {
         text-align: center;
       }
-      // color: white;
+      color: black;
     }
     .dynamic-form {
-  background-color: #f7a900;
+
       * {
         text-align: left;
       }
@@ -23,7 +23,7 @@ footer {
     border-top: 1px solid var(--bg-color3);
     * {
       font-size: 16px;
-      color: var(--paragraph-light);
+      color:black;
     }
   }
 }

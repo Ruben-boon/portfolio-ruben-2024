@@ -10,17 +10,17 @@ export default async function Footer() {
 
   return (
     <footer>
-      <div className="pt-16 top-footer grid grid-cols-12 gap-4 container-xl-width place-items-center">
-        <div className="dynamic-form col-span-12 md:col-span-12 contact-form flex justify-center">
-          <DynamicForm formId={1} />
-        </div>
-        <div className="col-span-12 md:col-span-12 contact-text  flex justify-center flex-col">
-          <PortableText value={footerContent} />
-        </div>
+    <div className="pt-16 top-footer grid grid-cols-12 gap-4 container-xl-width place-items-center">
+      <div className="col-span-12 md:col-span-6 contact-text  flex justify-center flex-col">
+        <PortableText value={footerContent} />
       </div>
-      <div className="bottom-footer container-width text-center p-6 pb-2">
-        <PortableText value={copyright} />
+      <div className="dynamic-form col-span-12 md:col-span-6 contact-form flex justify-center">
+        <DynamicForm formId={1} />
       </div>
-    </footer>
+    </div>
+    <div className="bottom-footer container-width text-center p-6 pb-2">
+      <PortableText value={copyright} />
+    </div>
+   </footer>
   );
 }
