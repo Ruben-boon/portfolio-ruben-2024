@@ -10,7 +10,7 @@ header {
     .header-container {
       .main-nav {
         @media (max-width: $screen-md-max) {
-          background-color: rgb(238, 238, 238);
+          // background-color: rgb(238, 238, 238);
         }
 
         &__links {
@@ -62,16 +62,17 @@ header {
       z-index: 10;
       width: auto;
       @media (max-width: $screen-md-max) {
-        height: calc(100dvh - 32px);
-        width: calc(100vw - 32px);
-        border-radius: 16px;
+        height: calc(100dvh - 0px);
+        width: calc(100vw - 0px);
+        // border-radius: 16px;
         position: fixed;
-        top: 16px;
-        left: 16px;
+        top: 0px;
+        left: 0px;
         padding: 0;
         flex-direction: column;
         background: var(--bg-dark);
-        background-color: rgb(238, 238, 238);
+        // background-color: rgb(238, 238, 238);
+          background: #f7a900;
         z-index: 1000;
         justify-content: center;
         align-items: flex-start;
@@ -124,9 +125,9 @@ header {
         display: inline-block;
       }
       position: absolute;
-      top: 16px;
-      right: 20px;
-      width: 32px;
+      top: 30px;
+      right: 34px;
+      width: 30px;
       height: 32px;
 
       &__line1,
@@ -160,7 +161,7 @@ header {
   right: 24px;
   padding: 1em;
   border-radius: 40px;
-  background-color: black;
+  background-color: var(--bg-dark-gray);
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -169,6 +170,8 @@ header {
   &__line1,
   &__line2 {
     background-color: rgb(216, 216, 216);
+    // background: #f7a900;
+
     height: 2px;
     width: 18px;
   }

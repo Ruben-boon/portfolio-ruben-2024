@@ -30,7 +30,7 @@
       padding-top: 80px;
       transform: translate(0, 0);
       left: 0;
-      padding: 32px 0 0 32px;
+      padding: 24px 0 0 24px;
       margin: 0px 24px 0px 32px;
     }
     .project-header {
@@ -44,11 +44,12 @@
       top: 184px;
       display: flex;
       @media (max-width: $screen-md-max) {
-        left: -20px;
+        left: -24px;
         top: 80px;
       }
       .dot {
-        background-color: #004EF7;
+        background: #f7a900;
+
         border-radius: 50%;
       }
       .dot-large {

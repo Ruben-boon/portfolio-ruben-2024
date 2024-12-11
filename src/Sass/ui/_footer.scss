@@ -1,13 +1,15 @@
 footer {
   background: var(--bg-dark);
+  background: rgb(239, 239, 239);
   .top-footer {
     * {
       @media (max-width: $screen-md-max) {
         text-align: center;
       }
-      color: white;
+      // color: white;
     }
     .dynamic-form {
+  background-color: #f7a900;
       * {
         text-align: left;
       }
