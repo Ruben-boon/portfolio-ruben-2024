@@ -1,10 +1,29 @@
 header {
-  background-color: var(--bg-dark-gray);
+  background-color: white;
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 100;
   transition: all 0.5s;
+  &.dark-mode {
+    background: var(--bg-dark);
+    .header-container {
+      .main-nav {
+        @media (max-width: $screen-md-max) {
+          background-color: rgb(238, 238, 238);
+        }
+
+        &__links {
+          a {
+            color: white;
+            &.active {
+              background: var(--bg-dark-gray);
+            }
+          }
+        }
+      }
+    }
+  }
   .main-logo {
     width: 44px;
     z-index: 10;
@@ -17,7 +36,7 @@ header {
       position: fixed;
       top: 24px;
       left: 20px;
-      width:44px;
+      width: 44px;
     }
   }
   .header-container {
@@ -45,7 +64,7 @@ header {
       @media (max-width: $screen-md-max) {
         height: calc(100dvh - 32px);
         width: calc(100vw - 32px);
-        border-radius: 16px ;
+        border-radius: 16px;
         position: fixed;
         top: 16px;
         left: 16px;
@@ -85,9 +104,9 @@ header {
           position: relative;
           display: inline-block;
           z-index: 3;
-          color: var(--link-light);
+          color: var(--bg-dark-gray);
           &.active {
-            background: var(--bg-dark-gray);
+            background: var(--bg-gray);
             @media (max-width: $screen-md-max) {
               background: transparent;
             }

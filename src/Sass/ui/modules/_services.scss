@@ -1,3 +1,7 @@
+.dark-bg {
+  background-color: var(--bg-dark);
+
+}
 section.services {
   max-width: $container;
   margin: 0 auto;
@@ -60,7 +64,7 @@ section.services {
   .icon-card {
     border-radius: 8px;
     padding-top: 0;
-    border: 1px solid #232630;
+    border: 1px solid gray;
     backdrop-filter: blur(10px);
     padding: 1em 1.5em;
     * {

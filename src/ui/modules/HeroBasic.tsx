@@ -23,7 +23,7 @@ export default function HeroBasic({
     target: sectionRef,
     offset: isMobile
       ? ["start start", "end start"] // Mobile adjustment
-      : ["start 120px", "end start"], // Desktop default
+      : ["start 80px", "end start"], // Desktop default
   });
 
   const dotGroupY = useTransform(
@@ -50,14 +50,15 @@ export default function HeroBasic({
   };
 
   return (
-    <motion.section
+    <section
       className={`hero-basic relative ${lightMode === true ? "light-background" : ""}`}
-      ref={sectionRef}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
+ 
     >
-      <div className="grouper">
+      <motion.div className="grouper"
+           ref={sectionRef}
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.5 }}>
         {dots && (
           <motion.div
             className="dot-group"
@@ -121,7 +122,7 @@ export default function HeroBasic({
             </motion.div>
           )}
         </motion.div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }

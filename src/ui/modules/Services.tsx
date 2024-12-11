@@ -39,7 +39,7 @@ export default function Services({
   const isColumnsInView = useInView(columnsRef, { once: true, amount: 0.5 });
 
   return (
-    <>
+    <div className="dark-bg">
       <motion.section
         ref={sectionRef}
         className="services relative"
@@ -120,6 +120,6 @@ export default function Services({
           )}
         </motion.div>
       </motion.section>
-    </>
+    </div>
   );
 }

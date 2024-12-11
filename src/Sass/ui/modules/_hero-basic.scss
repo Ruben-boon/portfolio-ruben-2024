@@ -1,4 +1,6 @@
 .hero-basic {
+  background: var(--bg-dark);
+  transition: color 0s;
   &.light-background{
     background-color: white;
     .grouper {
@@ -46,7 +48,7 @@
         top: 80px;
       }
       .dot {
-        background-color: orangered;
+        background-color: #004EF7;
         border-radius: 50%;
       }
       .dot-large {

@@ -65,9 +65,7 @@ export default function Header({ logo, navigation }) {
   return (
     <>
       <header
-        className={`
-
-          ${!isMobile && !visible ? "-translate-y-full" : "translate-y-0"}
+        className={` ${!isMobile && !visible ? "-translate-y-full" : "translate-y-0"}
         `}
       >
         <div className="header-container">

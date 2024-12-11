@@ -2,10 +2,11 @@ section.projects-slider-module {
   border-radius: 16px 16px 0 0;
   background-color: white;
   padding-top: 120px;
-  @media (max-width: $screen-xxxl-max) {
-    border-radius: 0;
-    padding-top: 32px;
-  }
+  padding-bottom: 40px;
+  // @media (max-width: $screen-xxxl-max) {
+  //   border-radius: 0;
+  //   padding-top: 32px;
+  // }
   .title {
     margin-left: 16.8%;
     font-family: var(--epilogue);
