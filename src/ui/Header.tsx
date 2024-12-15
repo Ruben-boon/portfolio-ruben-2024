@@ -84,15 +84,19 @@ export default function Header({ logo, navigation }) {
               />
             </div>
             <div className="main-cross" onClick={handleCloseMobileMenu}>
-              <div className="main-cross__line1"></div>
-              <div className="main-cross__line2"></div>
+              <div className="main-cross__inner">
+                <div className="main-cross__line1"></div>
+                <div className="main-cross__line2"></div>
+              </div>
             </div>
           </nav>
         </div>
       </header>
       <div className="hamburger-button" onClick={handleOpenMobileMenu}>
-        <div className="hamburger-button__line1"></div>
-        <div className="hamburger-button__line2"></div>
+        <div className="hamburger-button__inner">
+          <div className="hamburger-button__line1"></div>
+          <div className="hamburger-button__line2"></div>
+        </div>
       </div>
     </>
   );

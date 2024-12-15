@@ -14,7 +14,6 @@ header {
             &.active {
               background: var(--bg-dark-gray);
             }
-           
           }
         }
       }
@@ -87,7 +86,7 @@ header {
           background-color: transparent !important;
           a {
             font-size: 22px;
-            color:white!important;
+            color: white !important;
             text-align: center;
           }
         }
@@ -121,16 +120,20 @@ header {
     }
     .main-cross {
       display: none;
-
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding:2em;
       @media (max-width: $screen-md-max) {
         display: inline-block;
       }
-      position: absolute;
-      top: 30px;
-      right: 34px;
-      width: 30px;
-      height: 32px;
-
+      &__inner {
+        width: 30px;
+        height: 32px;
+        position: relative;
+        right:0;
+        top:0;
+      }
       &__line1,
       &__line2 {
         position: absolute;
@@ -139,7 +142,6 @@ header {
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
       }
-
       &__line1 {
         width: 3px;
         height: 100%;
@@ -155,19 +157,30 @@ header {
   }
 }
 
+.expand-click {
+}
 .hamburger-button {
   position: fixed;
-  display: none;
-  top: 24px;
-  right: 24px;
-  padding: 1em;
-  border-radius: 40px;
-  background-color: var(--bg-dark-gray);
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 9px;
+  top: 0px;
+  right: 0px;
   z-index: 99;
+  display: none;
+  padding: 24px;
+  @media (max-width: $screen-md-max) {
+    display: inline-block;
+  }
+  &__inner {
+    padding: 1em;
+    border-radius: 40px;
+    background-color: var(--bg-dark-gray);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 9px;
+    @media (max-width: $screen-md-max) {
+      display: flex;
+    }
+  }
   &__line1,
   &__line2 {
     background-color: rgb(216, 216, 216);
@@ -178,8 +191,5 @@ header {
   }
   &__line2 {
     width: 12px;
-  }
-  @media (max-width: $screen-md-max) {
-    display: flex;
   }
 }
