@@ -28,7 +28,7 @@ export default function Services({
   const contentBottomScale = useTransform(scrollYProgress, [0, 0.3], [0.9, 1]);
 
   const mainImageScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
-  const mainImageOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const mainImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const mainImageY = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   const sideImageY = useTransform(scrollYProgress, [0, 1], [0, 360]);
@@ -79,7 +79,6 @@ export default function Services({
               alt="Afbeelding van een ruimteschip"
               imageWidth={400}
               loading="eager"
-
             />
           )}
         </motion.div>
@@ -90,9 +89,11 @@ export default function Services({
             scale: contentBottomScale,
           }}
         >
-          {contentBottom && <PortableText value={contentBottom} />}
+          <div className="content-group">
+            {contentBottom && <PortableText value={contentBottom} />}
+          </div>
           {columns && (
-            <div 
+            <div
               ref={columnsRef}
               className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-7"
             >
@@ -101,10 +102,14 @@ export default function Services({
                   key={index}
                   className="icon-card"
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isColumnsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: isColumnsInView ? 0.2 + index * 0.15 : 0 
+                  animate={
+                    isColumnsInView
+                      ? { opacity: 1, y: 0 }
+                      : { opacity: 0, y: 20 }
+                  }
+                  transition={{
+                    duration: 0.5,
+                    delay: isColumnsInView ? 0.3 + index * 0.15 : 0,
                   }}
                 >
                   <Img
@@ -113,7 +118,9 @@ export default function Services({
                     imageWidth={44}
                     className="icon-card__icon"
                   />
-                  <PortableText value={column.content} />
+                  <div className="text-container">
+                    <PortableText value={column.content} />
+                  </div>
                 </motion.div>
               ))}
             </div>

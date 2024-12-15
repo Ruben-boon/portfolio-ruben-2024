@@ -112,10 +112,7 @@ export default function HeroBasic({
             >
               <Link
                 className="btn-outline-light"
-                href={processUrl(ctas[0], {
-                  base: false,
-                  params: ctas[0],
-                })}
+                href="/projecten"
               >
                 {ctas[0].label}
               </Link>

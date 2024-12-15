@@ -9,8 +9,8 @@ button {
     font-weight: 500; /* font-medium */
     transition: background-color 0.2s, color 0.2s; /* transition-colors */
     outline: none; /* focus-visible:outline-none */
-    background:black ;
-    color:white!important;
+    background:var(--primary-color) ;
+    color:black!important;
   }
   button:focus-visible {
     outline: none;

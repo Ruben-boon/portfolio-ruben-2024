@@ -53,9 +53,13 @@
     );
     z-index: 1;
   }
-  &:hover img {
-    transform: scale(1.04);
+  //desktop only (reverse media query
+  @media (min-width: $screen-md-max) {
+    &:hover img {
+      transform: scale(1.04);
+    }
   }
+
   img {
     transition: all 0.3s ease-in-out;
     object-fit: cover;

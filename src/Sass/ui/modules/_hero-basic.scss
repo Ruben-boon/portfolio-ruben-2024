@@ -1,10 +1,11 @@
 .hero-basic {
   background: var(--bg-dark);
   transition: color 0s;
-  &.light-background{
-    background-color: white;
+
+  &.light-background {
+    background-color: transparent;
     .grouper {
-      background-size:0px;
+      background-size: 0px;
     }
   }
   @media (max-width: $screen-md-max) {

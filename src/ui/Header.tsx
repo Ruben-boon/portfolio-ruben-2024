@@ -3,8 +3,10 @@ import Link from "next/link";
 import Img from "@/ui/components/Img";
 import ClientNavLinks from "@/ui/components/ClientNavLinks";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header({ logo, navigation }) {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -65,7 +67,7 @@ export default function Header({ logo, navigation }) {
   return (
     <>
       <header
-        className={` ${!isMobile && !visible ? "-translate-y-full" : "translate-y-0"}
+        className={` ${pathname == "/" ? "dark-mode" : ""} ${!isMobile && !visible ? "-translate-y-full" : "translate-y-0"}
         `}
       >
         <div className="header-container">
