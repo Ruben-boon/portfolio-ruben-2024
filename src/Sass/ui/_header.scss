@@ -8,10 +8,6 @@ header {
     background: var(--bg-dark);
     .header-container {
       .main-nav {
-        @media (max-width: $screen-md-max) {
-          // background-color: rgb(238, 238, 238);
-        }
-
         &__links {
           a {
             color: white;
@@ -31,7 +27,6 @@ header {
     img {
       width: 100%;
     }
-
     @media (max-width: $screen-md-max) {
       position: fixed;
       top: 24px;
@@ -72,7 +67,7 @@ header {
         flex-direction: column;
         background: var(--bg-dark);
         // background-color: rgb(238, 238, 238);
-        background: var(--primary-color);
+        // background: var(--primary-color);
         z-index: 1000;
         justify-content: center;
         align-items: flex-start;
@@ -88,9 +83,12 @@ header {
           flex-direction: column;
           justify-content: center;
           border-radius: 0 !important;
+          align-items: center;
           background-color: transparent !important;
           a {
             font-size: 22px;
+            color:white!important;
+            text-align: center;
           }
         }
       }
@@ -136,7 +134,7 @@ header {
       &__line1,
       &__line2 {
         position: absolute;
-        background-color: black;
+        background-color: white;
         top: 0;
         left: 50%;
         transform: translateX(-50%) rotate(45deg);

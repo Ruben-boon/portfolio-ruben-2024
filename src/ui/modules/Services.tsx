@@ -24,8 +24,8 @@ export default function Services({
     target: sectionRef,
     offset: ["start center", "end start"],
   });
-  const contentBottomOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const contentBottomScale = useTransform(scrollYProgress, [0, 0.3], [0.9, 1]);
+  const contentBottomOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
+  const contentBottomScale = useTransform(scrollYProgress, [0, 0.15], [0.9, 1]);
 
   const mainImageScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
   const mainImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);

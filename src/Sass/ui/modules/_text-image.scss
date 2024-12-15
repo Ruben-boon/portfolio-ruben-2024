@@ -3,6 +3,10 @@
   @media (max-width: $screen-xxxl-max) {
     padding-top: 40px;
   }
+  @media (max-width: $screen-md-max) {
+    padding-top: 16px;
+    padding-bottom: 64px;
+  }
   .content-wrapper {
     display: flex;
     max-width: $container-full;
@@ -12,13 +16,14 @@
     padding-top: 40px;
     padding-bottom: 120px;
     // margin: 0 16px;
-    
+
     @media (max-width: $screen-xxxl-max) {
       // padding: 80px 32px 80px 32px;
       gap: 64px;
     }
     @media (max-width: $screen-md-max) {
       flex-direction: column;
+      padding: 16px;
     }
     &.mirrored {
       flex-direction: row-reverse;

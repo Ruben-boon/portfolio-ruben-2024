@@ -46,6 +46,11 @@ export default function ProjectsSlider({
                 initialSlide: 1,
                 centeredSlides: true,
               },
+              1280: {
+                slidesPerView: 3.5,
+                initialSlide: 1,
+                centeredSlides: true,
+              },
               768: {
                 slidesPerView: 3.5,
                 initialSlide: 0,

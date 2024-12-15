@@ -37,6 +37,9 @@ export default defineType({
         { type: "projectsSlider" },
         { type: "approach" },
         { type: "projectMasonry" },
+        { type: "textBasic" },
+        { type: "imageBasic" },
+
       ],
     }),
   ],

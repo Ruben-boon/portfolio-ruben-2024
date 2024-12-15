@@ -1,7 +1,6 @@
 .hero-basic {
   background: var(--bg-dark);
   transition: color 0s;
-
   &.light-background {
     background-color: transparent;
     .grouper {
@@ -13,7 +12,7 @@
   }
   .grouper {
     // border-left: 8px dotted var(--bg-dark-gray);
-    padding: 80px 40px;
+    padding: 80px 40px 40px 40px;
     margin: 0px 23px 0 23px;
     position: relative;
     max-width: $container;
@@ -42,7 +41,7 @@
       width: auto;
       position: absolute;
       left: -18px;
-      top: 184px;
+      top: 144px;
       display: flex;
       @media (max-width: $screen-md-max) {
         left: -24px;
