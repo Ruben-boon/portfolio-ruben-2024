@@ -1,21 +1,27 @@
 "use client";
+import { useState } from "react";
 import { SanityDocument } from "next-sanity";
 import ProjectCard from "@/ui/components/ProjectCard";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-interface SpacingSettings {
-  paddingTop?: number;
-  paddingBottom?: number;
+interface Tag {
+  _id: string;
+  label: string;
 }
 
 export interface Project {
   title: string;
+  tags?: {
+    selectedTags?: Tag[];
+  };
 }
+
 export interface Module<T extends string = string> extends SanityDocument {
   _type: T;
   _key: string;
   projects?: Project[];
 }
+
 export interface ProjectMasonryModule extends Module<"projectMasonry"> {
   projects: Project[];
 }
@@ -27,21 +33,55 @@ export default function ProjectMasonry({
   columns?: string;
   projects: Project[];
 }) {
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
+  // Extract all unique tags from projects
+  const allTags = Array.from(
+    new Set(
+      projects.flatMap(
+        (project) => project.tags?.selectedTags?.map((tag) => tag.label) || []
+      )
+    )
+  );
+
+  // Filter projects based on selected tag
+  const filteredProjects = selectedTag
+    ? projects.filter((project) =>
+        project.tags?.selectedTags?.some((tag) => tag.label === selectedTag)
+      )
+    : projects;
+
   if (projects.length === 0) {
     return <div>Loading projects...</div>;
   }
 
   return (
-    <section
-      className="project-masonry"
-    >
+    <section className="project-masonry">
+      <div className="filter-container">
+        {/* Clear filter button */}
+        <button
+          key="all"
+          onClick={() => setSelectedTag(null)}
+          className={`filter-button all-projects btn-outline ${selectedTag === null ? "active" : ""}`}
+        >
+          All Projects
+        </button>
+        {allTags.map((tag) => (
+          <button
+            key={tag}
+            onClick={() => setSelectedTag(tag)}
+            className={`filter-button btn-outline ${selectedTag === tag ? "active" : ""}`}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry gutter={"1.5rem"}>
-          {projects.map((project: Project, index: number) => {
-            // const delay = 100 * (index + 1);
-
-            return <ProjectCard {...project} key={project.title} />;
-          })}
+          {filteredProjects.map((project: Project, index: number) => (
+            <ProjectCard {...project} key={project.title} />
+          ))}
         </Masonry>
       </ResponsiveMasonry>
     </section>

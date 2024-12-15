@@ -42,12 +42,17 @@
 .btn-outline {
   @extend .btn;
   background-color: transparent;
-  border: 1px solid var(--button-outline-color);
+  border: 1px solid transparent;
   color:  var(--button-outline-color);
-
+  font-family: var(--epilogue-variable);
+  font-size: 16px;
   &:hover {
-    background-color:  var(--button-outline-color);
-    color: var(--button-outline-text-color);
+    text-decoration: underline;
+  }
+  &.active {
+    background:var(--bg-gray);
+    color:black!important;
+    border:1px solid transparent;
   }
 }
 
@@ -55,6 +60,7 @@
   @extend .btn;
   background-color: transparent;
   border: 1px solid var(--button-outline-color-light);
+  color:  var(--button-outline-color);
   &:hover {
     background-color:  var(--button-outline-text-color-light);
     color: var(--button-outline-text-color);

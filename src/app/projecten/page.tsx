@@ -28,10 +28,20 @@ async function getProjects() {
   const projects = await fetchSanity(
     groq`*[_type == 'post']{
       ...,
-    modules[]{ ${modulesQuery} },
+      modules[]{ ${modulesQuery} },
       metadata {
         ...,
         'ogimage': image.asset->url
+      },
+      tags {
+        'collection': collection->{
+          _id,
+          label
+        },
+        'selectedTags': selectedTags[]->{
+          _id,
+          label
+        }
       }
     }`,
     {
@@ -45,7 +55,6 @@ async function getProjects() {
 
   return projects;
 }
-
 
 export default async function Projecten() {
   const page = await getPage();

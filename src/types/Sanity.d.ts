@@ -19,6 +19,16 @@ declare global {
       navigation: Navigation;
     }>;
 
+    type TagCollection = {
+      _id: string;
+      name: string;
+      collectionType: "tags";
+    };
+    
+    type Tag = {
+      _id: string;
+      name: string;
+    };
    
 
     type Navigation = SanityDocument<{
@@ -53,6 +63,16 @@ declare global {
       headings?: { style: string; text: string }[];
       categories: BlogCategory[];
       publishDate: string;
+      tags: {
+        collection?: {
+          _ref: string;
+          _type: "reference";
+        };
+        selectedTags: Array<{
+          _ref: string;
+          _type: "reference";
+        }>;
+      };
     };
 
     type BlogCategory = SanityDocument<{

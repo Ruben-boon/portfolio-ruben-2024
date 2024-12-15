@@ -1,6 +1,21 @@
 .project-masonry {
-    padding: 0 16px 120px 16px;
-    max-width: $container-full ;
+  padding: 0 16px 120px 16px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .filter-container {
+    display: flex;
+    max-width: $container;
     margin-left: auto;
     margin-right: auto;
+    gap: 1em;
+    margin-bottom: 2em;
+    @media (max-width: $screen-md-max) {
+      flex-direction: column;
+    }
+
+    .filter-button {
+      padding: 1em;
+    }
+  }
 }

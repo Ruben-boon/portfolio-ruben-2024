@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react"; // For rendering block conte
 import Img from "../components/Img";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Typewriter from "../components/TypWriter";
 
 export default function TextImage({
   image,
@@ -31,6 +32,19 @@ export default function TextImage({
             data-animate-delay="300"
             className={`w-full text-wrapper ${isMirrored ? "md:order-last" : "md:order-first"}`}
           >
+            <h3>
+              Gemakkelijk zelf jouw 
+              <Typewriter
+                words={[
+                  " website aanpassen",
+                  " applicatie tweaken",
+                  " webshop updaten",
+                ]}
+                typingSpeed={100}
+                deletingSpeed={50}
+                pauseBetween={1500}
+              />
+            </h3>
             <PortableText value={text} />
           </div>
         )}

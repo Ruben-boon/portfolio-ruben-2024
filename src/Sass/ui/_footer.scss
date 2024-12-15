@@ -17,6 +17,9 @@ footer {
     .dynamic-form {
       * {
         text-align: left;
+        input,textarea {
+          color:black;
+        }
       }
     }
     .w-half {
