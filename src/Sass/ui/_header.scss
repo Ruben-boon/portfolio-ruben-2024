@@ -5,7 +5,8 @@ header {
   z-index: 100;
   transition: transform 0.5s;
   &.dark-mode {
-    background: var(--bg-dark);
+    background: linear-gradient(to right, #01070c, #060E16);
+
     .header-container {
       .main-nav {
         &__links {

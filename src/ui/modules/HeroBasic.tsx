@@ -52,13 +52,14 @@ export default function HeroBasic({
   return (
     <section
       className={`hero-basic relative ${lightMode === true ? "light-background" : ""}`}
- 
     >
-      <motion.div className="grouper"
-           ref={sectionRef}
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ duration: 0.5 }}>
+      <motion.div
+        className="grouper"
+        ref={sectionRef}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         {dots && (
           <motion.div
             className="dot-group"
@@ -110,10 +111,7 @@ export default function HeroBasic({
               variants={parentVariants}
               transition={{ duration: 0.4 }}
             >
-              <Link
-                className="btn-outline-light"
-                href="/projecten"
-              >
+              <Link className="btn-outline-light" href="/projecten">
                 {ctas[0].label}
               </Link>
             </motion.div>
