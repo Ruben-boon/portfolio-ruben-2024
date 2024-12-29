@@ -32,7 +32,7 @@ export default function TextImage({
             data-animate-delay="300"
             className={`w-full text-wrapper ${isMirrored ? "md:order-last" : "md:order-first"}`}
           >
-            <h3>
+            <h3 className="typewriter-text">
               Gemakkelijk zelf jouw 
               <Typewriter
                 words={[

@@ -14,7 +14,7 @@
     margin-right: auto;
     border-radius: 32px;
     padding-top: 40px;
-    padding-bottom: 120px;
+    padding-bottom: 140px;
     // margin: 0 16px;
 
     @media (max-width: $screen-xxxl-max) {
@@ -27,6 +27,9 @@
     }
     &.mirrored {
       flex-direction: row-reverse;
+    }
+    .typewriter-text{
+      min-height:76px;
     }
     .image-wrapper {
       display: flex;
