@@ -28,8 +28,8 @@ const ptSerif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Camonauts",
-  description: "Websites from space",
+  title: "Ruben Boon",
+  description: "Freelance Webdeveloper / Webdesigner",
 };
 
 export default async function RootLayout({

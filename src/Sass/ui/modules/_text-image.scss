@@ -1,5 +1,7 @@
 .text-image {
   overflow: hidden;
+  background: #f6f6f8;
+
   @media (max-width: $screen-xxxl-max) {
     padding-top: 40px;
   }

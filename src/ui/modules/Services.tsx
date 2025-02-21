@@ -24,8 +24,6 @@ export default function Services({
     target: sectionRef,
     offset: ["start center", "end start"],
   });
-  const contentBottomOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
-  const contentBottomScale = useTransform(scrollYProgress, [0, 0.15], [0.9, 1]);
 
   const mainImageScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
   const mainImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
@@ -82,16 +80,15 @@ export default function Services({
             />
           )}
         </motion.div>
-        <motion.div
-          className="content-bottom light-text"
-          style={{
-            opacity: contentBottomOpacity,
-            scale: contentBottomScale,
-          }}
-        >
-          <div className="content-group">
+        <div className="content-bottom light-text">
+          <motion.div
+            className="content-group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
             {contentBottom && <PortableText value={contentBottom} />}
-          </div>
+          </motion.div>
           {columns && (
             <div
               ref={columnsRef}
@@ -104,7 +101,7 @@ export default function Services({
                   initial={{ opacity: 0, y: 20 }}
                   animate={
                     isColumnsInView
-                      ? { opacity: 1, y: 0 }
+                      ? { opacity: 0.8, y: 0 }
                       : { opacity: 0, y: 20 }
                   }
                   transition={{
@@ -125,7 +122,7 @@ export default function Services({
               ))}
             </div>
           )}
-        </motion.div>
+        </div>
       </motion.section>
     </div>
   );

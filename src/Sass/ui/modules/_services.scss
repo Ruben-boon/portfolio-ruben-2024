@@ -1,7 +1,8 @@
 .dark-bg {
-  background: linear-gradient(to right, #01070c, #060e16);
+  // background: linear-gradient(to right, #01070c, #060e16);
   width: 100%;
   position: relative;
+  overflow: hidden;
   &:before {
     content: "";
     position: absolute;
@@ -124,7 +125,7 @@ section.services {
   }
   .content-bottom {
     position: relative;
-    opacity: 0;
+    opacity: 1;
     margin-top: -1224px;
     padding: 2em 2em 2em 0em;
     .content-group {

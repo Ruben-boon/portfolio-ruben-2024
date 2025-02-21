@@ -1,77 +1,17 @@
 .hero-basic {
-  background: linear-gradient(to right, #01070c, #060e16);
   transition: color 0s;
   position: relative;
-  &:before {
+
+  &:has(.dot-group):before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    //stars
-    background-image: radial-gradient(
-        0.5px 0.5px at 213px 167px,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.8px 0.8px at 87px 423px,
-        rgba(255, 255, 255, 0.2) 50%,
-        transparent
-      ),
-      radial-gradient(
-        1px 1px at 342px 187px,
-        rgba(255, 255, 255, 0.35) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.4px 0.4px at 156px 293px,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.7px 0.7px at 432px 127px,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.6px 0.6px at 267px 346px,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.9px 0.9px at 178px 234px,
-        rgba(255, 255, 255, 0.4) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.5px 0.5px at 389px 412px,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.8px 0.8px at 123px 321px,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.6px 0.6px at 456px 276px,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.7px 0.7px at 245px 178px,
-        rgba(255, 255, 255, 0.3) 50%,
-        transparent
-      ),
-      radial-gradient(
-        0.4px 0.4px at 367px 345px,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent
-      );
-    background-repeat: repeat;
-    background-size: 500px 500px;
+    width: 160%;
+    height: 100vh;
+    background: linear-gradient(35deg, #000000, #000106 30%, #234366);
+    z-index: -1;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
   }
   &.light-background {
     background: transparent;

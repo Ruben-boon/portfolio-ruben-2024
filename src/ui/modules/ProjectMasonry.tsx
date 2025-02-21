@@ -57,25 +57,7 @@ export default function ProjectMasonry({
 
   return (
     <section className="project-masonry">
-      <div className="filter-container">
-        {/* Clear filter button */}
-        <button
-          key="all"
-          onClick={() => setSelectedTag(null)}
-          className={`filter-button all-projects btn-outline ${selectedTag === null ? "active" : ""}`}
-        >
-          All Projects
-        </button>
-        {allTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setSelectedTag(tag)}
-            className={`filter-button btn-outline ${selectedTag === tag ? "active" : ""}`}
-          >
-            {tag}
-          </button>
-        ))}
-      </div>
+
 
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry gutter={"1.5rem"}>
