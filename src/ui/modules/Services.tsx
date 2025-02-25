@@ -106,7 +106,7 @@ export default function Services({
                   }
                   transition={{
                     duration: 0.5,
-                    delay: isColumnsInView ? 0.3 + index * 0.15 : 0,
+                    delay: isColumnsInView ? 0.2 + index * 0.25 : 0,
                   }}
                 >
                   <Img

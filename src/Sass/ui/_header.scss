@@ -172,9 +172,9 @@ header {
     display: inline-block;
   }
   &__inner {
-    padding: 1em;
+    padding: 1.3em 1.25em;
     border-radius: 40px;
-    background-color: var(--bg-dark-gray);
+    background-color: var(--bg-gray);
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -185,7 +185,7 @@ header {
   }
   &__line1,
   &__line2 {
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(0, 0, 0);
     // background: #f7a900;
 
     height: 2px;

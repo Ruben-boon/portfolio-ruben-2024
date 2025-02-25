@@ -79,9 +79,9 @@ section.services {
   margin: 0 auto;
   display: block;
   padding-top: 64px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   //stars
-  
+
   @media (max-width: $screen-md-max) {
     padding-bottom: 80px;
     margin-left: 16px;
@@ -133,19 +133,27 @@ section.services {
     }
     @media (max-width: $screen-md-max) {
       margin-top: -720px;
-      padding: 2em 16px 2em 0em;
+      padding: 2em 1.6em 2em 0.6em;
     }
   }
   .icon-card {
     border-radius: 8px;
     padding-top: 0;
     backdrop-filter: blur(10px);
-    background-color: rgb(6 13 22);
+    background-color: #081018;
+    border: 1px solid #14273b;
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    img {
+      @media (max-width: $screen-md-max) {
+        height:100%;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
     @media (max-width: $screen-md-max) {
       align-items: flex-start;
     }
@@ -171,6 +179,9 @@ section.services {
       font-weight: 500;
       font-family: var(--epilogue-variable);
       color: var(--primary-color);
+      @media (max-width: $screen-md-max) {
+        margin-top: 4px;
+      }
     }
     p {
       font-size: 16px;

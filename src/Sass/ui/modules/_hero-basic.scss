@@ -22,6 +22,7 @@
   }
   @media (max-width: $screen-md-max) {
     padding-top: 104px;
+    overflow: visible;
   }
   .grouper {
     // border-left: 8px dotted var(--bg-dark-gray);
