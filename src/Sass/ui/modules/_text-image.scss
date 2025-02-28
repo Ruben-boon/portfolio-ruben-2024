@@ -1,13 +1,10 @@
 .text-image {
   overflow: hidden;
   background: #f6f6f8;
-
-  @media (max-width: $screen-xxxl-max) {
-    padding-top: 40px;
-  }
+  padding-bottom: 100px;
   @media (max-width: $screen-md-max) {
-    padding-top: 16px;
-    padding-bottom: 64px;
+    padding:24px;
+    padding-bottom: 40px;
   }
   .content-wrapper {
     display: flex;
@@ -15,18 +12,15 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 32px;
-    padding-top: 40px;
-    padding-bottom: 140px;
-    // margin: 0 16px;
-
+    padding: 104px 64px;
+    background: #e4e7eb;
     @media (max-width: $screen-xxxl-max) {
-      // padding: 80px 32px 80px 32px;
-      gap: 64px;
     }
     @media (max-width: $screen-md-max) {
       flex-direction: column;
-      padding: 16px;
+      padding: 26px;
     }
+  
     &.mirrored {
       flex-direction: row-reverse;
     }

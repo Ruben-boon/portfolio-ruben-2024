@@ -1,8 +1,8 @@
 .hero-basic {
   transition: color 0s;
   position: relative;
-  width:100%;
-  overflow: hidden;;
+  width: 100%;
+  overflow: hidden;
   &:has(.dot-group):before {
     content: "";
     position: fixed;
@@ -13,6 +13,46 @@
     background: linear-gradient(35deg, #000000, #000106 30%, #234366);
     z-index: -1;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
+  }
+  //simple hero
+  &:not(:has(.dot-group)) {
+    .grouper {
+      padding: 0;
+      margin: 0;
+      h1,
+      h2,
+      h3,
+      h4 {
+        position: relative;
+        width: fit-content;
+        margin-bottom: 64px;
+        margin-top: 64px;
+        margin-left: 32px;
+        &:before {
+          content:"";
+          position: absolute;
+          top:50%;
+          left:-32px;
+          height:100%;
+          width:150%;
+          background-color: #f77768;
+          opacity: 0.1;
+        }
+        &:after {
+          content:"";
+          position: absolute;
+          top:112.5%;
+          left:-64px;
+          height:1px;
+          width:100%;
+          background-color: black;
+        }
+      }
+      p {
+        padding-left: 54px;
+        padding-right: 54px;
+      }
+    }
   }
   &.light-background {
     background: transparent;
@@ -44,8 +84,12 @@
       padding-top: 80px;
       transform: translate(0, 0);
       left: 0;
-      padding: 24px 0 0 24px;
+      padding: 24px 0 0 0px;
       margin: 0px 24px 0px 32px;
+      &:has(.dot-group) {
+        padding: 24px 0 0 24px;
+        margin: 24px;
+      }
     }
     .project-header {
       padding-top: 2em;

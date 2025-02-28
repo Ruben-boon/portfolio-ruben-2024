@@ -30,15 +30,10 @@ export default function ProjectsSlider({
           <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)} // Save instance to ref
             grabCursor={true}
-            spaceBetween={24}
             slidesPerView={3}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: -100,
-              depth: 300,
-              modifier: 1,
-              slideShadows: false,
-            }}
+            touchEventsTarget="wrapper" // This ensures touch events work on the entire swiper area
+            touchRatio={1} // Ensures responsive touch movement
+            longSwipesRatio={0.2} // Makes shorter swipes register as navigation
             breakpoints={{
               1536: {
                 slidesPerView: 4.5,
@@ -48,16 +43,19 @@ export default function ProjectsSlider({
               },
               1280: {
                 slidesPerView: 4,
+                spaceBetween: 20,
                 initialSlide: 1,
                 centeredSlides: true,
               },
               768: {
                 slidesPerView: 3.5,
+                spaceBetween: 20,
                 initialSlide: 0,
                 centeredSlides: false,
               },
               0: {
                 slidesPerView: 1.2,
+                spaceBetween: 15,
                 initialSlide: 0,
                 centeredSlides: false,
               },
@@ -65,7 +63,7 @@ export default function ProjectsSlider({
           >
             {projects.map((project: any, index: number) => (
               <SwiperSlide key={project.internal.title}>
-                <div>
+                <div className="w-full h-full touch-action-pan-y">
                   <ProjectCard {...project.internal} />
                 </div>
               </SwiperSlide>

@@ -1,5 +1,5 @@
-import { fetchSanity, groq } from "../../../../sanity/lib/fetch";
-import { modulesQuery } from "../../../../sanity/lib/queries";
+import { fetchSanity, groq } from "@/../sanity/lib/fetch";
+import { modulesQuery } from "@/../sanity/lib/queries";
 import Modules from "@/ui/modules";
 
 interface Tag {

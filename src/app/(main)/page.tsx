@@ -1,6 +1,6 @@
 import Modules from "@/ui/modules";
-import { modulesQuery } from "../../sanity/lib/queries";
-import { fetchSanity, groq } from "../../sanity/lib/fetch";
+import { modulesQuery } from "@/../sanity/lib/queries";
+import { fetchSanity, groq } from "@/../sanity/lib/fetch";
 
 async function getPage() {
   const page = await fetchSanity<Sanity.Page>(

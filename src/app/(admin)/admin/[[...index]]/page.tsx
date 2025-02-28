@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-import config from '../../../../sanity.config'
+import config from '@/../sanity.config'
 
 const NextStudio = dynamic(() => import('next-sanity/studio').then((mod) => mod.NextStudio), 
   { 

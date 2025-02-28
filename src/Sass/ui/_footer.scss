@@ -2,10 +2,13 @@ footer {
   background-color: var(--bg-dark);
 
   .top-footer {
-    * {
-      @media (max-width: $screen-md-max) {
-        text-align: center;
+    @media (max-width: $screen-md-max) {
+      place-items: start;
+      .contact-text {
+        padding-left: 24px;
       }
+    }
+    * {
       color: white;
       h1,
       h2,
@@ -13,17 +16,23 @@ footer {
       h4 {
         color: var(--primary-color);
       }
+      p {
+        @media (max-width: $screen-md-max) {
+          margin-bottom: 8px;
+        }
+      }
     }
     .dynamic-form {
       * {
         text-align: left;
-        input,textarea {
-          color:black;
+        input,
+        textarea {
+          color: black;
         }
       }
     }
     .w-half {
-      width: 100%;
+      width: calc((100% - 1rem) / 2);
     }
   }
 
