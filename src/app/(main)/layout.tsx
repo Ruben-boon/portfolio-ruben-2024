@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 import "./tailwind.css";
-import "@/sass/main.scss";
+import "../../sass/main.scss";
 import { getSite } from "sanity/lib/queries";
 
 const geistSans = localFont({
