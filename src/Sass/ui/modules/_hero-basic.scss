@@ -131,6 +131,13 @@
       }
     }
   }
+  .text-container {
+    h1 {
+      @media (max-width: $screen-md-max) {
+       font-size: 38px;
+      }
+    }
+  }
 }
 
 .star {
