@@ -6,30 +6,11 @@ import TextBasic from "./TextBasic";
 import ImageBasic from "./ImageBasic";
 import HeroBasic from "./HeroBasic";
 import dynamic from "next/dynamic";
-import { ProjectMasonryModule } from "./ProjectMasonry";
+import ProjectMasonry, { ProjectMasonryModule } from "./ProjectMasonry";
 import Services from "./Services";
 //MODULE_IMPORT_MARKER
 import TextImage from "./TextImage";
 
-const ProjectMasonry = dynamic(() => import("./ProjectMasonry"), {
-  loading: () => (
-    <div className="placeholder-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-[64px] gap-6">
-      <div
-        className="placeholder-card"
-        style={{ height: 400, width: "100%", backgroundColor: "black" }}
-      ></div>
-      <div
-        className="placeholder-card"
-        style={{ height: 400, width: "100%", backgroundColor: "black" }}
-      ></div>
-      <div
-        className="placeholder-card"
-        style={{ height: 400, width: "100%", backgroundColor: "black" }}
-      ></div>
-    </div>
-  ),
-  ssr: false,
-});
 
 // Define module types for each component
 interface ProjectsSliderModule extends Sanity.Module {
