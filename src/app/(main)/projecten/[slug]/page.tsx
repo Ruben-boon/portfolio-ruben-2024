@@ -1,6 +1,8 @@
 import { fetchSanity, groq } from "@/../sanity/lib/fetch";
 import { modulesQuery } from "@/../sanity/lib/queries";
 import Modules from "@/ui/modules";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 interface Tag {
   _id: string;
@@ -9,6 +11,7 @@ interface Tag {
 
 interface RawProjectPage {
   title?: string;
+  excerpt?: string;
   modules?: any[];
   tags?: {
     selectedTags?: Tag[];
@@ -20,16 +23,34 @@ interface RawProjectPage {
 
 interface ProjectPage {
   title: string;
+  excerpt: string;
   modules: any[];
   tags: {
     selectedTags: Tag[];
   };
 }
 
+function Breadcrumbs({ title, slug }: { title: string; slug: string }) {
+  return (
+    <div className="breadcrumbs flex items-center text-sm mb-6">
+      {/* <Link href="/" className="hover:underline">
+        Home
+      </Link>
+      <ChevronRight className="mx-2" size={16} /> */}
+      <Link href="/projecten" className="hover:underline">
+        Projecten
+      </Link>
+      <ChevronRight className="mx-2" size={16} />
+      <span className="text-gray-600">{title}</span>
+    </div>
+  );
+}
+
 async function getProjectPage(slug: string): Promise<ProjectPage> {
   const projectPage = await fetchSanity<RawProjectPage>(
     groq`*[_type == 'post' && metadata.slug.current == $slug][0]{
       title,
+      excerpt,
       'modules': modules[]{ ${modulesQuery} },
       'tags': {
         'selectedTags': tags.selectedTags[] {
@@ -53,6 +74,7 @@ async function getProjectPage(slug: string): Promise<ProjectPage> {
 
   return {
     title: projectPage.title || '',
+    excerpt: projectPage.excerpt || '',
     modules: projectPage.modules || [],
     tags: {
       selectedTags: projectPage.tags?.selectedTags || []
@@ -70,14 +92,23 @@ export default async function ProjectSingle({
 
   return (
     <section className="project-single">
-      <div className="project-single-header container-width">
-        <h2 data-animate="fade-up">{page.title}</h2>
-        {tags.map((tag) => (
-          <div key={tag._id} className="tag">
-            {tag.label}
+      <div className="container-width">
+        <Breadcrumbs title={page.title} slug={params.slug} />
+        
+        <div className="project-single-header">
+          <h2 data-animate="fade-up">{page.title}</h2>
+          {page.excerpt && (
+            <p className="text-lg mb-4">{page.excerpt}</p>
+          )}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {tags.map((tag) => (
+              <div key={tag._id} className="tag">
+                {tag.label}
+              </div>
+            ))}
           </div>
-        ))}
-        <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
       </div>
       <Modules modules={page.modules} />
     </section>

@@ -11,6 +11,13 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
+      description: "A short summary of the post that appears in previews",
+      validation: Rule => Rule.max(300),
+    }),
+    defineField({
       name: "thumbnail",
       title: "Thumbnail image",
       type: "image",
@@ -103,7 +110,8 @@ export default defineType({
   preview: {
     select: {
       title: "title",
-      media: "mainImage",
+      subtitle: "excerpt",
+      media: "thumbnail",
     },
   },
 });

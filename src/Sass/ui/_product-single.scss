@@ -1,14 +1,20 @@
 .project-single {
   padding-bottom: 80px;
   @media (max-width: $screen-md-max) {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 24px;
+    margin-right: 24px;
     padding-top: 64px;
   }
   .project-single-header {
     position: relative;
-    padding-top: 3em;
+    padding-top: 1.5em;
     padding-bottom: 1em;
     border-left: 1px solid var(--bg-color3);
+  }
+  .breadcrumbs {
+    margin-top: 40px;
+    * {
+      font-size: 16px;
+    }
   }
 }

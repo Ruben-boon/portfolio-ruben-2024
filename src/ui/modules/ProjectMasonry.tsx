@@ -54,6 +54,7 @@ export default function ProjectMasonry({
   if (projects.length === 0) {
     return <div>Loading projects...</div>;
   }
+  console.log("fetched project", projects);
 
   return (
     <section className="project-masonry">

@@ -1,5 +1,5 @@
 footer {
-  background-color: var(--bg-dark);
+  background: #f6f6f8;
 
   .top-footer {
     @media (max-width: $screen-md-max) {
@@ -9,7 +9,7 @@ footer {
       }
     }
     * {
-      color: white;
+      color: black;
       h1,
       h2,
       h3,
@@ -34,13 +34,17 @@ footer {
     .w-half {
       width: calc((100% - 1rem) / 2);
     }
+    button {
+      color:white!important;
+    }
   }
 
   .bottom-footer {
     border-top: 1px solid var(--bg-color3);
     * {
       font-size: 16px;
-      color: white;
+      color: black;
     }
+   
   }
 }

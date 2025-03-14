@@ -31,6 +31,17 @@ const ProjectMasonry = dynamic(() => import("./ProjectMasonry"), {
   ssr: false,
 });
 
+// Define module types for each component
+interface ProjectsSliderModule extends Sanity.Module {
+  _type: "projectsSlider";
+  title?: string;
+  projects?: any[];
+  spacingSettings?: {
+    paddingTop?: number;
+    paddingBottom?: number;
+  };
+}
+
 export default function Modules({
   modules,
 }: {
@@ -73,16 +84,26 @@ export default function Modules({
       }
     };
   }, []);
+  
   return (
     <>
       {modules?.map((module) => {
         switch (module._type) {
           // MODULE_CASE_MARKER
-case "textImage": return <TextImage {...module} key={module._key} />;
+          case "textImage":
+            return <TextImage {...module} key={module._key} />;
           case "services":
             return <Services {...module} key={module._key} />;
           case "projectsSlider":
-            return <ProjectsSlider {...module} key={module._key} />;
+            const sliderModule = module as ProjectsSliderModule;
+            return (
+              <ProjectsSlider
+                title={sliderModule.title}
+                projects={sliderModule.projects}
+                spacingSettings={sliderModule.spacingSettings}
+                key={sliderModule._key}
+              />
+            );
           case "approach":
             return <Approach {...module} key={module._key} />;
           case "textBasic":

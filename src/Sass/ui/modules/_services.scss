@@ -107,8 +107,8 @@ section.services {
   }
   .main-image {
     position: relative;
-    width: 180%;
-    margin-left: -40%;
+    width: 200%;
+    margin-left: -50%;
     margin-top: -100px;
     min-height: 1375px;
     right: auto;
@@ -140,13 +140,17 @@ section.services {
     border-radius: 8px;
     padding-top: 0;
     backdrop-filter: blur(10px);
-    background-color: #081018;
-    border: 1px solid #14273b;
+    background-color: #3341523e;
+    // border: 1px solid rgb(255, 255, 255);
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
+    .text-container {
+      p {
+        color:white;
+      }
+    }
     img {
       @media (max-width: $screen-md-max) {
         height:100%;
@@ -160,7 +164,10 @@ section.services {
     //reverse media query
     @media (min-width: $screen-md-max) {
       &:hover {
-        outline: 1px solid rgb(240, 240, 240);
+        background:var(--primary-color);
+        * {
+          color:white;
+        }
       }
     }
 

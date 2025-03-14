@@ -16,13 +16,25 @@ const navigationQuery = groq`
 `;
 
 const projectQuery = groq`
+	_id,
 	title,
+	excerpt,
 	thumbnail,
 	body,
 	mainImage,
 	secondaryImage,
 	secondaryText,
-	metadata
+	metadata {
+		publishedAt,
+		slug
+	},
+	tags {
+		collection,
+		'selectedTags': selectedTags[]->{
+			_id,
+			label
+		}
+	}
 `;
 export async function getSite() {
   // Add console logging to debug the fetch request
@@ -104,11 +116,10 @@ export const modulesQuery = groq`
 	},
 	_type == 'blog-list' => { predefinedFilters[]-> },
 	_type == 'projectsSlider' => {
-    projects[]{
-      ${linkQuery},
-      internal->{ ${projectQuery} }
-    }
-  },
+		projects[]->{
+			${projectQuery}
+		}
+},
 
 	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
 	_type == 'creative-module' => {

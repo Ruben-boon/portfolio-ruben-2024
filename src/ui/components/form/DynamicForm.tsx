@@ -137,7 +137,6 @@ export function DynamicForm({ formId }: { formId: number }) {
 
   return (
     <div className="max-w-md mx-auto p-4">
-      <h2 className="text-2xl mb-4">{sanityForm.name}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-4">
         {sanityForm.fields
           .filter((field) => field.name) 

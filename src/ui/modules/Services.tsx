@@ -26,7 +26,7 @@ export default function Services({
   });
 
   const mainImageScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
-  const mainImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const mainImageOpacity = useTransform(scrollYProgress, [0, 0.3], [0.7, 0]);
   const mainImageY = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   const sideImageY = useTransform(scrollYProgress, [0, 1], [0, 360]);
