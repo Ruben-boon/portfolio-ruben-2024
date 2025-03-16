@@ -153,13 +153,14 @@ section.services {
     }
     img {
       @media (max-width: $screen-md-max) {
-        height:100%;
+        height:44px;
         margin-top: auto;
         margin-bottom: auto;
       }
     }
     @media (max-width: $screen-md-max) {
       align-items: flex-start;
+      height:fit-content;
     }
     //reverse media query
     @media (min-width: $screen-md-max) {

@@ -1,10 +1,10 @@
 .project-card {
-  height: 620px;
+  height: 480px;
   overflow: hidden;
   display: block;
   position: relative;
   @media (max-width: $screen-xxxl-max) {
-    height: 520px;
+    height: 480px;
   }
   .text-sm {
     color:var(--primary-color);
@@ -41,9 +41,9 @@
   }
   .tag-container {
     display: flex;
-    gap:8px;
+    gap:16px;
     .tag {
-      color:rgb(134, 134, 134);
+      color:var(--primary-color);
     }
   }
   //desktop only (reverse media query

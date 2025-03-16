@@ -1,10 +1,10 @@
 import React from "react";
-import Image from "next/image"; // Assuming Next.js Image component
+// import Image from "next/image"; // Assuming Next.js Image component
 import { PortableText } from "@portabletext/react"; // For rendering block content
 import Img from "../components/Img";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Typewriter from "../components/TypWriter";
+// import Typewriter from "../components/TypWriter";
 
 export default function TextImage({
   image,
@@ -32,9 +32,9 @@ export default function TextImage({
             data-animate-delay="300"
             className={`w-full text-wrapper ${isMirrored ? "md:order-last" : "md:order-first"}`}
           >
-            <h3 className="typewriter-text">
-              Gemakkelijk zelf jouw 
-              <Typewriter
+            <h2 className="typewriter-text">
+              Eenvoudig jouw website beheren
+              {/* <Typewriter
                 words={[
                   " website aanpassen",
                   " applicatie tweaken",
@@ -43,8 +43,8 @@ export default function TextImage({
                 typingSpeed={100}
                 deletingSpeed={50}
                 pauseBetween={1500}
-              />
-            </h3>
+              /> */}
+            </h2>
             <PortableText value={text} />
           </div>
         )}

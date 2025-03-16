@@ -27,9 +27,11 @@ export default function ProjectCard({
         <div className="tag-container">
           {tags &&
             tags.selectedTags.map((tag) => (
-              <span key={tag._id} className="tag">
-                {tag.label}
-              </span>
+              <>
+                <span key={tag._id} className="tag">
+                  {tag.label}
+                </span>
+              </>
             ))}
         </div>
         <p className="project-card__sub-title"></p>

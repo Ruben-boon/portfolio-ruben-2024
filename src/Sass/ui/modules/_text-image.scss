@@ -11,7 +11,7 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 32px;
-    padding: 32px 64px 80px 64px;
+    padding: 32px 16px 80px 16px;
 
     @media (max-width: $screen-xxxl-max) {
     }
@@ -84,6 +84,7 @@
       }
       img {
         z-index: 1;
+        object-fit: contain;
       }
     }
     .text-wrapper {
