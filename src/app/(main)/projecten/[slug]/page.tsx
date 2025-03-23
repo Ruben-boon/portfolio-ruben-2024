@@ -97,9 +97,9 @@ export default async function ProjectSingle({
         
         <div className="project-single-header">
           <h2 data-animate="fade-up">{page.title}</h2>
-          {page.excerpt && (
+          {/* {page.excerpt && (
             <p className="text-lg mb-4">{page.excerpt}</p>
-          )}
+          )} */}
           <div className="flex flex-wrap gap-2 mb-4">
             {tags.map((tag) => (
               <div key={tag._id} className="tag">

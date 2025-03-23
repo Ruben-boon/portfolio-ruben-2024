@@ -11,7 +11,7 @@ export default async function Footer() {
   return (
     <footer>
     <div className="pt-16 top-footer grid grid-cols-12 gap-4 container-xl-width place-items-center">
-      <div className="col-span-12 md:col-span-6 contact-text  flex justify-center flex-col">
+      <div className="col-span-12 md:col-span-6 self-start pt-4 contact-text  flex justify-center flex-col">
         <PortableText value={footerContent} />
       </div>
       <div className="dynamic-form col-span-12 md:col-span-6 contact-form flex justify-center">

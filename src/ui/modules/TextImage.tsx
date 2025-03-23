@@ -32,19 +32,6 @@ export default function TextImage({
             data-animate-delay="300"
             className={`w-full text-wrapper ${isMirrored ? "md:order-last" : "md:order-first"}`}
           >
-            <h2 className="typewriter-text">
-              Eenvoudig jouw website beheren
-              {/* <Typewriter
-                words={[
-                  " website aanpassen",
-                  " applicatie tweaken",
-                  " webshop updaten",
-                ]}
-                typingSpeed={100}
-                deletingSpeed={50}
-                pauseBetween={1500}
-              /> */}
-            </h2>
             <PortableText value={text} />
           </div>
         )}

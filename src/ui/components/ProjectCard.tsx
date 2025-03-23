@@ -20,11 +20,9 @@ export default function ProjectCard({
 }>) {
   return (
     <Link href={`projecten/${metadata.slug.current}`} className="project-card">
-      <div className="img-container">
+      <div className="img-container relative">
         <Img image={thumbnail} imageWidth={800} />
-      </div>
-      <div className=" project-card__text text-center mt-4">
-        <div className="tag-container">
+        {/* <div className="tag-container">
           {tags &&
             tags.selectedTags.map((tag) => (
               <>
@@ -33,7 +31,10 @@ export default function ProjectCard({
                 </span>
               </>
             ))}
-        </div>
+        </div> */}
+      </div>
+      <div className=" project-card__text text-center mt-4">
+      
         <p className="project-card__sub-title"></p>
         <p className="project-card__title">{title}</p>
         <p className="project-card__sub-title">{excerpt}</p>
