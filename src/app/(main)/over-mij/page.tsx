@@ -4,7 +4,7 @@ import { modulesQuery } from "@/../sanity/lib/queries";
 
 async function getPage() {
     const page = await fetchSanity<Sanity.Page>(
-      groq`*[_type == 'pages' && metadata.slug.current == 'contact'][0]{
+      groq`*[_type == 'pages' && metadata.slug.current == 'over-mij'][0]{
               ...,
               modules[]{ ${modulesQuery} },
               metadata {
