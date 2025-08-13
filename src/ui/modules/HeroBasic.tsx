@@ -6,6 +6,7 @@ import processUrl from "sanity/lib/processUrl";
 import { useMediaQuery } from "react-responsive";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { ArrowRight } from "lucide-react";
+import Galaxy from "@/bits/Backgrounds/Galaxy/Galaxy";
 
 export default function HeroBasic({
   text,
@@ -101,12 +102,10 @@ export default function HeroBasic({
           }}
         >
           {text && (
-            <motion.div
-              variants={parentVariants}
-              transition={{ duration: 0.4 }}
-            >
+           
               <PortableText value={text} />
-            </motion.div>
+
+
           )}
           {ctas?.[0] && (
             <motion.div
@@ -115,7 +114,7 @@ export default function HeroBasic({
             >
               <Link className="btn-outline-light" href="/projecten">
                 {ctas[0].label}
-                <ArrowRight size={20}/>
+                <ArrowRight size={20} />
               </Link>
             </motion.div>
           )}

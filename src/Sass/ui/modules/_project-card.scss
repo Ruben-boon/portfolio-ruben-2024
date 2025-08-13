@@ -1,17 +1,22 @@
 .project-card {
-  height: 480px;
   overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-bottom: 4px;
+  border-radius: 10px;
   @media (max-width: $screen-xxxl-max) {
     height: 480px;
   }
   .text-sm {
-    color:var(--primary-color);
+    color: var(--primary-color);
   }
   &__text {
     text-align: left;
     color: black;
+    padding: 1em;
+    display: block;
   }
   &__title {
     font-weight: 500;
@@ -37,21 +42,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
   }
   .tag-container {
     display: flex;
-    gap:8px;
+    gap: 8px;
     position: absolute;
-    top:8px;
-    right:8px;
+    top: 8px;
+    right: 8px;
     .tag {
-      color:black;
+      color: black;
       font-size: 13px;
       font-weight: 500;
       background-color: white;
       padding: 8px 16px;
-      border-radius:12px;
+      border-radius: 12px;
     }
   }
   //desktop only (reverse media query
@@ -61,12 +65,15 @@
     }
   }
   .img-container {
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
     overflow: hidden;
+    height: 260px;
+
     img {
       transition: all 0.3s ease-in-out;
       object-fit: cover;
-      height: 300px;
+      display: block;
+      height: 100%;
     }
   }
 

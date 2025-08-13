@@ -165,10 +165,10 @@ section.services {
     //reverse media query
     @media (min-width: $screen-md-max) {
       &:hover {
-        background:var(--primary-color);
-        * {
-          color:white;
-        }
+        // background:var(--primary-color);
+        // * {
+        //   color:white;
+        // }
       }
     }
 
@@ -186,7 +186,8 @@ section.services {
       margin-bottom: 12px;
       font-weight: 500;
       font-family: var(--epilogue-variable);
-      color: var(--primary-color);
+      font-size: 24px;
+      color: #99c3d8;
       @media (max-width: $screen-md-max) {
         margin-top: 4px;
       }

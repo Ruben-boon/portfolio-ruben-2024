@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { SanityDocument } from "next-sanity";
 import ProjectCard from "@/ui/components/ProjectCard";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -11,6 +10,12 @@ interface Tag {
 
 export interface Project {
   title: string;
+  metadata?: {
+    publishedAt?: string;
+    slug?: {
+      current: string;
+    };
+  };
   tags?: {
     selectedTags?: Tag[];
   };
@@ -33,36 +38,23 @@ export default function ProjectMasonry({
   columns?: string;
   projects: Project[];
 }) {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-
-  // Extract all unique tags from projects
-  const allTags = Array.from(
-    new Set(
-      projects.flatMap(
-        (project) => project.tags?.selectedTags?.map((tag) => tag.label) || []
-      )
-    )
-  );
-
-  // Filter projects based on selected tag
-  const filteredProjects = selectedTag
-    ? projects.filter((project) =>
-        project.tags?.selectedTags?.some((tag) => tag.label === selectedTag)
-      )
-    : projects;
-
   if (projects.length === 0) {
     return <div>Loading projects...</div>;
   }
-  console.log("fetched project", projects);
+
+  const sortedProjects = [...projects].sort((a, b) => {
+    const dateA = a.metadata?.publishedAt ? new Date(a.metadata.publishedAt).getTime() : 0;
+    const dateB = b.metadata?.publishedAt ? new Date(b.metadata.publishedAt).getTime() : 0;
+    return dateB - dateA; 
+  });
+
+  console.log("Sorted projects:", sortedProjects);
 
   return (
     <section className="project-masonry">
-
-
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry gutter={"1.5rem"}>
-          {filteredProjects.map((project: Project, index: number) => (
+          {sortedProjects.map((project: Project) => (
             <ProjectCard {...project} key={project.title} />
           ))}
         </Masonry>

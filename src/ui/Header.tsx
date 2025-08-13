@@ -7,45 +7,40 @@ import { usePathname } from "next/navigation";
 
 export default function Header({ logo, navigation }) {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    setVisible(true);
+  }, [pathname]);
+
+  useEffect(() => {
     if (menuOpen && isMobile) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""; // Restore scrolling
+      document.body.style.overflow = "";
     }
+
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (!isMobile && currentScrollY > 280) {
+        setVisible(currentScrollY <= lastScrollY);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (!isMobile) {
-        setScrolled(currentScrollY > 280);
-
-        if (currentScrollY > 280) {
-          if (currentScrollY > lastScrollY) {
-            setVisible(false);
-          } else {
-            setVisible(true);
-          }
-        }
-      } else {
-        setScrolled(false);
-        setVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
     window.addEventListener("scroll", handleScroll);
+    
     return () => {
       window.removeEventListener("resize", checkMobile);
       window.removeEventListener("scroll", handleScroll);
@@ -53,22 +48,21 @@ export default function Header({ logo, navigation }) {
   }, [lastScrollY, isMobile, menuOpen]);
 
   const handleOpenMobileMenu = () => {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.add("open");
+    document.getElementById("mobile-menu")?.classList.add("open");
     setMenuOpen(true);
   };
 
   const handleCloseMobileMenu = () => {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.remove("open");
+    document.getElementById("mobile-menu")?.classList.remove("open");
     setMenuOpen(false);
   };
 
   return (
     <>
       <header
-        className={` ${pathname == "/" ? "dark-mode" : ""} ${!isMobile && !visible ? "-translate-y-full" : "translate-y-0"}
-        `}
+        className={`${pathname === "/" ? "dark-mode" : ""} ${
+          !isMobile && !visible ? "-translate-y-full" : "translate-y-0"
+        }`}
       >
         <div className="header-container">
           <div className="main-logo">
