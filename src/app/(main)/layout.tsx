@@ -5,7 +5,6 @@ import Footer from "@/ui/Footer";
 import "./tailwind.css";
 import "../../Sass/main.scss";
 import { getSite } from "sanity/lib/queries";
-import Galaxy from "@/bits/Backgrounds/Galaxy/Galaxy";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -48,7 +47,6 @@ export default async function RootLayout({
         <main className="relative">
 
           <Header logo={logo} navigation={navigation} />
-
           {children}
           <Footer />
         </main>
