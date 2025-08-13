@@ -6,7 +6,6 @@ import processUrl from "sanity/lib/processUrl";
 import { useMediaQuery } from "react-responsive";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { ArrowRight } from "lucide-react";
-import Galaxy from "@/bits/Backgrounds/Galaxy/Galaxy";
 
 export default function HeroBasic({
   text,
